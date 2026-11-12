@@ -1,0 +1,2867 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>آوازلب — آزمایشگاه صدای آواز</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:#0b0f1a;color:#e7ecf5;font-family:-apple-system,"SF Pro Text","Vazirmatn",system-ui,sans-serif;font-size:16px;line-height:1.8;padding-bottom:40px}
+.screen{padding:16px 14px;max-width:640px;margin:0 auto}
+.hidden{display:none !important}
+h1{font-size:34px;margin:2px 0 0}
+.hero{text-align:center;padding:18px 0 8px}
+.logo{font-size:56px}
+.sub{color:#93a0b8;font-size:15px;margin-top:2px}
+.card{background:#141a2a;border:1px solid #232d45;border-radius:16px;padding:14px 16px;margin:12px 0}
+.card.mini{font-size:14px}
+.cardtitle{font-weight:700;font-size:16px;margin-bottom:6px;color:#cdd8ee}
+.steps{margin:4px 0;padding-right:18px}
+.steps li{margin:6px 0}
+.note{background:#1a2338;border-radius:10px;padding:8px 12px;margin-top:8px;font-size:14px;color:#b9c6e0}
+.disc{color:#8b97b0;font-size:12.5px;margin-top:8px}
+.refs{margin:4px 0;padding-right:16px;font-size:13.5px;color:#aab6d0}
+.refs li{margin:4px 0}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.seg{display:flex;background:#1a2338;border-radius:10px;padding:3px;gap:3px}
+.segb{border:0;background:transparent;color:#93a0b8;padding:6px 18px;border-radius:8px;font-size:15px;font-family:inherit}
+.segb.on{background:#7c5cff;color:#fff;font-weight:700}
+.big{display:block;width:100%;border:0;border-radius:16px;padding:16px;font-size:18px;font-weight:800;font-family:inherit;background:linear-gradient(135deg,#7c5cff,#5b8cff);color:#fff;margin:10px 0;box-shadow:0 8px 24px rgba(124,92,255,.25)}
+.big:active{opacity:.8}
+.big.ghost{background:#1a2338;color:#cdd8ee;border:1px solid #2c395c;box-shadow:none}
+.big.stop{background:linear-gradient(135deg,#ef4444,#f97316)}
+.btnrow{display:flex;gap:10px}
+.btnrow .big{flex:1}
+.rechdr{display:flex;align-items:center;gap:10px;font-size:26px;font-weight:800;justify-content:center;margin:6px 0}
+.recdot{width:14px;height:14px;border-radius:50%;background:#ef4444;display:inline-block;animation:pulse 1s infinite}
+@keyframes pulse{0%{opacity:1}50%{opacity:.25}100%{opacity:1}}
+.cv{width:100%;height:230px;background:#101627;border:1px solid #232d45;border-radius:14px;display:block}
+.cv.tall{height:270px}
+.busytitle{text-align:center;font-size:20px;font-weight:800;margin-top:8px}
+.bignerd{text-align:center;font-size:64px;margin-top:60px}
+.prog{height:10px;background:#1a2338;border-radius:6px;overflow:hidden;margin:20px 10px}
+#progBar{height:100%;width:0%;background:linear-gradient(90deg,#7c5cff,#22d3ee);transition:width .2s}
+.busytxt{text-align:center;color:#93a0b8;font-size:14px;min-height:24px}
+.scorewrap{background:linear-gradient(135deg,#1b2340,#141a2a);border:1px solid #2c395c;border-radius:18px;padding:16px;text-align:center;margin-bottom:6px}
+.scorebig{font-size:52px;font-weight:900;line-height:1.1}
+.scorelbl{color:#93a0b8;font-size:14px}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.chip{background:#1a2338;border-radius:10px;padding:6px 12px;font-size:13.5px}
+.chip b{font-size:16px}
+.metainfo{color:#8b97b0;font-size:13px;text-align:center;margin:4px 0 10px}
+table.tbl{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0}
+.tbl th{color:#93a0b8;font-weight:600;text-align:right;padding:6px 8px;border-bottom:1px solid #2c395c;font-size:13px}
+.tbl td{padding:7px 8px;border-bottom:1px solid #1c2440}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tblwrap .tbl{min-width:340px}
+.tbl tr:last-child td{border-bottom:0}
+.vchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.vchip{border:1px solid #2c395c;background:#1a2338;color:#c3cee6;border-radius:999px;padding:7px 14px;font-family:inherit;font-size:14px}
+.vchip.on{background:#7c5cff;color:#fff;border-color:#7c5cff;font-weight:700}
+.tipbox{background:#141a2a;border:1px solid #2c395c;border-right:4px solid #7c5cff;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:15px;line-height:2.05}
+.tipbox .vt1{font-size:16px;margin-bottom:6px}
+.tipbox .vmod{background:#12291f;border:1px solid #1f5f46;border-radius:10px;padding:8px 10px;margin-top:8px;font-size:13.5px;color:#a7f3d0}
+.tipbox .vcoach{margin-top:8px;font-size:13px;color:#93a0b8;border-top:1px dashed #2c395c;padding-top:8px}
+.vstat{font-size:14px;color:#cdd8ee;line-height:2}
+.tag{display:inline-block;padding:2px 9px;border-radius:8px;font-size:12.5px;font-weight:700}
+.tag.ok{background:rgba(52,211,153,.15);color:#34d399}
+.tag.mid{background:rgba(251,191,36,.15);color:#fbbf24}
+.tag.bad{background:rgba(248,113,113,.15);color:#f87171}
+.tag.info{background:rgba(124,92,255,.15);color:#a78bfa}
+.rec{border-radius:14px;padding:12px 14px;margin:8px 0;border:1px solid #232d45;background:#141a2a}
+.rec.s3{border-color:rgba(248,113,113,.45)}
+.rec.s2{border-color:rgba(251,191,36,.4)}
+.rec.s1{border-color:rgba(52,211,153,.35)}
+.rec .rt{font-weight:800;font-size:15.5px;margin-bottom:2px}
+.rec .rb{font-size:14px;color:#c3cee6}
+.edu{font-size:14px;color:#c3cee6}
+.edu ul{margin:6px 0;padding-right:18px}
+.edu li{margin:5px 0}
+.kv{color:#22d3ee;font-weight:700}
+.warnbox{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.35);border-radius:12px;padding:10px 14px;margin:10px 0;font-size:14px}
+.modalov{position:fixed;inset:0;background:rgba(4,8,18,.8);z-index:60;display:flex;align-items:center;justify-content:center;padding:22px}
+.modal{background:#141a2a;border:1px solid #2c395c;border-radius:18px;padding:18px;max-width:420px;width:100%;max-height:82vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.modal h3{margin:0 0 8px;font-size:18px}
+.modal .mb{font-size:14.5px;color:#c3cee6}
+.modal .mb ol{margin:6px 0;padding-right:18px}
+.modal .mb li{margin:6px 0}
+.modal .btnrow{margin-top:14px}
+.goodbox{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.3);border-radius:12px;padding:10px 14px;margin:10px 0;font-size:14px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#232d45;color:#fff;padding:10px 22px;border-radius:12px;font-size:14px;z-index:99;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.charttl{font-size:14.5px;font-weight:700;color:#cdd8ee;margin:14px 2px 6px}
+.legend{font-size:12px;color:#8b97b0;margin:2px 2px 8px}
+canvas{touch-action:pan-y}
+</style>
+</head>
+<body>
+<div id="scrHome" class="screen">
+  <div class="hero"><div class="logo">🎤</div><h1>آوازلب</h1><div class="sub">آزمایشگاه تحلیل صدای آواز — فرمانت، پایداری، تنفس</div><div class="sub" style="font-size:12px;color:#7c8db0">نسخهٔ ۱.۴ — تشخیص دقیق‌تر واکه + شروع نت + ساب‌گلوتال</div></div>
+  <div class="card">
+    <div class="cardtitle">📋 قبل از ضبط</div>
+    <ol class="steps">
+      <li>در اتاقی ساکت، گوشی را حدود <b>۱۵ سانتی‌متر</b> از دهان نگه دار.</li>
+      <li>یک واکه (مثلاً «آااا») را روی یک نُت راحت <b>۸ تا ۱۵ ثانیه پیوسته</b> بخوان.</li>
+      <li>همان نُت را نگه دار تا تنفس، پایداری و ویبراتو هم تحلیل شود.</li>
+    </ol>
+    <div class="note">💡 اگر میکروفون داخل برنامه باز نشد، با اپ «ضبط صدا» (Voice Memos) ضبط کن و از دکمه «تحلیل فایل صوتی» استفاده کن. برای می‌شدگی، نتیجه‌ی یک روز تمرین را «ذخیره مرجع» کن و با دفعه بعد مقایسه کن.</div>
+  </div>
+  <div class="card">
+    <div class="row"><span>جنسیت (برای هنجارهای مرجع):</span>
+      <span class="seg"><button id="sexM" class="segb on">مرد</button><button id="sexF" class="segb">زن</button></span>
+    </div>
+  </div>
+  <button class="big" id="btnRec">🎙 شروع ضبط و تحلیل زنده</button>
+  <button class="big ghost" id="btnFile">📁 تحلیل فایل صوتی ضبط‌شده</button>
+  <button class="big ghost" id="btnVowel">🎯 تحلیل آنلاین واکه (زنده)</button>
+  <button class="big ghost" id="btnBreath">💨 تحلیل صدای هوا‌دار</button>
+  <button class="big ghost" id="btnOnset">🎬 تحلیل شروع نت (بدون اتک)</button>
+  <div class="card mini">
+    <div class="cardtitle">📚 مرجع‌های علمی استفاده‌شده</div>
+    <ul class="refs">
+      <li>فرمانت خواننده (Singer's Formant): قله انرژی ~۲.۴ تا ۳.۴ کیلوهرتز در صدای خوانندگان آموزش‌دیده — پژوهش‌های Sundberg</li>
+      <li>هنجارهای بالینی: Jitter زیر ~۱.۰٪ و Shimmer زیر ~۳.۸٪ طبیعی (PRAAT/MDVP)</li>
+      <li>زمان بیشینه آواسازی (MPT): مرد ۲۵–۳۵ و زن ۱۵–۲۵ ثانیه</li>
+      <li>فرکانس‌های هدف واکه‌های فارسی از مطالعات آکوستیک گویشوران ایرانی؛ واکه‌های انگلیسی از پایگاه Hillenbrand و همکاران (۱۹۹۵)</li>
+      <li>نویز نفس‌دار (aspiration) بالای ~۱.۵ کیلوهرتز جای هارمونیک‌ها را می‌گیرد — Klatt &amp; Klatt (1990)؛ CPP به‌تنهایی ~۸۷٪ واریانس نفس‌داری ادراکی را توضیح می‌دهد — Samlan &amp; Kreiman (2013)</li>
+      <li>رابطهٔ فشار ساب‌گلوتال و بلندی (هر دوبرابر شدن ≈ ۸.۵ dB) — Björklund &amp; Sundberg (2016)؛ آستانهٔ آواسازی (PTP) — Titze</li>
+      <li>مقاومت حنجره‌ای: نفس‌دار ≈ ۴۳ در برابر طبیعی ≈ ۱۵۰ cmH₂O/(L/s) — مرور صداشناسی بالینی</li>
+      <li>زمان حملهٔ صوتی (Vocal Attack Time) — Roark و همکاران (2012)</li>
+    </ul>
+    <div class="disc">⚠️ این ابزار برای خودارزیابی تمرینی ساخته شده و جایگزین ارزیابی متخصص صدا نیست. مقادیر با میکروفون/فاصله/نویز محیط تغییر می‌کنند؛ همیشه در شرایط یکسان مقایسه کن.</div>
+  </div>
+</div>
+
+<div id="scrRec" class="screen hidden">
+  <div class="rechdr"><span class="recdot"></span><span id="recTime">0:00</span></div>
+  <canvas id="liveCv" class="cv"></canvas>
+  <div class="card mini" id="recHint"><b>واکه «آ» را روی یک نُت، پیوسته و بدون فشار بخوان…</b><br>حداقل ۸ ثانیه؛ نمودار زنده طیف صدایت را نشان می‌دهد.</div>
+  <button class="big stop" id="btnStop">⏹ پایان ضبط و شروع تحلیل</button>
+</div>
+
+<div id="scrBusy" class="screen hidden">
+  <div class="bignerd">🧪</div>
+  <div class="busytitle">در حال تحلیل صدای شما…</div>
+  <div class="prog"><div id="progBar"></div></div>
+  <div id="busyTxt" class="busytxt">آماده‌سازی…</div>
+</div>
+
+<div id="scrRes" class="screen hidden">
+  <div id="scoreHead"></div>
+  <div class="charttl">🎼 طیف میانگین صدای شما و جای فرمانت‌ها</div>
+  <div class="legend">خط بنفش: پوش طیف (LPC) — خط خاکستری کم‌رنگ: طیف FFT — ناحیه بنفش: باند فرمانت خواننده</div>
+  <canvas id="cvSpec" class="cv tall"></canvas>
+  <div class="charttl">🎼 کنتور نت در طول زمان</div>
+  <canvas id="cvF0" class="cv"></canvas>
+  <div class="charttl">🧭 نقشه واکه‌های فارسی (F1 در برابر F2)</div>
+  <div class="legend">دایره‌ها: واکه‌های هدف فارسی — ستاره: میانگین صدای تو — خط‌چین: فاصله تا نزدیک‌ترین هدف</div>
+  <canvas id="cvVowel" class="cv"></canvas>
+  <div id="resBody"></div>
+  <div class="btnrow">
+    <button class="big" id="btnSave">💾 ذخیره مرجع</button>
+    <button class="big ghost" id="btnShareR">📤 گزارش متنی</button>
+  </div>
+  <button class="big ghost" id="btnAgain">🔄 تحلیل جدید</button>
+</div>
+
+<div id="scrVowel" class="screen hidden">
+  <button class="big ghost" id="btnVBack">→ بازگشت به صفحهٔ اصلی</button>
+  <div class="card">
+    <div class="cardtitle">🎯 تحلیل آنلاین واکه — ردیابی زنده بر پایهٔ فرمانت‌ها</div>
+    <div class="row"><span>مجموعهٔ واکه:</span>
+      <span class="seg"><button id="vsetFa" class="segb on">فارسی</button><button id="vsetEn" class="segb">انگلیسی (خواننده)</button></span>
+    </div>
+    <div id="vStyleRow" class="row hidden"><span>سبک خوانندگی:</span>
+      <span class="seg"><button id="vstCl" class="segb on">کلاسیک</button><button id="vstMix" class="segb">میکس</button><button id="vstBelt" class="segb">بلت</button></span>
+    </div>
+    <div class="vchips" id="vChips"></div>
+    <div class="note" id="vModNote"></div>
+  </div>
+  <div class="card mini"><div class="vstat" id="vStatus">آماده</div></div>
+  <div class="charttl">🧭 نقشهٔ زندهٔ واکه (F1 در برابر F2)</div>
+  <div class="legend">دایره بنفش: هدف ثابت واکهٔ انتخابی — دایره‌های خاکستری: بقیهٔ واکه‌ها — ستارهٔ زرد: صدای تو — خط فیروزه‌ای: مسیر حرکت — ستارهٔ سبز: هدف اصلاح‌شده برای نت فعلی (Vowel Modification)</div>
+  <canvas id="cvVL" class="cv tall"></canvas>
+  <div class="tipbox" id="vTip"></div>
+  <div class="card"><div class="cardtitle">📋 جدول واکه‌ها — جای ثابت هدف در برابر صدای تو</div><div class="tblwrap"><table class="tbl" id="vTbl"></table></div></div>
+  <div class="btnrow">
+    <button class="big" id="btnVLive">🎙 شروع مانیتور زنده</button>
+    <button class="big ghost" id="btnVFile">📁 تحلیل مسیر واکه از فایل ضبط‌شده</button>
+  </div>
+</div>
+
+<div id="scrBreath" class="screen hidden">
+  <button class="big ghost" id="btnBBack">→ بازگشت به صفحهٔ اصلی</button>
+  <div class="card">
+    <div class="cardtitle">💨 تحلیل صدای هوا‌دار — سنجش و رفع نفس‌داری صدا</div>
+    <ol class="steps">
+      <li>یک قطعه یا چند جملهٔ آوازی بخوان — <b>۳۰ ثانیه یا بیشتر</b> (کمتر هم تحلیل می‌شود ولی ۳۰ ثانیه+ میانگین دقیق‌تری می‌دهد).</li>
+      <li>برنامه سهم «هوای اضافه» در صدای خروجی را از شش سیگنال مستقل می‌سنجد: CPP، HNR، نویز بین‌هارمونیکی بالای ۱.۵kHz، H1−H2، H1−A3 و شیب طیف.</li>
+      <li>نمره بگیر، تمرین‌های پیشنهادی را چند روز انجام بده و دوباره ضبط کن — روند پیشرفتت را در نمودار می‌بینی.</li>
+    </ol>
+    <div class="note">💡 شرایط را ثابت نگه دار: همان فاصله، همان اتاق، همان بلندی — فقط آن‌وقت مقایسهٔ جلسه‌ها معنا دارد.</div>
+  </div>
+  <div class="card">
+    <div class="cardtitle">🌬 تمرین بازدم زنده — تشخیص «فرکانس‌های هوا»</div>
+    <div class="vstat" style="font-size:13px;color:#93a0b8;line-height:1.9">دم عمیق بگیر و با «سس‌س» یکنواخت و <b>بی‌صدا</b> بازدم کن. برنامه نویز آشوبناک (turbulence) هوای بازدمت را می‌سنجد — انرژی این نویز عمدتاً در باند ۲.۲ تا ۵.۵ کیلوهرتز است (Klatt 1990) — و یکنواختی جریان دیافراگمت را نمره می‌دهد. اگر نویزت در باند پایین باشد یعنی هوا از جای درست بیرون نمی‌آید.</div>
+    <div class="vstat" id="btStatus" style="font-weight:700">آماده</div>
+    <canvas id="cvBT" class="cv"></canvas>
+    <div class="btnrow"><button class="big" id="btnBTrainer">🌬 شروع تمرین بازدم</button></div>
+  </div>
+  <div class="btnrow">
+    <button class="big" id="btnBLive">🎙 ضبط زنده و تحلیل (۳۰ ثانیه+)</button>
+    <button class="big ghost" id="btnBFile">📁 تحلیل فایل ضبط‌شده</button>
+  </div>
+  <div id="brBody"></div>
+</div>
+
+<div id="scrOnset" class="screen hidden">
+  <button class="big ghost" id="btnOBack">→ بازگشت به صفحهٔ اصلی</button>
+  <div class="card">
+    <div class="cardtitle">🎬 تحلیل شروع نت — حذف اتک (Attack)</div>
+    <ol class="steps">
+      <li>چند جملهٔ کوتاه بخوان که هر نت از سکوت شروع شود — مثلاً «آ… آ… آ…» با مکث، یا نت‌های اول یک آهنگ آرام.</li>
+      <li>برنامه برای هر نت چهار چیز می‌سنجد: سرعت برآمدن صدا (rise)، پرش لحظه‌ای روی هدف (overshoot)، هوای بی‌صدا قبل از صدا (aspiration) و ترکیدگی طیف ابتدای نت (burst).</li>
+      <li>هدف: شروع «همزمان» — نه اتک سخت (تارها قبل از هوا بسته می‌شوند)، نه شروع نفس‌دار (هوا اول می‌آید). نردبان نرم ۴۰ تا ۲۵۰ میلی‌ثانیه.</li>
+    </ol>
+    <div class="note">💡 بهترین خواننده‌ها نت را «از سکوتِ آماده» شروع می‌کنند: نفس گرفته، حنجره آماده، و هوا و صدا با هم آزاد می‌شوند (balanced onset). تحقیقات زمان حملهٔ صوتی (Roark 2012) نشان می‌دهد این زمان در صداهای سالم بسیار کوتاه و نرم است — این‌جا آن را برای هر نتت جدا می‌بینیم.</div>
+  </div>
+  <div class="btnrow">
+    <button class="big" id="btnOLive">🎙 ضبط و تحلیل شروع نت‌ها</button>
+    <button class="big ghost" id="btnOFile">📁 تحلیل فایل ضبط‌شده</button>
+  </div>
+  <div id="onsBody"></div>
+</div>
+
+<input type="file" id="fileInp" accept="audio/*" style="display:none">
+<div id="toast" class="toast hidden"></div>
+<script>
+/* ===== VoiceLab core (DSP) — آوازلب ===== */
+var VL_FS = 16000, VL_FRAME = 640, VL_SHIFT = 160;
+var VL_MINF0 = 55, VL_MAXF0 = 800;
+var VL_LPC = 12, VL_MAXBW = 700, VL_MINF = 90, VL_MAXF = 5500;
+
+/* ---------- helpers ---------- */
+function vl_mean(a){ if(!a.length) return NaN; var s=0; for(var i=0;i<a.length;i++) s+=a[i]; return s/a.length; }
+function vl_median(a){ if(!a.length) return NaN; var b=a.slice().sort(function(x,y){return x-y;}); var m=b.length>>1; return (b.length%2)? b[m] : (b[m-1]+b[m])/2; }
+function vl_pctl(a,p){ if(!a.length) return NaN; var b=a.slice().sort(function(x,y){return x-y;}); var i=Math.min(b.length-1,Math.max(0,Math.round(p*(b.length-1)))); return b[i]; }
+function vl_clamp(v,lo,hi){ return v<lo?lo:(v>hi?hi:v); }
+function vl_hamming(N){ var w=new Float64Array(N); for(var i=0;i<N;i++) w[i]=0.54-0.46*Math.cos(2*Math.PI*i/(N-1)); return w; }
+var VL_WIN = vl_hamming(VL_FRAME);
+
+/* ---------- zero-phase high-pass (rumble/handling noise removal) ---------- */
+function vl_highpass(x){
+  var fc=65, w0=2*Math.PI*fc/VL_FS, q=Math.SQRT1_2;
+  var alpha=Math.sin(w0)/(2*q), cs=Math.cos(w0);
+  var b0=(1+cs)/2, b1=-(1+cs), b2=(1+cs)/2;
+  var a0=1+alpha, a1=-2*cs, a2=1-alpha;
+  b0/=a0;b1/=a0;b2/=a0;a1/=a0;a2/=a0;
+  var n=x.length, y=new Float32Array(n), i;
+  var x1=0,x2=0,y1=0,y2=0;
+  for(i=0;i<n;i++){ var v=x[i]; var o=b0*v+b1*x1+b2*x2-a1*y1-a2*y2; x2=x1;x1=v;y2=y1;y1=o; y[i]=o; }
+  x1=0;x2=0;y1=0;y2=0;
+  for(i=n-1;i>=0;i--){ var v2=y[i]; var o2=b0*v2+b1*x1+b2*x2-a1*y1-a2*y2; x2=x1;x1=v2;y2=y1;y1=o2; y[i]=o2; }
+  return y;
+}
+/* ---------- frame magnitude spectrum (dB, 512 bins 0..8k) ---------- */
+function vl_specDb(x, off){
+  var re=new Float64Array(1024), im=new Float64Array(1024), n;
+  for(n=0;n<VL_FRAME;n++) re[n]=x[off+n]*VL_WIN[n];
+  vl_fft(re,im);
+  var out=new Float64Array(512);
+  for(var b=0;b<512;b++){ var p=re[b]*re[b]+im[b]*im[b]; out[b]=10*Math.log(p+1e-20)/Math.LN10; }
+  return out;
+}
+/* ---------- subglottal / glottal estimates (Björklund & Sundberg 2016; Titze) ---------- */
+function vlSubCalc(dbfs, f0med, sex, hnr){
+  var splCal=105;
+  try{ if(typeof localStorage!=='undefined'){ splCal=parseFloat(localStorage.getItem('vl_splcal'))||105; } }catch(e){}
+  var splEst=dbfs+splCal;
+  var spl30=splEst-6; /* ۱۵→۳۰ سانتی‌متر */
+  var psub=10*Math.pow(2,(spl30-85)/8.5);
+  psub=vl_clamp(psub,2,60);
+  var ref=(sex==='f')?235:155;
+  var ptp=3+10*Math.pow(Math.max(0,(f0med-ref)/350),2.2);
+  ptp=vl_clamp(ptp,2.5,25);
+  var rg=40+110*vl_clamp(((isFinite(hnr)?hnr:15)-8)/14,0,1);
+  return {spl:Math.round(splEst), dbfs:Math.round(dbfs), splCal:Math.round(splCal), psub:Math.round(psub*10)/10, ptp:Math.round(ptp*10)/10, margin:Math.round((psub-ptp)*10)/10, rg:Math.round(rg)};
+}
+
+function vl_medfilt(arr, voiced, k){ // median filter along voiced runs
+  var n=arr.length, out=arr.slice();
+  var half=(k-1)>>1;
+  for(var i=0;i<n;i++){
+    if(!voiced[i]) continue;
+    var w=[];
+    for(var j=i-half;j<=i+half;j++){ if(j>=0&&j<n&&voiced[j]) w.push(arr[j]); }
+    if(w.length) out[i]=vl_median(w);
+  }
+  return out;
+}
+function vl_movavg(a,k){ var n=a.length,out=new Array(n); var h=k>>1,s,c;
+  for(var i=0;i<n;i++){ s=0;c=0; for(var j=i-h;j<=i+h;j++){ if(j>=0&&j<n&&isFinite(a[j])){s+=a[j];c++;} } out[i]=c? s/c : a[i]; }
+  return out; }
+function vl_linfit(y){ // x = 0..n-1 ; returns slope
+  var n=y.length, sx=0,sy=0,sxy=0,sxx=0,c=0;
+  for(var i=0;i<n;i++){ if(isFinite(y[i])){ sx+=i;sy+=y[i];sxy+=i*y[i];sxx+=i*i;c++; } }
+  if(c<2) return 0;
+  var d=c*sxx-sx*sx; if(Math.abs(d)<1e-12) return 0;
+  return (c*sxy-sx*sy)/d;
+}
+function vl_zcRate(a,minGap){ // zero crossings -> freq in Hz (frame=10ms)
+  var n=a.length, cnt=0, last=-999;
+  for(var i=1;i<n;i++){
+    if(isFinite(a[i])&&isFinite(a[i-1])&&((a[i]>=0&&a[i-1]<0)||(a[i]<0&&a[i-1]>=0))){
+      if(i-last>=minGap){ cnt++; last=i; }
+    }
+  }
+  return cnt/(2*(n*0.010));
+}
+
+/* ---------- FFT ---------- */
+function vl_fft(re,im){
+  var n=re.length;
+  for(var i=1,j=0;i<n;i++){ var bit=n>>1; for(;j&bit;bit>>=1) j^=bit; j^=bit;
+    if(i<j){ var t=re[i];re[i]=re[j];re[j]=t; t=im[i];im[i]=im[j];im[j]=t; } }
+  for(var len=2;len<=n;len<<=1){
+    var ang=-2*Math.PI/len, wr=Math.cos(ang), wi=Math.sin(ang), half=len>>1;
+    for(var i2=0;i2<n;i2+=len){
+      var cr=1, ci=0;
+      for(var k=0;k<half;k++){
+        var ur=re[i2+k], ui=im[i2+k];
+        var vr=re[i2+k+half]*cr-im[i2+k+half]*ci, vi=re[i2+k+half]*ci+im[i2+k+half]*cr;
+        re[i2+k]=ur+vr; im[i2+k]=ui+vi;
+        re[i2+k+half]=ur-vr; im[i2+k+half]=ui-vi;
+        var t2=cr*wr-ci*wi; ci=cr*wi+ci*wr; cr=t2;
+      }
+    }
+  }
+}
+
+/* ---------- F0 (autocorrelation + octave correction) ---------- */
+function vl_frameF0(x, off){
+  var N=VL_FRAME, y=new Float64Array(N), m=0, i, n;
+  for(i=0;i<N;i++){ y[i]=x[off+i]; m+=y[i]; }
+  m/=N; var r0=0;
+  for(i=0;i<N;i++){ y[i]-=m; r0+=y[i]*y[i]; }
+  if(r0<1e-10) return {f0:0, r:0};
+  var lagMin=Math.floor(VL_FS/VL_MAXF0), lagMax=Math.min(Math.ceil(VL_FS/VL_MINF0), N-2);
+  var nLags=lagMax-lagMin+1, ac=new Float64Array(nLags);
+  for(var lag=lagMin; lag<=lagMax; lag++){
+    var s=0; for(var q=0;q<N-lag;q++) s+=y[q]*y[q+lag];
+    ac[lag-lagMin]=s/(N-lag);
+  }
+  var bestR=-1e30, bestLag=lagMin;
+  for(var l=0;l<nLags;l++){ if(ac[l]>bestR){ bestR=ac[l]; bestLag=lagMin+l; } }
+  var rnorm=bestR/(r0/N); if(rnorm>1) rnorm=1;
+  // octave correction: earliest local peak reaching >= 0.85 of global max
+  var cand=bestLag;
+  for(var l2=1;l2<nLags-1;l2++){
+    if(ac[l2]>=ac[l2-1] && ac[l2]>=ac[l2+1] && ac[l2]>=0.85*bestR){ cand=lagMin+l2; break; }
+  }
+  var f0=VL_FS/cand;
+  if(cand>lagMin && cand<lagMax){
+    var rm=ac[cand-lagMin-1], rc=ac[cand-lagMin], rp=ac[cand-lagMin+1], den=rm-2*rc+rp;
+    if(Math.abs(den)>1e-12){ var d=(rm-rp)/(2*den); if(Math.abs(d)<1){ f0=VL_FS/(cand+d); } }
+  }
+  return {f0:f0, r:rnorm};
+}
+
+/* ---------- LPC (Levinson-Durbin) ---------- */
+function vl_lpc(y, p){
+  var N=y.length, r=new Float64Array(p+1), k, j, n;
+  for(k=0;k<=p;k++){ var s=0, lim=N-k; for(n=0;n<lim;n++) s+=y[n]*y[n+k]; r[k]=s; }
+  if(r[0]<1e-12) return null;
+  var a=new Float64Array(p+1), e=r[0];
+  for(var i=1;i<=p;i++){
+    var acc=r[i];
+    for(j=1;j<i;j++) acc-=a[j]*r[i-j];
+    var kk=acc/e;
+    var prev=a.slice();
+    a[i]=kk;
+    for(j=1;j<i;j++) a[j]=prev[j]-kk*prev[i-j];
+    e*=(1-kk*kk);
+    if(e<=1e-12) return null;
+  }
+  return a;
+}
+
+/* ---------- polynomial roots (Durand-Kerner) ---------- */
+function vl_polyRoots(a){
+  var p=a.length-1; if(p<1) return [];
+  var zr=new Float64Array(p), zi=new Float64Array(p);
+  var cr=0.4, ci=0.9, pr=1, pi=0, i, j, k;
+  for(i=0;i<p;i++){ var nr=pr*cr-pi*ci, ni=pr*ci+pi*cr; pr=nr; pi=ni; zr[i]=pr; zi[i]=pi; }
+  for(var it=0; it<256; it++){
+    var maxd=0;
+    for(i=0;i<p;i++){
+      var rr=1, ri2=0;
+      for(k=1;k<=p;k++){ var tr=rr*zr[i]-ri2*zi[i]+a[k], ti=rr*zi[i]+ri2*zr[i]; rr=tr; ri2=ti; }
+      var dr=1, di=0;
+      for(j=0;j<p;j++){ if(j!==i){ var xr=zr[i]-zr[j], xi=zi[i]-zi[j]; var t2=dr*xr-di*xi, t3=dr*xi+di*xr; dr=t2; di=t3; } }
+      var den=dr*dr+di*di; if(den<1e-30) continue;
+      var qr=(rr*dr+ri2*di)/den, qi=(ri2*dr-rr*di)/den;
+      zr[i]-=qr; zi[i]-=qi;
+      var d=Math.sqrt(qr*qr+qi*qi); if(d>maxd) maxd=d;
+    }
+    if(maxd<1e-13) break;
+  }
+  var out=[]; for(i=0;i<p;i++) out.push([zr[i],zi[i]]);
+  return out;
+}
+
+/* ---------- roots -> formants ---------- */
+function vl_rootsToFormants(roots){
+  var arr=[], fs=VL_FS;
+  for(var i=0;i<roots.length;i++){
+    var re=roots[i][0], im=roots[i][1];
+    var mag=Math.sqrt(re*re+im*im);
+    if(mag>0.999999) mag=0.999999;
+    if(mag<0.1) continue;
+    var th=Math.atan2(im,re);
+    if(th<=0.02) continue; // only upper-half roots (one per conjugate pair)
+    var f=th/(2*Math.PI)*fs;
+    var bw=-(fs/Math.PI)*Math.log(mag);
+    if(f>=VL_MINF && f<=VL_MAXF && bw<=VL_MAXBW) arr.push({f:Math.round(f), bw:Math.round(bw)});
+  }
+  arr.sort(function(x,y){return x.f-y.f;});
+  return arr.slice(0,5);
+}
+
+/* ---------- robust formant extraction (f0-aware LPC order + harmonic snapping + support scoring) ---------- */
+function vl_formantsRobust(x, off, f0, multi){
+  var f0v=f0||0;
+  var spec=vl_specDb(x,off);
+  var binHz=VL_FS/1024;
+  function localPeak(f){ // قلهٔ طیفی نزدیک f (درون ±۳ بین)
+    var b0=Math.round(f/binHz); if(b0<2||b0>509) return f;
+    var best=b0, bv=spec[b0];
+    for(var b=b0-3;b<=b0+3;b++){ if(b>=1&&b<511&&spec[b]>bv){bv=spec[b]; best=b;} }
+    var l=spec[best-1], c=spec[best], rr=spec[best+1];
+    var den=(l-2*c+rr); var d=Math.abs(den)>1e-9? 0.5*(l-rr)/den : 0;
+    if(!(Math.abs(d)<1)) d=0;
+    return (best+d)*binHz;
+  }
+  function support(f){ // پشتوانهٔ پهن‌باند: اختلاف قله از کف محلی
+    var b0=Math.round(f/binHz); if(b0<3||b0>508) return 0;
+    var pk=spec[b0];
+    var lo=Math.max(1,b0-6), hi=Math.min(511,b0+6), fl=1e9;
+    for(var b=lo;b<=hi;b++) fl=Math.min(fl,spec[b]);
+    return Math.max(0, pk-fl);
+  }
+  var orders;
+  if(multi){ orders=(f0v>320)?[8,10,12]:[10,12,14]; }
+  else { orders=[(f0v>350)?10:((f0v>0&&f0v<110)?14:12)]; }
+  var bestSol=null, bestScore=-1e9;
+  for(var oi=0;oi<orders.length;oi++){
+    var p=orders[oi];
+    var y=new Float64Array(VL_FRAME), i;
+    for(i=0;i<VL_FRAME;i++) y[i]=x[off+i];
+    for(i=VL_FRAME-1;i>0;i--) y[i]=y[i]-0.97*y[i-1];
+    for(i=0;i<VL_FRAME;i++) y[i]*=VL_WIN[i];
+    var a=vl_lpc(y,p);
+    if(!a) continue;
+    var coef=[1]; for(var k=1;k<=p;k++) coef.push(-a[k]);
+    var cand=vl_rootsToFormants(vl_polyRoots(coef));
+    if(cand.length<2) continue;
+    var i1=0; while(i1<cand.length-2&&cand[i1].f<180) i1++; // ریشهٔ کاذب زیر ۱۸۰Hz را رد کن
+    var f1=cand[i1].f, f2=cand[i1+1]?cand[i1+1].f:0, f3=cand[i1+2]?cand[i1+2].f:0;
+    if(!f2) continue;
+    if(!(f1>=180&&f1<=1200&&f2>=500&&f2<=3100)) continue;
+    f1=vl_clamp(localPeak(f1),180,1200);
+    f2=vl_clamp(localPeak(f2),500,3100);
+    if(f3){ if(f3>=1800&&f3<=3800) f3=localPeak(f3); else f3=0; }
+    if(f2-f1<120) continue; // قله‌های چسبیده → نامعتبر
+    var sc=support(f1)+0.8*support(f2)+(f3?0.4*support(f3):0);
+    if(f3) sc+=(f3>=2200&&f3<=3600)?6:0;
+    if(sc>bestScore){
+      bestScore=sc;
+      var fm=[{f:Math.round(f1),bw:cand[i1].bw},{f:Math.round(f2),bw:cand[i1+1].bw}];
+      if(f3) fm.push({f:Math.round(f3),bw:cand[i1+2].bw});
+      bestSol={formants:fm, lpc:a, order:p, sup:sc};
+    }
+  }
+  return bestSol;
+}
+function vl_frameFormants(x, off){
+  return vl_formantsRobust(x, off, 0, false);
+}
+
+/* ---------- LPC envelope power (512 bins, 0..8kHz) ---------- */
+function vl_lpcEnvPower(a, out, p){
+  p=p||VL_LPC;
+  var nb=512, dw=2*Math.PI/1024;
+  for(var b=0;b<nb;b++){
+    var th=b*dw, sr=Math.cos(th), si=-Math.sin(th);
+    var ar=a[p], ai=0;
+    for(var k=p-1;k>=1;k--){ var tr=ar*sr-ai*si+a[k], ti=ar*si+ai*sr; ar=tr; ai=ti; }
+    var Ar=1-ar, Ai=-ai;
+    var p2=Ar*Ar+Ai*Ai; if(p2<1e-12) p2=1e-12;
+    out[b]+=1/p2;
+  }
+}
+
+/* ---------- zero-phase low-pass (biquad, applied both directions) ---------- */
+function vl_lowpass(x, s0, s1, fc){
+  var w0=2*Math.PI*fc/VL_FS, q=Math.SQRT1_2;
+  var alpha=Math.sin(w0)/(2*q), cs=Math.cos(w0);
+  var b0=(1-cs)/2, b1=1-cs, b2=(1-cs)/2;
+  var a0=1+alpha, a1=-2*cs, a2=1-alpha;
+  b0/=a0; b1/=a0; b2/=a0; a1/=a0; a2/=a0;
+  var n=s1-s0, y=new Float64Array(n), i;
+  var x1=0,x2=0,y1=0,y2=0;
+  for(i=0;i<n;i++){ var v=x[s0+i]; var o=b0*v+b1*x1+b2*x2-a1*y1-a2*y2; x2=x1;x1=v;y2=y1;y1=o; y[i]=o; }
+  // reverse pass
+  x1=0;x2=0;y1=0;y2=0;
+  for(i=n-1;i>=0;i--){ var v2=y[i]; var o2=b0*v2+b1*x1+b2*x2-a1*y1-a2*y2; x2=x1;x1=v2;y2=y1;y1=o2; y[i]=o2; }
+  return y;
+}
+
+/* ---------- cycle-level jitter & shimmer (cycle-locked peak picking) ---------- */
+function vl_cycleJitter(x, run, f0f, f0med){
+  var s0=run[0]*VL_SHIFT, s1=Math.min(x.length, run[1]*VL_SHIFT+VL_FRAME);
+  if(s1-s0<VL_FS*0.5) return null;
+  var fc=vl_clamp(2.6*(f0med||150), 350, 2200);
+  var z=vl_lowpass(x, s0, s1, fc);
+  var mx=-1e30, imx=0, i;
+  for(i=0;i<z.length;i++){ if(z[i]>mx){mx=z[i]; imx=i;} }
+  if(mx<=0) return null;
+  var peaks=[imx], p=imx;
+  function perAt(center){
+    var fi=Math.floor((center+ (s0-VL_FRAME/2))/VL_SHIFT); if(fi<0)fi=0; if(fi>=f0f.length)fi=f0f.length-1;
+    return VL_FS/(f0f[fi]||150);
+  }
+  while(true){
+    var per=perAt(p+20), lo=Math.floor(p+0.7*per), hi=Math.floor(p+1.35*per);
+    if(hi>=z.length) break;
+    var bm=-1e30, bi=-1;
+    for(var j=lo;j<=hi;j++){ if(z[j]>bm){bm=z[j]; bi=j;} }
+    if(bi<0 || bm<0.15*mx) break;
+    peaks.push(bi); p=bi;
+  }
+  p=imx;
+  while(true){
+    var per2=perAt(p-20), hi2=Math.ceil(p-0.7*per2), lo2=Math.ceil(p-1.35*per2);
+    if(lo2<0) break;
+    var bm2=-1e30, bi2=-1;
+    for(var j2=lo2;j2<=hi2;j2++){ if(z[j2]>bm2){bm2=z[j2]; bi2=j2;} }
+    if(bi2<0 || bm2<0.15*mx) break;
+    peaks.push(bi2); p=bi2;
+  }
+  if(peaks.length<12) return null;
+  peaks.sort(function(a,b){return a-b;});
+  var pos=[], amp=[];
+  for(i=0;i<peaks.length;i++){
+    var k=peaks[i], v=z[k];
+    var den=(z[k-1]-2*v+z[k+1]);
+    var d=Math.abs(den)>1e-12 ? 0.5*(z[k-1]-z[k+1])/den : 0;
+    if(Math.abs(d)>1) d=0;
+    pos.push(k+d);
+    amp.push(v + 0.5*d*(z[k-1]-z[k+1]));
+  }
+  var P=[], A=[];
+  for(i=1;i<pos.length;i++){
+    var dt=pos[i]-pos[i-1];
+    if(dt>18 && dt<330){ P.push(dt); A.push(amp[i]); }
+  }
+  if(P.length<10) return null;
+  var js=[], sh=[];
+  for(i=1;i<P.length;i++){
+    var r=Math.abs(P[i]-P[i-1])/((P[i]+P[i-1])/2);
+    if(r<0.10) js.push(r);
+    var r2=Math.abs(A[i]-A[i-1])/((A[i]+A[i-1])/2);
+    if(r2<0.5) sh.push(r2);
+  }
+  return {jitter:100*vl_mean(js), shimmer:100*vl_mean(sh), n:P.length};
+}
+var VL_NOTES_FA=['دو','دو دیز','ره','ره دیز','می','فا','فا دیز','سل','سل دیز','لا','لا دیز','سی'];
+var VL_NOTES_EN=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+function vl_note(f){
+  var mf=69+12*Math.log(f/440)/Math.LN2;
+  var mi=Math.round(mf), cents=Math.round((mf-mi)*100);
+  var idx=((mi%12)+12)%12, oct=Math.floor(mi/12)-1;
+  return {midi:mi, cents:cents, fa:VL_NOTES_FA[idx]+' '+oct, en:VL_NOTES_EN[idx]+oct};
+}
+
+/* ---------- vowel targets (adult, approx) ---------- */
+var VL_VOWELS=[
+  {k:'i',  fa:'ای', m:[320,2250]},
+  {k:'e',  fa:'اِ', m:[450,1950]},
+  {k:'ae', fa:'اَ', m:[650,1650]},
+  {k:'a',  fa:'آ',  m:[710,1120]},
+  {k:'o',  fa:'اُ', m:[460,920]},
+  {k:'u',  fa:'او', m:[340,880]}
+];
+function vl_vowelTargets(sex){
+  var s=(sex==='f')?{f1:1.15,f2:1.10}:{f1:1.0,f2:1.0}, out=[];
+  for(var i=0;i<VL_VOWELS.length;i++){
+    var v=VL_VOWELS[i];
+    out.push({k:v.k, fa:v.fa, f1:Math.round(v.m[0]*s.f1), f2:Math.round(v.m[1]*s.f2)});
+  }
+  return out;
+}
+function vl_classifyVowel(F1,F2,sex,F3){
+  var ts=vl_vowelTargets(sex);
+  var r=vl_classifyVowelSet(F1,F2,ts,F3,null);
+  r.targets=ts;
+  return r;
+}
+
+/* ---------- English vowels (reference: Hillenbrand et al. 1995, male avg) ---------- */
+var VL_VOW_EN=[
+  {k:'i',  s:'i\u02D0', fa:'\u0627\u06CC \u0628\u0644\u0646\u062F (heed)',  m:[330,2300]},
+  {k:'I',  s:'\u026A',  fa:'\u0627\u06CC \u06A9\u0648\u062A\u0627\u0647 (hid)',   m:[430,2030]},
+  {k:'E',  s:'\u025B',  fa:'\u0627\u0650 (head)',        m:[575,1770]},
+  {k:'ae', s:'\u00E6',  fa:'\u0627\u064E (had)',         m:[690,1590]},
+  {k:'A',  s:'\u0251\u02D0', fa:'\u0622 (hod)',          m:[700,1070]},
+  {k:'O',  s:'\u0254\u02D0', fa:'\u0627\u064F \u0628\u0627\u0632 (hawed)',   m:[640,830]},
+  {k:'U',  s:'\u028A',  fa:'\u0627\u0648 \u06A9\u0648\u062A\u0627\u0647 (hood)',  m:[470,1120]},
+  {k:'u',  s:'u\u02D0', fa:'\u0627\u0648 \u0628\u0644\u0646\u062F (who\u2019d)',  m:[380,1000]},
+  {k:'V',  s:'\u028C',  fa:'\u0627\u064E \u0639\u0642\u0628 (hud)',     m:[620,1270]},
+  {k:'er', s:'\u025D',  fa:'\u0627\u0650\u0631 (heard)',       m:[490,1380]}
+];
+function vl_vowelSet(mode, sex){
+  var src=(mode==='en')? VL_VOW_EN : VL_VOWELS;
+  var s=(sex==='f')?{f1:1.15,f2:1.10}:{f1:1.0,f2:1.0}, out=[], i;
+  for(i=0;i<src.length;i++){ var v=src[i]; out.push({k:v.k, s:(v.s||v.fa), fa:v.fa, f1:Math.round(v.m[0]*s.f1), f2:Math.round(v.m[1]*s.f2)}); }
+  return out;
+}
+/* پراکندگی واقعی واکه‌ها (بر پایهٔ Hillenbrand و همکاران ۱۹۹۵) — برای فاصلهٔ بیضوی */
+var VL_VSD={i:[0.16,0.10],e:[0.17,0.11],ae:[0.18,0.12],a:[0.19,0.13],o:[0.18,0.13],u:[0.17,0.12],
+            I:[0.19,0.12],E:[0.19,0.12],A:[0.19,0.14],O:[0.18,0.13],U:[0.18,0.12],V:[0.20,0.13],er:[0.20,0.13]};
+function vl_classifyVowelSet(F1,F2,set,F3,adapt){
+  var best=null, bd=1e9, second=null, sd=1e9, i;
+  for(i=0;i<set.length;i++){
+    var t=set[i], k=t.k;
+    var tf1=t.f1, tf2=t.f2;
+    if(adapt&&adapt[k]&&adapt[k].n>=4){ // هدفِ تطبیق‌یافته با ساختار صوتی خود کاربر
+      var w=Math.min(0.45, adapt[k].n/22);
+      tf1=Math.round((1-w)*tf1+w*adapt[k].f1);
+      tf2=Math.round((1-w)*tf2+w*adapt[k].f2);
+    }
+    var sdv=VL_VSD[k]||[0.18,0.12];
+    var d1=(F1-tf1)/(sdv[0]*tf1), d2=(F2-tf2)/(sdv[1]*tf2), d=d1*d1+d2*d2;
+    if(isFinite(F3)&&F3>1800){
+      var tf3=t.f3||((k==='i'||k==='I')?2950:(k==='er'?1600:2650));
+      var d3=(F3-tf3)/300; d+=0.35*d3*d3;
+    }
+    d=Math.sqrt(d);
+    if(d<bd){ second=best; sd=bd; best=t; bd=d; }
+    else if(d<sd){ second=t; sd=d; }
+  }
+  var margin=sd-bd;
+  var conf=vl_clamp(1.18-bd,0,1);
+  if(margin<0.22) conf=Math.min(conf,0.55); // روی مرز دو واکه
+  return {v:best, d:bd, conf:conf, second:second, dF1pct:Math.round(100*(F1-best.f1)/best.f1), dF2pct:Math.round(100*(F2-best.f2)/best.f2)};
+}
+/* ---------- vowel modification with pitch (Sundberg F1-tuning + CVT) ---------- */
+function vl_modTarget(v, f0, sex, style){
+  var f1=v.f1, f2=v.f2, mod=false, why=[];
+  var k=v.k;
+  var closed=(k==='i'||k==='I'||k==='u'||k==='U'||k==='e'||k==='E'||k==='o');
+  var pass=(sex==='f')?262:170;
+  if(f0>f1*0.88){
+    var want=Math.min(f0*1.03, f1+320);
+    if(want>f1+25){ why.push('\u0646\u062A ('+Math.round(f0)+'Hz) \u0628\u0647 F1 \u0648\u0627\u06A9\u0647 \u0646\u0632\u062F\u06CC\u06A9 \u0627\u0633\u062A\u061B \u062E\u0648\u0627\u0646\u0646\u062F\u06AF\u0627\u0646 F1 \u0631\u0627 \u0628\u0627 \u0641\u06A9 \u0628\u0627\u0632\u062A\u0631 \u0628\u0627\u0644\u0627 \u0645\u06CC\u200C\u0628\u0631\u0646\u062F \u062A\u0627 \u0647\u0627\u0631\u0645\u0648\u0646\u06CC\u06A9 \u0627\u0648\u0644 \u062F\u0631 \u0642\u0644\u0647 \u0631\u0632\u0648\u0646\u0627\u0646\u0633 \u0628\u0646\u0634\u06CC\u0646\u062F'); f1=want; mod=true; }
+  }
+  if(style!=='belt' && f0>pass){
+    var t2=Math.min(0.42, Math.log(f0/pass)/Math.log(1.75));
+    if(t2>0.05){
+      var s1=closed?0.9:0.35;
+      var s2=(k==='i'||k==='I')?1.0:((k==='u'||k==='U')?0.35:0.55);
+      var N1=(sex==='f')?640:600, N2=(sex==='f')?1380:1300;
+      var nf1=f1+t2*s1*(N1-f1), nf2=f2+t2*s2*(N2-f2);
+      if(style==='mix'){ nf1=f1+1.25*(nf1-f1); nf2=f2+1.25*(nf2-f2); }
+      if(Math.abs(nf1-f1)>25||Math.abs(nf2-f2)>40){
+        why.push('\u062F\u0631 \u0627\u0631\u062A\u0641\u0627\u0639 \u0628\u0627\u0644\u0627 \u0648\u0627\u06A9\u0647\u200C\u0647\u0627 \u0628\u0647\u200C\u0633\u0645\u062A \u062E\u0646\u062B\u06CC \u0634\u0646\u0627\u0648\u0631 \u0645\u06CC\u200C\u0634\u0648\u0646\u062F (Vowel Modification)\u061B \u0647\u062F\u0641 \u06A9\u0645\u06CC \u0628\u0647 \u0622\u0646 \u0633\u0645\u062A \u0627\u0635\u0644\u0627\u062D \u0634\u062F');
+        f1=nf1; f2=nf2; mod=true;
+      }
+    }
+  }
+  if(style==='belt'){
+    var bmin=(sex==='f')?680:640;
+    if(f1<bmin){ f1=Math.min(bmin, f1+260); mod=true; why.push('\u062F\u0631 \u0628\u0644\u062A\u060C \u0648\u0627\u06A9\u0647\u200C\u0647\u0627 \u0628\u0631\u0627\u0628\u0631 (equalized) \u0648 \u0628\u0647 \u0641\u0636\u0627\u06CC \u0628\u0627\u0632 \u00AB\u0627\u064E/\u0622\u00BB \u0628\u0631\u062F\u0647 \u0645\u06CC\u200C\u0634\u0648\u0646\u062F'); }
+    if(f0>f1*0.85){ f1=Math.min(Math.max(f1, f0*1.05), Math.max(f1,f1*1)+380); mod=true; why.push('\u062F\u0631 \u0628\u0644\u062A F1 \u0628\u0627\u06CC\u062F \u0628\u0627\u0644\u0627\u06CC \u0646\u062A \u0628\u0645\u0627\u0646\u062F (F1 tuning)'); }
+  }
+  return {f1:Math.round(f1), f2:Math.round(f2), mod:mod, why:why};
+}
+
+/* ---------- formant trajectory (file playback + vowel path) ---------- */
+function vl_formantTrack(x, opts){
+  opts=opts||{};
+  var N=x.length; if(N<VL_FRAME*4) return [];
+  var step=opts.step||3;
+  var multi=(opts.multi!==undefined)?!!opts.multi:false;
+  var nF=Math.floor((N-VL_FRAME)/VL_SHIFT)+1;
+  var out=[], i;
+  var m=0; for(i=0;i<N;i++) m+=x[i]; m/=N; if(m!==0) for(i=0;i<N;i++) x[i]-=m;
+  var raw=[];
+  for(var f=0; f<nF; f+=step){
+    var off=f*VL_SHIFT;
+    var r=vl_frameF0(x,off);
+    if(r.r>0.38 && r.f0>60){
+      var fr=vl_formantsRobust(x,off,r.f0,multi);
+      if(fr && fr.formants.length>=2){
+        var F1=fr.formants[0].f, F2=fr.formants[1].f, F3=fr.formants.length>2?fr.formants[2].f:0;
+        if(F1>=180 && F1<=1150 && F2>=550 && F2<=3000) raw.push({t:Math.round(f*0.01*100)/100, f0:Math.round(r.f0), f1:F1, f2:F2, f3:F3});
+      }
+    }
+  }
+  // میان‌یین زمانی — تک‌فریم‌های پرش را حذف می‌کند
+  for(var q=0;q<raw.length;q++){
+    var w=[]; for(var j=Math.max(0,q-2);j<=Math.min(raw.length-1,q+2);j++) w.push(raw[j]);
+    var f1s=[],f2s=[],f0s=[];
+    for(var u=0;u<w.length;u++){ f1s.push(w[u].f1); f2s.push(w[u].f2); f0s.push(w[u].f0); }
+    out.push({t:raw[q].t, f0:Math.round(vl_median(f0s)), f1:Math.round(vl_median(f1s)), f2:Math.round(vl_median(f2s)), f3:raw[q].f3});
+  }
+  return out;
+}
+
+/* ---------- breathiness frame metrics (+ noise-floor correction, H1−A3, inter-harmonic noise) ---------- */
+function vl_frameBreath(x, off, f0, noiseSpec){
+  var re=new Float64Array(1024), im=new Float64Array(1024), n;
+  for(n=0;n<VL_FRAME;n++) re[n]=x[off+n]*VL_WIN[n];
+  vl_fft(re,im);
+  var pow=new Float64Array(512);
+  for(var b0=0;b0<512;b0++) pow[b0]=re[b0]*re[b0]+im[b0]*im[b0]+1e-20;
+  if(noiseSpec){ // تفریق طیفی کف نویز میکروفون/اتاق
+    for(var b1=0;b1<512;b1++){
+      pow[b1]=Math.max(0.08*pow[b1], pow[b1]-1.15*noiseSpec[b1]);
+    }
+  }
+  var mag=new Float64Array(512);
+  for(var b2=0;b2<512;b2++) mag[b2]=Math.sqrt(pow[b2])+1e-12;
+  function hAt(f){
+    var bf=f/VL_FS*1024, bb=Math.floor(bf), fr2=bf-bb;
+    if(bb<1||bb+1>511) return NaN;
+    return 20*Math.log(mag[bb]*(1-fr2)+mag[bb+1]*fr2)/Math.LN10;
+  }
+  var h1=hAt(f0), h2=hAt(2*f0);
+  var h1h2=(isFinite(h1)&&isFinite(h2))? (h1-h2) : NaN;
+  // H1−A3: A3 = قوی‌ترین هارمونیک نزدیک ناحیهٔ فرمانت سوم (۲.۲–۳.۳kHz)
+  var a3=-1e30;
+  for(var hf=Math.ceil(2200/f0)*f0; hf<=3300; hf+=f0){ var hv=hAt(hf); if(isFinite(hv)&&hv>a3) a3=hv; }
+  var h1a3=(isFinite(h1)&&a3>-1e29)? (h1-a3) : NaN;
+  // نویز بین‌هارمونیکی — بالای ~۱.۵kHz نویز نفس جای هارمونیک‌ها را می‌گیرد (Klatt 1990)
+  var ihD=[];
+  for(var k=3; k*f0<5000; k++){
+    if(k*f0<1500) continue;
+    var hk=hAt(k*f0), hm=hAt((k+0.5)*f0);
+    if(isFinite(hk)&&isFinite(hm)&&hk>-90&&hm>-90) ihD.push(hk-hm);
+  }
+  var ihnr=ihD.length>=3? vl_median(ihD) : NaN;
+  var sx=0,sy=0,sxy=0,sxx=0,c=0;
+  for(var b3=4;b3<512;b3++){
+    var fh=b3*VL_FS/1024; if(fh<150||fh>5000) continue;
+    var db=20*Math.log(mag[b3])/Math.LN10, xg=Math.log(fh)/Math.LN2;
+    sx+=xg; sy+=db; sxy+=xg*db; sxx+=xg*xg; c++;
+  }
+  var tilt=(c>4)? ((c*sxy-sx*sy)/(c*sxx-sx*sx)) : NaN;
+  var lr=new Float64Array(1024), li=new Float64Array(1024);
+  var mxDb=-1e30;
+  for(var b4=0;b4<512;b4++){ var db4=20*Math.log(mag[b4])/Math.LN10; if(db4>mxDb) mxDb=db4; }
+  var flDb=mxDb-40;
+  for(var b5=0;b5<512;b5++){ var dv=20*Math.log(mag[b5])/Math.LN10; lr[b5]=Math.max(dv,flDb); lr[1024-b5]=lr[b5]; }
+  vl_fft(lr,li);
+  var qLo=Math.round(VL_FS/450), qHi=Math.min(500,Math.round(VL_FS/70));
+  var sq=0,sc=0,sqc=0,sqq=0,qc=0;
+  for(var q4=16;q4<=500;q4++){ var vq=lr[q4]; sq+=q4; sc+=vq; sqc+=q4*vq; sqq+=q4*q4; qc++; }
+  var den=qc*sqq-sq*sq;
+  var slope=(Math.abs(den)>1e-9)? (qc*sqc-sq*sc)/den : 0;
+  var inter=(sc-slope*sq)/qc;
+  var pk2=-1e30, qpk=0;
+  for(var q5=qLo;q5<=qHi;q5++){ if(lr[q5]>pk2){ pk2=lr[q5]; qpk=q5; } }
+  var cpp=(pk2-(slope*qpk+inter))/100;
+  if(!isFinite(cpp)||cpp<0) cpp=0;
+  if(cpp>25) cpp=25;
+  return {h1h2:h1h2, tilt:tilt, cpp:cpp, h1a3:h1a3, ihnr:ihnr};
+}
+
+/* ---------- breathiness analysis (whole recording) ---------- */
+var VL_BR={cppGood:15, cppBad:5, hnrGood:24, hnrBad:13, h1h2Good:3, h1h2Bad:11, tiltGood:-8, tiltBad:-15, ihnrGood:14, ihnrBad:3, h1a3Good:8, h1a3Bad:24};
+function vl_breathMetrics(x, opts){
+  opts=opts||{};
+  return new Promise(function(resolve){
+    var sex=(opts.sex==='f')?'f':'m';
+    var N=x.length;
+    if(N<VL_FS*2){ resolve({ok:false,msg:'\u062D\u062F\u0627\u0642\u0644 \u06F2 \u062B\u0627\u0646\u06CC\u0647 \u0635\u062F\u0627 \u0644\u0627\u0632\u0645 \u0627\u0633\u062A\u061B \u06F3\u06F0 \u062B\u0627\u0646\u06CC\u0647 \u06CC\u0627 \u0628\u06CC\u0634\u062A\u0631 \u062A\u0648\u0635\u06CC\u0647 \u0645\u06CC\u200C\u0634\u0648\u062F.'}); return; }
+    if(N>VL_FS*300){ x=x.slice(0,VL_FS*300); N=x.length; }
+    var clipN=0, pk=0, i;
+    for(i=0;i<N;i++){ var av=Math.abs(x[i]); if(av>pk) pk=av; if(av>0.985) clipN++; }
+    x=vl_highpass(x);
+    var m=0; for(i=0;i<N;i++) m+=x[i]; m/=N; if(m!==0) for(i=0;i<N;i++) x[i]-=m;
+    var nF=Math.floor((N-VL_FRAME)/VL_SHIFT)+1;
+    var f0raw=new Array(nF), rpk=new Array(nF), rmsA=new Array(nF);
+    function progress(p,l){ if(opts.onProgress) try{ opts.onProgress(p,l); }catch(e){} }
+    var i1=0;
+    function pass1(){
+      var t0=Date.now();
+      while(i1<nF&&Date.now()-t0<28){
+        var off=i1*VL_SHIFT, r=vl_frameF0(x,off);
+        f0raw[i1]=r.f0; rpk[i1]=r.r;
+        var e=0; for(var n=0;n<VL_FRAME;n++){ var v=x[off+n]*VL_WIN[n]; e+=v*v; }
+        rmsA[i1]=Math.sqrt(e/VL_FRAME); i1++;
+      }
+      if(i1<nF){ progress(0.05+0.30*i1/nF,'\u0631\u062F\u06CC\u0627\u0628\u06CC \u0646\u062A\u200C\u0647\u0627\u2026 '+i1+'/'+nF); setTimeout(pass1,0); return; }
+      progress(0.40,'\u0627\u0646\u062F\u0627\u0632\u0647\u200C\u06AF\u06CC\u0631\u06CC \u06A9\u0641 \u0646\u0648\u06CC\u0632 \u0645\u06CC\u06A9\u0631\u0648\u0641\u0648\u0646\u2026'); setTimeout(pass2,0);
+    }
+    function pass2(){
+      var rv=[]; for(var q=0;q<nF;q++) if(rpk[q]>0.33&&rmsA[q]>1e-5) rv.push(rmsA[q]);
+      if(rv.length<15){ resolve({ok:false,msg:'\u0635\u062F\u0627\u06CC \u06A9\u0627\u0641\u06CC \u067E\u06CC\u062F\u0627 \u0646\u0634\u062F\u061B \u0628\u0644\u0646\u062F\u062A\u0631 \u0648 \u0646\u0632\u062F\u06CC\u06A9\u200C\u062A\u0631 \u0636\u0628\u0637 \u06A9\u0646.'}); return; }
+      var gate=vl_pctl(rv,0.9)*Math.pow(10,-25/20);
+      var idxs=[]; for(var q2=0;q2<nF;q2++) if(rpk[q2]>0.36&&rmsA[q2]>gate&&f0raw[q2]>60&&f0raw[q2]<600) idxs.push(q2);
+      if(idxs.length<15){ resolve({ok:false,msg:'\u0635\u062F\u0627\u06CC \u06A9\u0627\u0641\u06CC \u067E\u06CC\u062F\u0627 \u0646\u0634\u062F\u061B \u0628\u0644\u0646\u062F\u062A\u0631 \u0648 \u0646\u0632\u062F\u06CC\u06A9\u200C\u062A\u0631 \u0636\u0628\u0637 \u06A9\u0646.'}); return; }
+      // \u0637\u06CC\u0641\u0650 \u0645\u06CC\u0627\u0646\u06AF\u06CC\u0646 \u0633\u0627\u06A9\u062A\u200C\u062A\u0631\u06CC\u0646 ~\u06F6\u066A \u0641\u0631\u06CC\u0645\u200C\u0647\u0627 = \u06A9\u0641 \u0646\u0648\u06CC\u0632 (\u0645\u06CC\u06A9\u0631\u0648\u0641\u0648\u0646 + \u0627\u062A\u0627\u0642)
+      var quietTh=vl_pctl(rmsA,0.06);
+      var quiet=[]; for(var q3=0;q3<nF;q3++) if(rmsA[q3]<=quietTh) quiet.push(q3);
+      var noiseSpec=null;
+      if(quiet.length>=6){
+        noiseSpec=new Float64Array(512);
+        var st2=Math.max(1,Math.ceil(quiet.length/60)); var used=0;
+        for(var q4=0;q4<quiet.length;q4+=st2){
+          var off2=quiet[q4]*VL_SHIFT;
+          if(off2+VL_FRAME>N) continue;
+          var re=new Float64Array(1024), im=new Float64Array(1024);
+          for(var n2=0;n2<VL_FRAME;n2++) re[n2]=x[off2+n2]*VL_WIN[n2];
+          vl_fft(re,im);
+          for(var b=0;b<512;b++) noiseSpec[b]+=re[b]*re[b]+im[b]*im[b];
+          used++;
+        }
+        if(used>0) for(var b2=0;b2<512;b2++) noiseSpec[b2]/=used;
+        else noiseSpec=null;
+      }
+      var stride=Math.max(1,Math.ceil(idxs.length/600));
+      var sel=[]; for(var q5=0;q5<idxs.length;q5+=stride) sel.push(idxs[q5]);
+      var cpps=[],hnrs=[],hh=[],tt=[],ha=[],ih=[],i2=0;
+      function work(){
+        var t1=Date.now();
+        while(i2<sel.length&&Date.now()-t1<28){
+          var fi=sel[i2], off=fi*VL_SHIFT;
+          var fr=vl_frameBreath(x,off,f0raw[fi],noiseSpec);
+          if(fr){
+            if(isFinite(fr.cpp)) cpps.push(fr.cpp);
+            if(isFinite(fr.h1h2)) hh.push(fr.h1h2);
+            if(isFinite(fr.tilt)) tt.push(fr.tilt);
+            if(isFinite(fr.h1a3)) ha.push(fr.h1a3);
+            if(isFinite(fr.ihnr)) ih.push(fr.ihnr);
+            var rr=rpk[fi]; if(rr>0.999) rr=0.999;
+            if(rr>0.05){ var hv=10*Math.log(rr/(1-rr))/Math.LN10; hnrs.push(Math.min(40,Math.max(0,hv))); }
+          }
+          i2++;
+        }
+        if(i2<sel.length){ progress(0.45+0.50*i2/sel.length,'\u0627\u0646\u062F\u0627\u0632\u0647\u200C\u06AF\u06CC\u0631\u06CC \u0647\u0648\u0627\u200C\u062F\u0627\u0631\u06CC\u2026 '+i2+'/'+sel.length); setTimeout(work,0); return; }
+        progress(0.98,'\u0645\u062D\u0627\u0633\u0628\u0647 \u0646\u0645\u0631\u0647\u2026'); setTimeout(fin,0);
+      }
+      function fin(){
+        if(!hnrs.length){ resolve({ok:false,msg:'\u0647\u06CC\u0686 \u0641\u0631\u06CC\u0645 \u0635\u062F\u0627\u062F\u0627\u0631\u06CC \u062A\u062D\u0644\u06CC\u0644 \u0646\u0634\u062F.'}); return; }
+        var cpp=cpps.length?vl_median(cpps):NaN;
+        var hnr=vl_median(hnrs);
+        var h1h2=hh.length?vl_median(hh):NaN;
+        var tilt=tt.length?vl_median(tt):NaN;
+        var h1a3=ha.length?vl_median(ha):NaN;
+        var ihnr=ih.length?vl_median(ih):NaN;
+        function b01(v,good,bad){
+          if(!isFinite(v)||v===null) return null;
+          if(good===bad) return 0.5;
+          if(good>bad){ return vl_clamp((good-v)/(good-bad),0,1); } // بالاتر بهتر: cpp/hnr/ihnr
+          return vl_clamp((v-good)/(bad-good),0,1); // پایین‌تر بهتر: h1h2/h1a3
+        }
+        var bCpp=b01(cpp,VL_BR.cppGood,VL_BR.cppBad);
+        var bHnr=b01(hnr,VL_BR.hnrGood,VL_BR.hnrBad);
+        var bHh=b01(h1h2,VL_BR.h1h2Good,VL_BR.h1h2Bad);
+        var bTt=b01(tilt,VL_BR.tiltGood,VL_BR.tiltBad);
+        var bHa=b01(h1a3,VL_BR.h1a3Good,VL_BR.h1a3Bad);
+        var bIh=b01(ihnr,VL_BR.ihnrGood,VL_BR.ihnrBad);
+        var parts=[],wsum=0;
+        if(bCpp!==null){ parts.push([bCpp,0.26]); wsum+=0.26; }
+        if(bIh!==null){ parts.push([bIh,0.26]); wsum+=0.26; }
+        if(bHnr!==null){ parts.push([bHnr,0.18]); wsum+=0.18; }
+        if(bHh!==null){ parts.push([bHh,0.12]); wsum+=0.12; }
+        if(bTt!==null){ parts.push([bTt,0.12]); wsum+=0.12; }
+        if(bHa!==null){ parts.push([bHa,0.06]); wsum+=0.06; }
+        var bi=0; for(var w=0;w<parts.length;w++) bi+=parts[w][0]*parts[w][1];
+        bi=wsum>0? Math.round(100*bi/wsum) : 50;
+        var noisePct=Math.round(100*Math.pow(10,-hnr/10));
+        resolve({ok:true, sex:sex, dur:Math.round(N/VL_FS*10)/10, frames:sel.length,
+          bi:bi, score:100-bi, noisePct:Math.min(100,noisePct),
+          cpp:isFinite(cpp)?Math.round(cpp*100)/100:NaN,
+          hnr:Math.round(hnr*10)/10,
+          h1h2:isFinite(h1h2)?Math.round(h1h2*10)/10:NaN,
+          tilt:isFinite(tilt)?Math.round(tilt*10)/10:NaN,
+          h1a3:isFinite(h1a3)?Math.round(h1a3*10)/10:NaN,
+          ihnr:isFinite(ihnr)?Math.round(ihnr*10)/10:NaN,
+          clipPct:Math.round(10000*clipN/Math.max(1,N))/100,
+          peakDb:pk>0?Math.round(20*Math.log(pk)/Math.LN10):-120,
+          noiseDb:isFinite(quietTh)?Math.round(20*Math.log(quietTh+1e-9)/Math.LN10):-120,
+          comp:{cpp:bCpp,hnr:bHnr,h1h2:bHh,tilt:bTt,h1a3:bHa,ihnr:bIh}});
+      }
+      work();
+    }
+    progress(0.03,'\u0634\u0631\u0648\u0639\u2026'); setTimeout(pass1,0);
+  });
+}
+
+/* ---------- note-onset (شروع نت / اتک) analysis ---------- */
+function vl_onsetAnalyze(x, opts){
+  opts=opts||{};
+  return new Promise(function(resolve){
+    var N=x.length;
+    if(N<VL_FS*2){ resolve({ok:false,msg:'\u062D\u062F\u0627\u0642\u0644 \u06F2 \u062B\u0627\u0646\u06CC\u0647 \u0635\u062F\u0627 \u0644\u0627\u0632\u0645 \u0627\u0633\u062A\u061B \u0686\u0646\u062F \u0646\u062A \u0628\u0627 \u0645\u06A9\u0648\u062B \u06A9\u0648\u062A\u0627\u0647 \u0628\u062E\u0648\u0627\u0646.'}); return; }
+    if(N>VL_FS*180){ x=x.slice(0,VL_FS*180); N=x.length; }
+    var clipN=0,pk=0,i;
+    for(i=0;i<N;i++){ var av=Math.abs(x[i]); if(av>pk) pk=av; if(av>0.985) clipN++; }
+    x=vl_highpass(x);
+    var m=0; for(i=0;i<N;i++) m+=x[i]; m/=N; if(m!==0) for(i=0;i<N;i++) x[i]-=m;
+    var nF=Math.floor((N-VL_FRAME)/VL_SHIFT)+1;
+    var rmsA=new Array(nF), rpk=new Array(nF);
+    function progress(p,l){ if(opts.onProgress) try{ opts.onProgress(p,l); }catch(e){} }
+    var i1=0;
+    function p1(){
+      var t0=Date.now();
+      while(i1<nF&&Date.now()-t0<28){
+        var off=i1*VL_SHIFT, r=vl_frameF0(x,off);
+        rpk[i1]=r.r;
+        var e=0; for(var n=0;n<VL_FRAME;n++){ var v=x[off+n]*VL_WIN[n]; e+=v*v; }
+        rmsA[i1]=Math.sqrt(e/VL_FRAME); i1++;
+      }
+      if(i1<nF){ progress(0.05+0.50*i1/nF,'\u0627\u0646\u062F\u0627\u0632\u0647\u200C\u06AF\u06CC\u0631\u06CC \u067E\u0648\u0634 \u0635\u062F\u0627\u2026 '+i1+'/'+nF); setTimeout(p1,0); return; }
+      progress(0.62,'\u06CC\u0627\u0641\u062A\u0646 \u0646\u062A\u200C\u0647\u0627\u2026'); setTimeout(p2,0);
+    }
+    function p2(){
+      var rmsF=[]; for(var q=0;q<nF;q++) if(isFinite(rmsA[q])) rmsF.push(rmsA[q]);
+      var noise=vl_pctl(rmsF,0.06), hi=vl_pctl(rmsF,0.92);
+      var gate=Math.max(noise*2.2, hi*Math.pow(10,-30/20), 1e-5);
+      var segs=[], s=-1, last=-1, gap=0, q2;
+      for(q2=0;q2<=nF;q2++){
+        var on=(q2<nF)&&rmsA[q2]>gate;
+        if(on){ if(s<0) s=q2; last=q2; gap=0; }
+        else if(s>=0){ gap++; if(gap>10){ segs.push([s,last]); s=-1; } }
+      }
+      if(s>=0) segs.push([s,last]);
+      var mg=[];
+      for(q2=0;q2<segs.length;q2++){
+        if(mg.length&&segs[q2][0]-mg[mg.length-1][1]<=12) mg[mg.length-1][1]=segs[q2][1];
+        else mg.push([segs[q2][0],segs[q2][1]]);
+      }
+      progress(0.72,'\u0627\u0646\u062F\u0627\u0632\u0647\u200C\u06AF\u06CC\u0631\u06CC \u0647\u0631 \u0634\u0631\u0648\u0639\u2026'); setTimeout(function(){ p3(mg,noise,gate); },0);
+    }
+    function p3(segs,noise,gate){
+      var onsets=[], si=0;
+      function step(){
+        var t0=Date.now();
+        while(si<segs.length&&Date.now()-t0<28){
+          var a=segs[si][0], b=segs[si][1]; si++;
+          var durMs=(b-a+1)*10;
+          if(durMs<350) continue;
+          if(a<15) continue; // برای سنجش شروع، سکوتِ قبل از نت لازم است
+          var Sarr=[]; var s0=a+Math.round((b-a)*0.55), s1=b;
+          for(var q=s0;q<=s1;q++) Sarr.push(rmsA[q]);
+          if(Sarr.length<8) continue;
+          var S=vl_median(Sarr);
+          if(!(S>0)) continue;
+          var T0=a;
+          for(var q2b=a-1;q2b>=Math.max(0,a-60);q2b--){ if(rmsA[q2b]<=noise+0.05*S){ T0=q2b; } else if(rmsA[q2b]>noise+0.30*S){ break; } }
+          var tv=-1;
+          for(var qv=a;qv<=b;qv++){ if(rpk[qv]>0.35){ tv=qv; break; } }
+          if(tv<0) tv=a;
+          var t10=-1,t50=-1,t90=-1;
+          for(var q3=Math.max(T0,tv-3);q3<=b;q3++){
+            if(t10<0&&rmsA[q3]>=0.10*S) t10=q3;
+            if(t50<0&&rmsA[q3]>=0.50*S) t50=q3;
+            if(t90<0&&rmsA[q3]>=0.90*S) t90=q3;
+            if(t90>=0) break;
+          }
+          if(t10<0||t90<0) continue;
+          var rise=(t90-t10)*10;
+          var overshoot=0;
+          var lim=Math.min(b,t10+60);
+          for(var q4=t10;q4<=lim;q4++){ var ov=rmsA[q4]/S-1; if(ov>overshoot) overshoot=ov; }
+          var asp=0;
+          for(var q5=T0;q5<Math.min(t10,tv);q5++){ if(rmsA[q5]>noise+0.04*S&&rpk[q5]<0.30) asp++; }
+          var aspMs=asp*10;
+          var burst=1;
+          try{
+            var spOn=vl_specDb(x,a*VL_SHIFT);
+            var hiOn=0;
+            for(var bb=Math.floor(2500/(VL_FS/1024));bb<=Math.floor(4500/(VL_FS/1024));bb++) hiOn+=Math.pow(10,spOn[bb]/10);
+            var hiSus=0,cSus=0;
+            for(var q6=s0;q6<=s1;q6+=3){
+              var spq=vl_specDb(x,q6*VL_SHIFT); var hq=0;
+              for(var bb2=Math.floor(2500/(VL_FS/1024));bb2<=Math.floor(4500/(VL_FS/1024));bb2++) hq+=Math.pow(10,spq[bb2]/10);
+              hiSus+=hq; cSus++;
+            }
+            if(cSus>0&&hiSus>0) burst=hiOn/(hiSus/cSus);
+          }catch(e){}
+          var type='smooth';
+          if(rise<32||overshoot>0.70||burst>2.8) type='hard';
+          else if(aspMs>90) type='breathy';
+          else if(rise>330) type='slow';
+          var sc=100;
+          if(rise<32) sc-=38*(1-rise/32);
+          if(rise>330) sc-=22*Math.min(1,(rise-330)/320);
+          sc-=30*vl_clamp(overshoot/0.8,0,1);
+          sc-=26*vl_clamp((aspMs-60)/240,0,1);
+          sc-=18*vl_clamp((burst-1.6)/2.4,0,1);
+          sc=Math.round(vl_clamp(sc,5,100));
+          onsets.push({t:Math.round(T0*10)/1000, tEnd:Math.round(b*10)/1000, type:type, rise:Math.round(rise), over:Math.round(overshoot*100), asp:Math.round(aspMs), burst:Math.round(burst*100)/100, score:sc});
+          if(onsets.length>=40) break;
+        }
+        if(si<segs.length&&onsets.length<40){ progress(0.72+0.24*si/segs.length,'\u0627\u0646\u062F\u0627\u0632\u0647\u200C\u06AF\u06CC\u0631\u06CC \u0647\u0631 \u0634\u0631\u0648\u0639\u2026 '+si+'/'+segs.length); setTimeout(step,0); return; }
+        fin();
+      }
+      function fin(){
+        if(!onsets.length){ resolve({ok:false,msg:'\u0646\u062A \u0642\u0627\u0628\u0644\u200C\u0627\u0646\u062F\u0627\u0632\u0647\u200C\u06AF\u06CC\u0631\u06CC \u067E\u06CC\u062F\u0627 \u0646\u0634\u062F. \u0646\u062A\u200C\u0647\u0627 \u0631\u0627 \u0628\u0627 \u0686\u0646\u062F \u0644\u062D\u0638\u0647 \u0633\u06A9\u0648\u062A \u0642\u0628\u0644 \u0627\u0632 \u0647\u0631\u06A9\u062F\u0627\u0645 \u0628\u062E\u0648\u0627\u0646 (\u0645\u062B\u0644\u0627\u064B «\u0622\u2026 \u0622\u2026 \u0622\u2026»).'}); return; }
+        var tot=0, nSmooth=0;
+        for(var w=0;w<onsets.length;w++){ tot+=onsets[w].score; if(onsets[w].type==='smooth') nSmooth++; }
+        var score=Math.round(tot/onsets.length);
+        var rmsDb=new Array(nF);
+        for(var q=0;q<nF;q++) rmsDb[q]=20*Math.log(rmsA[q]+1e-9)/Math.LN10;
+        var gateDb=20*Math.log(gate+1e-9)/Math.LN10;
+        resolve({ok:true, dur:Math.round(N/VL_FS*10)/10, n:onsets.length, onsets:onsets,
+          score:score, smoothPct:Math.round(100*nSmooth/onsets.length),
+          clipPct:Math.round(10000*clipN/Math.max(1,N))/100,
+          env:{nF:nF, rmsDb:rmsDb, gateDb:gateDb}});
+      }
+      step();
+    }
+    progress(0.03,'\u0634\u0631\u0648\u0639\u2026'); setTimeout(p1,0);
+  });
+}
+
+/* ---------- synthetic voice (for self-test) ---------- */
+function vl_synth(opts){
+  opts=opts||{};
+  var dur=opts.dur||3.0, f0=opts.f0||140, fs=VL_FS;
+  var jit=opts.jitter||0, vibHz=opts.vibHz||0, vibCents=opts.vibCents||0, noise=opts.noise||1e-4;
+  var F=opts.formants||[[700,80],[1200,90],[2600,120],[3300,150]];
+  var n=Math.round(dur*fs), x=new Float32Array(n);
+  var phase=0, Tcur=fs/f0;
+  for(var i=0;i<n;i++){
+    var t=i/fs;
+    var fc=f0;
+    if(vibHz) fc=f0*Math.pow(2,(vibCents*Math.sin(2*Math.PI*vibHz*t))/1200);
+    phase+=1/Tcur;
+    if(phase>=1){
+      phase-=1; x[i]+=1; if(i+1<n) x[i+1]+=0.5;
+      var T=fs/fc;
+      Tcur=T*(1+jit*(Math.random()*2-1));
+    }
+    x[i]+=noise*(Math.random()*2-1);
+  }
+  for(var r=0;r<F.length;r++){
+    var f=F[r][0], bw=F[r][1];
+    var th=2*Math.PI*f/fs, rr=Math.exp(-Math.PI*bw/fs);
+    var a1=2*rr*Math.cos(th), a2=-rr*rr;
+    var y1=0,y2=0;
+    for(var i2=0;i2<n;i2++){ var v=x[i2]+a1*y1+a2*y2; y2=y1; y1=v; x[i2]=v; }
+  }
+  var mx=0; for(var i3=0;i3<n;i3++) mx=Math.max(mx,Math.abs(x[i3]));
+  if(mx>0) for(var i4=0;i4<n;i4++) x[i4]*=0.9/mx;
+  return x;
+}
+
+/* ---------- main analysis ---------- */
+function vl_analyze(x, opts){
+  return new Promise(function(resolve){
+    opts=opts||{};
+    var sex=(opts.sex==='f')?'f':'m';
+    var N=x.length;
+    if(N<VL_FRAME+VL_SHIFT*4){ resolve({ok:false, msg:'ضبط خیلی کوتاه است. حداقل ۲ ثانیه صدا لازم است.'}); return; }
+    if(N>VL_FS*60){ x=x.slice(0,VL_FS*60); N=x.length; }
+    var clipN=0, pkv=0, i0x;
+    for(i0x=0;i0x<N;i0x++){ var avx=Math.abs(x[i0x]); if(avx>pkv) pkv=avx; if(avx>0.985) clipN++; }
+    x=vl_highpass(x);
+    var m=0,i; for(i=0;i<N;i++) m+=x[i]; m/=N;
+    if(m!==0) for(i=0;i<N;i++) x[i]-=m;
+    var nF=Math.floor((N-VL_FRAME)/VL_SHIFT)+1;
+    var f0raw=new Array(nF), rpk=new Array(nF), rmsA=new Array(nF), voiced=new Array(nF);
+    var Fs=[[],[],[],[]], BWs=[[],[]], hnrA=[];
+    var fftAcc=new Float64Array(512), envAcc=new Float64Array(512), nSpec=0;
+
+    function progress(p,label){ if(opts.onProgress) try{ opts.onProgress(p,label); }catch(e){} }
+
+    var i1=0;
+    function pass1(){
+      var t0=Date.now();
+      while(i1<nF && Date.now()-t0<28){
+        var off=i1*VL_SHIFT;
+        var r=vl_frameF0(x,off);
+        f0raw[i1]=r.f0; rpk[i1]=r.r;
+        var e=0; for(var n=0;n<VL_FRAME;n++){ var v=x[off+n]*VL_WIN[n]; e+=v*v; }
+        rmsA[i1]=Math.sqrt(e/VL_FRAME);
+        i1++;
+      }
+      if(i1<nF){ progress(0.05+0.45*i1/nF, 'ردیابی نت‌ها… فریم '+i1+' از '+nF); setTimeout(pass1,0); return; }
+      progress(0.52,'آماده‌سازی…');
+      setTimeout(pass2,0);
+    }
+
+    function pass2(){
+      var rmsVoiced=[];
+      for(var q=0;q<nF;q++) if(rpk[q]>0.3 && rmsA[q]>1e-5) rmsVoiced.push(rmsA[q]);
+      if(!rmsVoiced.length){ resolve({ok:false, msg:'صدایی تشخیص داده نشد. نزدیک‌تر و بلندتر بخوان.'}); return; }
+      var gate=vl_pctl(rmsVoiced,0.9)*Math.pow(10,-25/20);
+      var nV=0;
+      for(var q2=0;q2<nF;q2++){ voiced[q2]=(rpk[q2]>0.35 && rmsA[q2]>gate && f0raw[q2]>0); if(voiced[q2]) nV++; }
+      if(nV<15){ resolve({ok:false, msg:'صدای کافی برای تحلیل نیست (فقط '+nV+' فریم). بلندتر و پیوسته بخوان.'}); return; }
+      var f0f=vl_medfilt(f0raw,voiced,5);
+      var runs=[], s=-1, lastV=-1, gapN=0;
+      for(var q3=0;q3<=nF;q3++){
+        var vo=(q3<nF)&&voiced[q3];
+        if(vo){ if(s<0) s=q3; lastV=q3; gapN=0; }
+        else if(s>=0){ gapN++; if(gapN>2){ runs.push([s,lastV]); s=-1; } }
+      }
+      if(s>=0) runs.push([s,lastV]);
+      var li=0, ml=0;
+      for(var rix=0;rix<runs.length;rix++){ var L=runs[rix][1]-runs[rix][0]; if(L>ml){ ml=L; li=rix; } }
+      var breaks=0;
+      for(var rix2=1;rix2<runs.length;rix2++){ var g=runs[rix2][0]-runs[rix2-1][1]; if(g>=15) breaks++; }
+      var run=runs[li];
+      setTimeout(function(){ pass3(f0f,nV,runs,run,breaks); },0);
+    }
+
+    function pass3(f0f,nV,runs,run,breaks){
+      var i2=0, idxs=[];
+      for(var q=0;q<nF;q++) if(voiced[q]) idxs.push(q);
+      function work(){
+        var t0=Date.now();
+        while(i2<idxs.length && Date.now()-t0<28){
+          var fi=idxs[i2];
+          var res=vl_formantsRobust(x, fi*VL_SHIFT, f0raw[fi], false);
+          if(res){
+            for(var k=0;k<4 && k<res.formants.length;k++) Fs[k].push(res.formants[k].f);
+            if(res.formants.length>0) BWs[0].push(res.formants[0].bw);
+            if(res.formants.length>1) BWs[1].push(res.formants[1].bw);
+            vl_lpcEnvPower(res.lpc, envAcc, res.order);
+          }
+          var rr=rpk[fi]; if(rr>0.999) rr=0.999;
+          var h=rr>0.05? 10*Math.log(rr/(1-rr))/Math.LN10 : 0;
+          hnrA.push(Math.min(40,Math.max(0,h)));
+          var re=new Float64Array(1024), im=new Float64Array(1024);
+          var off=fi*VL_SHIFT;
+          for(var n=0;n<VL_FRAME;n++) re[n]=x[off+n]*VL_WIN[n];
+          vl_fft(re,im);
+          for(var b=0;b<512;b++) fftAcc[b]+=re[b]*re[b]+im[b]*im[b];
+          nSpec++;
+          i2++;
+        }
+        if(i2<idxs.length){ progress(0.55+0.40*i2/idxs.length, 'استخراج فرمانت‌ها… '+i2+' از '+idxs.length); setTimeout(work,0); return; }
+        progress(0.97,'محاسبه میانگین‌ها…');
+        setTimeout(function(){ finish(f0f,nV,runs,run,breaks); },0);
+      }
+      work();
+    }
+
+    function finish(f0f,nV,runs,run,breaks){
+      var f0v=[]; for(var q=0;q<nF;q++) if(voiced[q]) f0v.push(f0f[q]);
+      var f0med=vl_median(f0v);
+      var cents=[], centsAll=[];
+      for(var q2=0;q2<nF;q2++){ if(voiced[q2]){ var c=1200*Math.log(f0f[q2]/f0med)/Math.LN2; cents.push(c); centsAll.push(c);} else cents.push(NaN); }
+      var spread=vl_pctl(centsAll,0.9)-vl_pctl(centsAll,0.1);
+      var js=[], ss=[];
+      for(var q3=0;q3<nF-1;q3++){
+        if(voiced[q3]&&voiced[q3+1]){
+          // jitter from RAW f0 (median filter would destroy it); reject tracking glitches >10%
+          var T1=VL_FS/f0raw[q3], T2=VL_FS/f0raw[q3+1];
+          var jr=Math.abs(T2-T1)/((T1+T2)/2);
+          if(jr<0.10) js.push(jr);
+          var A1=rmsA[q3], A2=rmsA[q3+1];
+          ss.push(Math.abs(A2-A1)/((A1+A2)/2));
+        }
+      }
+      var cyc=vl_cycleJitter(x, run, f0f, f0med);
+      var jitter, shimmer, jitApprox=false;
+      if(cyc && cyc.n>=10){ jitter=cyc.jitter; shimmer=cyc.shimmer; }
+      else { jitter=100*vl_mean(js); shimmer=100*vl_mean(ss); jitApprox=true; }
+      jitter=Math.round(jitter*100)/100; shimmer=Math.round(shimmer*100)/100;
+      var hnr=vl_mean(hnrA);
+      var rc=[], ra=[];
+      for(var q4=run[0];q4<=run[1];q4++){
+        rc.push(voiced[q4]? 1200*Math.log(f0f[q4]/f0med)/Math.LN2 : NaN);
+        ra.push(20*Math.log(rmsA[q4]+1e-9)/Math.LN10);
+      }
+      for(var q5=0;q5<rc.length;q5++){ if(!isFinite(rc[q5])){ var pa=(q5>0&&isFinite(rc[q5-1]))?rc[q5-1]:null, pb=null; for(var q6=q5+1;q6<rc.length;q6++) if(isFinite(rc[q6])){pb=rc[q6];break;} if(pa!==null&&pb!==null) rc[q5]=(pa+pb)/2; else if(pa!==null) rc[q5]=pa; else if(pb!==null) rc[q5]=pb; else rc[q5]=0; } }
+      var driftCents=vl_linfit(rc)*(rc.length-1);
+      var decayDb=vl_linfit(ra)*(ra.length-1);
+      var slope=vl_linfit(rc), rcd=[];
+      for(var q7=0;q7<rc.length;q7++) rcd.push(rc[q7]-slope*q7);
+      var sm=vl_movavg(rcd,3);
+      var vibRate=vl_zcRate(sm,3);
+      var absSm=[]; for(var q8=0;q8<sm.length;q8++) absSm.push(Math.abs(sm[q8]));
+      var vibExt=2*vl_pctl(absSm,0.95);
+      var vibType='straight';
+      if(vibRate>=0.8&&vibExt>=20) vibType=(vibRate>7.5)?'wobble':'good';
+      var ma=vl_movavg(ra,30), rad=[];
+      for(var q9=0;q9<ra.length;q9++) rad.push(ra[q9]-ma[q9]);
+      var tremRate=vl_zcRate(rad,3);
+      var absRad=[]; for(var q10=0;q10<rad.length;q10++) absRad.push(Math.abs(rad[q10]));
+      var tremDepth=2*vl_pctl(absRad,0.95);
+      var tremFlag=(tremRate>=3&&tremRate<=8&&tremDepth>1.5);
+      var formants=[], bws=[];
+      for(var k2=0;k2<4;k2++){
+        formants.push(Fs[k2].length? {f:Math.round(vl_median(Fs[k2])), bw:Math.round(vl_median(BWs[Math.min(k2,1)])), n:Fs[k2].length} : null);
+      }
+      var bw12=vl_mean([vl_median(BWs[0]),vl_median(BWs[1])]);
+      var envDb=new Array(512), fftDb=new Array(512), emx=0, fmx=0;
+      for(var b2=0;b2<512;b2++){ if(envAcc[b2]>emx) emx=envAcc[b2]; if(fftAcc[b2]>fmx) fmx=fftAcc[b2]; }
+      for(var b3=0;b3<512;b3++){
+        envDb[b3]=(nSpec&&emx>0)? 10*Math.log((envAcc[b3]/nSpec)/emx)/Math.LN10 : -80;
+        fftDb[b3]=(nSpec&&fmx>0)? 10*Math.log((fftAcc[b3]/nSpec)/fmx)/Math.LN10 : -80;
+      }
+      var binHz=VL_FS/1024;
+      function bandAvg(lo,hi){ var s=0,c=0; for(var b=Math.floor(lo/binHz);b<=Math.min(511,Math.ceil(hi/binHz));b++){s+=envDb[b];c++;} return c? s/c : -80; }
+      var pk=-200, pkF=0;
+      for(var b4=Math.floor(2000/binHz);b4<=Math.floor(4000/binHz);b4++){ if(envDb[b4]>pk){pk=envDb[b4]; pkF=b4*binHz;} }
+      var sfDb=Math.round(10*(pk-(bandAvg(1600,2200)+bandAvg(3600,4400))/2))/10;
+      var sfPresent=sfDb>=3;
+      function bandE(lo,hi,arr){ var s=0; for(var b5=Math.floor(lo/binHz);b5<=Math.min(511,Math.ceil(hi/binHz));b5++) s+=Math.pow(10,arr[b5]/10); return s; }
+      var tilt=Math.round(10*Math.log(bandE(100,1000,fftDb)/bandE(1000,4000,fftDb))/Math.LN10*10)/10;
+      var vw=null;
+      if(formants[0]&&formants[1]) vw=vl_classifyVowel(formants[0].f,formants[1].f,sex,formants[2]?formants[2].f:undefined);
+      var mpt=(run[1]-run[0]+1)*0.010;
+      var totalVoiced=nV*0.010;
+      var jNorm=(sex==='m')?1.04:1.02, sNorm=(sex==='m')?3.81:3.07;
+      var stab=100;
+      stab-=vl_clamp(jitter/jNorm-1,0,3)*25;
+      stab-=vl_clamp(shimmer/sNorm-1,0,3)*15;
+      if(spread>60) stab-=(spread-60)/60*15;
+      if(hnr<20) stab-=Math.min(25,(20-hnr)*2);
+      stab=Math.round(vl_clamp(stab,5,100));
+      var mptFull=(sex==='m')?25:15;
+      var br=vl_clamp(mpt/mptFull,0,1)*55;
+      if(Math.abs(driftCents)>60) br-=Math.min(25,(Math.abs(driftCents)-60)/6);
+      if(decayDb<-6) br-=Math.min(15,(-decayDb-6)*1.5);
+      if(tremFlag) br-=10;
+      br-=Math.min(10,breaks*5);
+      br=Math.round(vl_clamp(br,5,100));
+      var res2=0;
+      if(vw) res2+=45*vl_clamp((2.2-vw.d)/1.6,0,1);
+      res2+=(sfPresent? 40*Math.min(1,sfDb/8) : 0);
+      res2+=15*vl_clamp((500-bw12)/300,0,1);
+      res2=Math.round(vl_clamp(res2,5,100));
+      var overall=Math.round(0.30*stab+0.30*br+0.40*res2);
+      var times=new Array(nF), rmsDb=new Array(nF);
+      for(var q11=0;q11<nF;q11++){ times[q11]=q11*0.01; rmsDb[q11]=voiced[q11]? 20*Math.log(rmsA[q11]+1e-9)/Math.LN10 : NaN; }
+      var rmsV2=[]; for(var q12=0;q12<nF;q12++) if(voiced[q12]) rmsV2.push(rmsA[q12]);
+      var rmsMed=vl_median(rmsV2)||1e-6;
+      var dbfs=20*Math.log(rmsMed)/Math.LN10;
+      var sub=vlSubCalc(dbfs,f0med,sex,hnr);
+      var allRms2=[]; for(var q13=0;q13<nF;q13++) if(isFinite(rmsA[q13])) allRms2.push(rmsA[q13]);
+      var recQ={clipPct:Math.round(10000*clipN/Math.max(1,N))/100, peakDb:pkv>0?Math.round(20*Math.log(pkv)/Math.LN10):-120, noiseDb:allRms2.length?Math.round(20*Math.log(vl_pctl(allRms2,0.05)+1e-9)/Math.LN10):-120};
+      resolve({
+        ok:true, sex:sex, dur:Math.round(N/VL_FS*10)/10, nF:nF, nV:nV, voicedDur:Math.round(totalVoiced*10)/10,
+        f0:{med:Math.round(f0med), p10:Math.round(vl_pctl(f0v,0.1)), p90:Math.round(vl_pctl(f0v,0.9)), spread:Math.round(spread), note:vl_note(f0med)},
+        formants:formants, bw12:Math.round(bw12), vowel:vw,
+        jitter:Math.round(jitter*100)/100, shimmer:Math.round(shimmer*100)/100, hnr:Math.round(hnr*10)/10,
+        mpt:Math.round(mpt*10)/10, breaks:breaks, driftCents:Math.round(driftCents), decayDb:Math.round(decayDb*10)/10,
+        tremor:{rate:Math.round(tremRate*10)/10, depth:Math.round(tremDepth*100)/100, flag:tremFlag},
+        vibrato:{rate:Math.round(vibRate*10)/10, extent:Math.round(vibExt), type:vibType},
+        sf:{db:sfDb, pk:Math.round(pkF), present:sfPresent}, tilt:tilt,
+        sub:sub, rec:recQ,
+        scores:{overall:overall, stability:stab, breath:br, resonance:res2},
+        norms:{jNorm:jNorm, sNorm:sNorm, mptFull:mptFull},
+        chart:{times:times, cents:cents, rmsDb:rmsDb, envDb:envDb, fftDb:fftDb, binHz:binHz, voiced:voiced, runFrom:run[0], runTo:run[1]}
+      });
+    }
+
+    progress(0.03,'شروع تحلیل…');
+    setTimeout(pass1,0);
+  });
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports={vl_analyze:vl_analyze, vl_synth:vl_synth, vl_note:vl_note, vl_vowelTargets:vl_vowelTargets, vl_classifyVowel:vl_classifyVowel, vl_vowelSet:vl_vowelSet, vl_classifyVowelSet:vl_classifyVowelSet, vl_modTarget:vl_modTarget, vl_formantTrack:vl_formantTrack, vl_breathMetrics:vl_breathMetrics, vl_frameBreath:vl_frameBreath, vl_onsetAnalyze:vl_onsetAnalyze, vl_formantsRobust:vl_formantsRobust, vl_highpass:vl_highpass, vl_specDb:vl_specDb, vlSubCalc:vlSubCalc, VL_VOW_EN:VL_VOW_EN, vl_fft:vl_fft, VL_WIN:VL_WIN};
+}
+
+/* ===== VoiceLab UI layer — آوازلب ===== */
+var $=function(id){return document.getElementById(id);};
+var lastResult=null;
+var VL_CHARTW=0;
+
+function setScreen(id){
+  var s=['scrHome','scrRec','scrBusy','scrRes','scrVowel','scrBreath','scrOnset'];
+  for(var i=0;i<s.length;i++) $(s[i]).classList.add('hidden');
+  $(id).classList.remove('hidden');
+  if(id!=='scrVowel') vlVMStopAll();
+  if(id!=='scrBreath') vlBTStop();
+  window.scrollTo(0,0);
+}
+function toast(msg){
+  var t=$('toast'); t.textContent=msg; t.classList.remove('hidden');
+  setTimeout(function(){ t.classList.add('hidden'); },2600);
+}
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* ---------- native bridge (Scriptable) ---------- */
+function vlNative(){
+  try{ return !!(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.scriptable); }catch(e){ return false; }
+}
+function vlPost(msg){
+  try{ window.webkit.messageHandlers.scriptable.postMessage(msg); return true; }catch(e){ return false; }
+}
+var VL_PURPOSE='report';
+function vlPickAudio(purpose){
+  VL_PURPOSE=purpose||'report';
+  if(vlNative()&&vlPost({type:'pickFile',purpose:VL_PURPOSE})) return;
+  var fi=$('fileInp'); if(fi) fi.click();
+}
+function vlModal(title,bodyHtml,buttons){
+  var ov=document.createElement('div'); ov.className='modalov';
+  ov.onclick=function(ev2){ if(ev2.target===ov){ ov.remove(); } };
+  var m=document.createElement('div'); m.className='modal';
+  var h=document.createElement('h3'); h.textContent=title; m.appendChild(h);
+  var b=document.createElement('div'); b.className='mb'; b.innerHTML=bodyHtml; m.appendChild(b);
+  var row=document.createElement('div'); row.className='btnrow';
+  (buttons||[{label:'باشه',primary:true}]).forEach(function(bt){
+    var el=document.createElement('button');
+    el.className='big'+(bt.primary?'':' ghost');
+    el.textContent=bt.label;
+    el.onclick=function(){ ov.remove(); if(bt.cb) bt.cb(); };
+    row.appendChild(el);
+  });
+  m.appendChild(row); ov.appendChild(m); document.body.appendChild(ov);
+}
+
+/* ---------- sex ---------- */
+var SEX='m';
+try{ SEX=localStorage.getItem('vl_sex')||'m'; }catch(e){}
+function refreshSexUI(){
+  $('sexM').classList.toggle('on',SEX==='m');
+  $('sexF').classList.toggle('on',SEX==='f');
+}
+$('sexM').onclick=function(){ SEX='m'; try{localStorage.setItem('vl_sex','m');}catch(e){} refreshSexUI(); };
+$('sexF').onclick=function(){ SEX='f'; try{localStorage.setItem('vl_sex','f');}catch(e){} refreshSexUI(); };
+refreshSexUI();
+
+/* ---------- recording ---------- */
+var actx=null, stream=null, analyser=null, proc=null, muteG=null;
+var chunks=[], recStart=0, rafId=0, recLive=false;
+
+var VL_REC_MODE='report';
+var recPeak=0, recClip=0;
+function startRec(mode){
+  VL_REC_MODE=(mode==='breath')?'breath':((mode==='onset')?'onset':'report');
+  if(recLive) return;
+  if(vlNative()){ micGuide(VL_REC_MODE); return; }
+  chunks=[]; recLive=true;
+  try{
+    actx=new (window.AudioContext||window.webkitAudioContext)();
+    actx.resume&&actx.resume();
+  }catch(e){ micFailed(); return; }
+  if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)){ micFailed(); return; }
+  var micTimer=setTimeout(function(){
+    if(recLive&&!stream){ try{ if(actx) actx.close(); }catch(e){} micFailed(); }
+  },5000);
+  var c1={audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false,channelCount:1}};
+  navigator.mediaDevices.getUserMedia(c1).then(function(s){ clearTimeout(micTimer); gotStream(s); })
+  .catch(function(){
+    navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){ clearTimeout(micTimer); gotStream(s); })
+    .catch(function(){ clearTimeout(micTimer); micFailed(); });
+  });
+}
+function gotStream(s){
+  try{
+    stream=s;
+    var src=actx.createMediaStreamSource(s);
+    analyser=actx.createAnalyser();
+    analyser.fftSize=2048; analyser.smoothingTimeConstant=0.72;
+    proc=actx.createScriptProcessor(4096,1,1);
+    muteG=actx.createGain(); muteG.gain.value=0;
+    proc.onaudioprocess=function(ev){
+      if(!recLive) return;
+      var d=ev.inputBuffer.getChannelData(0);
+      chunks.push(new Float32Array(d));
+      for(var q=0;q<d.length;q++){ var av=Math.abs(d[q]); if(av>recPeak) recPeak=av; if(av>0.985) recClip++; }
+    };
+    src.connect(analyser);
+    src.connect(proc);
+    proc.connect(muteG);
+    muteG.connect(actx.destination);
+  }catch(e){ micFailed(); return; }
+  recStart=Date.now(); recPeak=0; recClip=0;
+  setScreen('scrRec');
+  try{
+    $('recHint').innerHTML=(VL_REC_MODE==='breath')?
+      '<b>قطعه‌ات را بخوان — ۳۰ ثانیه یا بیشتر…</b><br>برنامه بعد از پایان ضبط، سهم هوای اضافه در صدای خروجی را می‌سنجد و نمره می‌دهد.' :
+      (VL_REC_MODE==='onset')?
+      '<b>هر نت را از سکوت شروع کن — مثلاً «آ… آ… آ…» با مکث کوتاه…</b><br>نوار بالا نباید به قرمیز برسد (کلیپ نکن)؛ پیک بین −۱۸ تا −۶ dBFS ایده‌آل است.' :
+      '<b>واکه «آ» را روی یک نُت، پیوسته و بدون فشار بخوان…</b><br>حداقل ۸ ثانیه؛ نمودار زنده طیف صدایت را نشان می‌دهد.';
+  }catch(e){}
+  drawLive();
+}
+function micGuide(mode){
+  var isB=(mode==='breath');
+  var isO=(mode==='onset');
+  vlModal(isB?'ضبط برای تحلیل هوا‌دار — دو راه':(isO?'ضبط برای تحلیل شروع نت — دو راه':'ضبط صدا در آیفون — دو راه'),
+    '<div class="note">iOS به صفحه‌های داخل اسکریپتبل اجازهٔ میکروفون نمی‌دهد؛ برای همین پنجرهٔ درخواست اجازه هرگز اینجا نشان داده نمی‌شود. هر دو راه زیر به همان تحلیل کامل می‌رسند:</div>'+
+    '<ol class="steps">'+
+    '<li><b>ضبط زنده در مرورگر Safari</b> — همان درخواست اجازه از خود مرورگر؛ فقط یک بار تنظیم می‌شود:<br>'+
+    '۱) در برنامهٔ Files، فایل <span dir="ltr">VoiceLab-web.html</span> را از پوشهٔ <span dir="ltr">On My iPhone ← Scriptable ← VoiceLab</span> به پوشهٔ <span dir="ltr">Pyto</span> کپی کن.<br>'+
+    '۲) اسکریپت <span dir="ltr">VoiceLabBrowser.py</span> را در Pyto اجرا کن (سرور روشن می‌ماند).<br>'+
+    '۳) دکمهٔ زیر را بزن تا آوازلب در Safari باز شود؛ در آن‌جا '+(isB?'بخش «💨 صدای هوا‌دار» را باز کن و ۳۰ ثانیه یا بیشتر بخوان':(isO?'بخش «🎬 شروع نت» را باز کن و چند جملهٔ با مکث بخوان':'اولین بار که ضبط را بزنی، خود مرورگر پنجرهٔ اجازهٔ میکروفون را نشان می‌دهد'))+'.</li>'+
+    '<li><b>بدون هیچ تنظیمی، با ضبط صدا (Voice Memos):</b> '+(isB?'۳۰ تا ۶۰ ثانیه از قطعه یا جمله‌های آوازیت را ضبط کن':(isO?'چند جملهٔ کوتاه (مثل «آ… آ… آ…» با مکث) ضبط کن':'۸ تا ۱۵ ثانیه واکهٔ «آ» را ضبط کن'))+'، با دکمهٔ اشتراک ← «Save to Files» ذخیره کن و با «انتخاب فایل» بیاور. فرمت m4a و mp3 و wav مستقیماً پشتیبانی می‌شود.</li>'+
+    '</ol>',
+    [{label:'🎙 ضبط زنده در Safari',primary:true,cb:function(){ vlPost({type:'openBrowserRec'}); }},
+     {label:'🎵 باز کردن Voice Memos',primary:false,cb:function(){ vlPost({type:'openVoiceMemos'}); }},
+     {label:'📁 انتخاب فایل ضبط‌شده',primary:false,cb:function(){ vlPickAudio(isB?'breath':(isO?'onset':'report')); }},
+     {label:'بستن',primary:false}]);
+}
+function micFailed(){
+  recLive=false;
+  try{ if(stream){ stream.getTracks().forEach(function(t){t.stop();}); stream=null; } }catch(e){}
+  try{ if(proc){ proc.disconnect(); proc=null; } }catch(e){}
+  vlModal('میکروفون اینجا باز نمی‌شود — مشکلی نیست!',
+    'دسترسی میکروفون از این صفحه گرفته نشد؛ راه مطمئن — با دقیقاً همان تحلیل — استفاده از فایل ضبط‌شده است:'+
+    '<ol><li>برنامهٔ <b>ضبط صدا</b> (Voice Memos) گوشی را باز کن.</li>'+
+    '<li>واکهٔ «آ» را روی یک نُت راحت، <b>۸ تا ۱۵ ثانیه پیوسته</b> بخوان (۲۰ تا ۳۰ سانتی‌متر از گوشی، جای بی‌سروصدا، بدون موزیک پس‌زمینه).</li>'+
+    '<li>ضبط را ذخیره کن و پایان بده، بعد دکمهٔ زیر را بزن و همان فایل (m4a) را انتخاب کن.</li></ol>'+
+    '<div class="note">نتیجهٔ تحلیلِ فایل و ضبط زنده یکسان است — هر دو کل مدت صدا را فریم‌به‌فریم میانگین می‌گیرند.</div>',
+    [{label:'📁 انتخاب فایل ضبط‌شده',primary:true,cb:function(){ vlPickAudio(); }},
+     {label:'بعداً',primary:false}]);
+}
+function stopRec(){
+  if(!recLive) return;
+  recLive=false;
+  cancelAnimationFrame(rafId);
+  var rate=actx?actx.sampleRate:48000;
+  try{ if(stream) stream.getTracks().forEach(function(t){t.stop();}); }catch(e){}
+  try{ if(proc) proc.disconnect(); }catch(e){}
+  try{ if(actx) actx.close(); }catch(e){}
+  var total=0,i; for(i=0;i<chunks.length;i++) total+=chunks[i].length;
+  if(total<VL_FS*2){ setScreen('scrHome'); toast('ضبط خیلی کوتاه بود'); return; }
+  var data=new Float32Array(total), off=0;
+  for(i=0;i<chunks.length;i++){ data.set(chunks[i],off); off+=chunks[i].length; }
+  chunks=[];
+  toMono16(data,rate).then(function(s16){
+    if(VL_REC_MODE==='breath'){ VL_REC_MODE='report'; vlBAnalyze(s16); }
+    else if(VL_REC_MODE==='onset'){ VL_REC_MODE='report'; vlOnsetRun(s16); }
+    else{ runAnalysis(s16); }
+  })
+  .catch(function(){ setScreen('scrHome'); toast('خطا در پردازش صدا'); });
+}
+function drawLive(){
+  if(!recLive) return;
+  var cv=$('liveCv'), ctx=setupCv(cv), W=cv.clientWidth, H=cv.clientHeight;
+  var t=(Date.now()-recStart)/1000;
+  $('recTime').textContent=Math.floor(t/60)+':'+('0'+Math.floor(t%60)).slice(-2);
+  if(t>((VL_REC_MODE==='breath')?240:((VL_REC_MODE==='onset')?120:60))){ stopRec(); return; }
+  ctx.fillStyle='#101627'; ctx.fillRect(0,0,W,H);
+  if(analyser){
+    var fd=new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(fd);
+    var bins=44, bw=W/bins, sr=actx?actx.sampleRate:48000, nyq=sr/2;
+    for(var b=0;b<bins;b++){
+      var fLo=60*Math.pow(6000/60,b/bins), fHi=60*Math.pow(6000/60,(b+1)/bins);
+      var iLo=Math.max(0,Math.floor(fLo/nyq*fd.length)), iHi=Math.min(fd.length-1,Math.ceil(fHi/nyq*fd.length));
+      var mx=0; for(var k=iLo;k<=iHi;k++) if(fd[k]>mx) mx=fd[k];
+      var h=(mx/255)*(H-46);
+      var grad=ctx.createLinearGradient(0,H-16-h,0,H-16);
+      grad.addColorStop(0,'#22d3ee'); grad.addColorStop(1,'#7c5cff');
+      ctx.fillStyle=grad;
+      ctx.fillRect(b*bw+1.5,H-16-h,bw-3,h);
+    }
+    var td=new Uint8Array(analyser.fftSize);
+    analyser.getByteTimeDomainData(td);
+    var sum=0; for(var q=0;q<td.length;q++){var dv=(td[q]-128)/128; sum+=dv*dv;}
+    var lvl=Math.min(1,Math.sqrt(sum/td.length)*3.2);
+    ctx.fillStyle='#1a2338'; ctx.fillRect(10,10,W-20,10);
+    var g2=ctx.createLinearGradient(10,0,W-10,0);
+    g2.addColorStop(0,'#34d399'); g2.addColorStop(.7,'#fbbf24'); g2.addColorStop(1,'#f87171');
+    ctx.fillStyle=g2; ctx.fillRect(10,10,(W-20)*lvl,10);
+    var pdb=recPeak>1e-6? Math.round(20*Math.log(recPeak)/Math.LN10):-60;
+    ctx.fillStyle=(pdb>-3)?'#f87171':((pdb>-6)?'#fbbf24':'#34d399');
+    ctx.font='bold 11px -apple-system'; ctx.textAlign='right';
+    ctx.fillText('پیک '+pdb+' dBFS'+(recClip>30?' ⚠️ کلیپ':''),W-12,32);
+    if(pdb<-26){ ctx.fillStyle='#8b97b0'; ctx.textAlign='left'; ctx.fillText('نزدیک‌تر/بلندتر بخوان',12,32); }
+    else if(pdb>-3){ ctx.fillStyle='#f87171'; ctx.textAlign='left'; ctx.fillText('دورتر شو — دارد کلیپ می‌کند',12,32); }
+    ctx.fillStyle='#93a0b8'; ctx.font='11px -apple-system';
+    ctx.textAlign='left'; ctx.fillText('dB',12,H-4);
+    ctx.textAlign='right'; ctx.fillText('6 kHz',W-12,H-4);
+    ctx.textAlign='center'; ctx.fillText('60 Hz',30,H-4);
+  }
+  rafId=requestAnimationFrame(drawLive);
+}
+
+/* ---------- file ---------- */
+$('btnFile').onclick=function(){ vlPickAudio(); };
+$('fileInp').addEventListener('change',function(ev){
+  var f=ev.target&&ev.target.files&&ev.target.files[0];
+  if(!f) return;
+  setScreen('scrBusy'); setProg(0.02,'خواندن فایل…');
+  var kb=Math.round((f.size||0)/1024);
+  var fr=new FileReader();
+  fr.onload=function(){ vlDecodeArrayBuffer(fr.result, f.name, kb); };
+  fr.onerror=function(){ setScreen('scrHome'); toast('خواندن فایل ناموفق بود'); };
+  fr.readAsArrayBuffer(f);
+  ev.target.value='';
+});
+function vlDecodeArrayBuffer(ab,name,kb){
+  var AC=window.AudioContext||window.webkitAudioContext;
+  var ctx2=null;
+  try{ ctx2=new AC(); }catch(e){}
+  if(!ctx2||!ctx2.decodeAudioData){
+    setScreen('scrHome');
+    vlModal('دیکود صدا ممکن نشد','این صفحه به موتور دیکود صدا دسترسی ندارد.',[{label:'باشه',primary:true}]);
+    return;
+  }
+  var done=false;
+  var to=setTimeout(function(){
+    if(done) return; done=true;
+    try{ctx2.close();}catch(e){}
+    setScreen('scrHome');
+    vlModal('دیکود فایل بیش از ۲۰ ثانیه طول کشید',
+      'فایل «'+esc(name||'')+'» ('+kb+'KB) در زمان معقول دیکود نشد.'+
+      '<div class="note">اگر فایل در iCloud است، اول در برنامهٔ Files روی آن بزن تا کامل دانلود شود (علامت ابرِ کنار فایل برداشته شود) و دوباره امتحان کن. اگر ضبط خیلی طولانی است، یک فایل ۸ تا ۱۵ ثانیه‌ای انتخاب کن.</div>',
+      [{label:'باشه',primary:true}]);
+  },20000);
+  function ok(buf){
+    if(done) return; done=true; clearTimeout(to);
+    try{ctx2.close();}catch(e){}
+    if(!buf||!buf.duration||buf.duration<1){
+      setScreen('scrHome');
+      vlModal('فایل صدا ندارد','فایل «'+esc(name||'')+'» خوانده شد اما محتوای صوتی قابل استفاده‌ای ندارد (طول: '+((buf&&buf.duration)?Math.round(buf.duration*10)/10:0)+' ثانیه). یک ضبط ۸ تا ۱۵ ثانیه‌ای از واکهٔ «آ» انتخاب کن.',[{label:'باشه',primary:true}]);
+      return;
+    }
+    afterDecode(buf);
+  }
+  function fail(){
+    if(done) return; done=true; clearTimeout(to);
+    try{ctx2.close();}catch(e){}
+    setScreen('scrHome');
+    vlModal('فایل صوتی خوانده نشد',
+      '«'+esc(name||'')+'» ('+kb+'KB) قابل دیکود نبود.'+
+      '<ul><li>فرمت‌های پشتیبانی‌شده: <b>m4a، mp3، wav، aac، aiff</b></li>'+
+      '<li>اگر از «ضبط صدا» (Voice Memos) ضبط کرده‌ای، از مسیر Files ← Voice Memos فایل را انتخاب کن.</li>'+
+      '<li>مطمئن شو فایل کامل دانلود شده (علامت ابر کنارش نباشد) و قفل/محافظت‌شده نیست.</li></ul>',
+      [{label:'باشه',primary:true}]);
+  }
+  var p=null;
+  try{ p=ctx2.decodeAudioData(ab.slice(0)); }catch(e){ fail(); return; }
+  if(p&&p.then){ p.then(ok).catch(fail); }
+  else{ ctx2.decodeAudioData(ab, ok, fail); }
+}
+function vlB64ToBuf(b64){
+  var bin=atob(b64), n=bin.length, u=new Uint8Array(n);
+  for(var i=0;i<n;i++) u[i]=bin.charCodeAt(i);
+  return u.buffer;
+}
+window.vlStage=function(msg){
+  try{ setScreen('scrBusy'); setProg(0.04,String(msg)); }catch(e){}
+  return true;
+};
+window.vlNativeError=function(title,detail){
+  try{
+    recLive=false;
+    setScreen('scrHome');
+    vlModal(String(title||'خطا'), String(detail||''), [{label:'باشه',primary:true}]);
+  }catch(e){}
+  return true;
+};
+window.vlLoadFile=function(b64,name){
+  var kb=Math.round(String(b64||'').length*3/4/1024);
+  try{
+    setScreen('scrBusy'); setProg(0.03,'فایل دریافت شد ('+kb+'KB) — آماده‌سازی…');
+    var b=b64, nm=name;
+    setTimeout(function(){
+      try{ vlDecodeArrayBuffer(vlB64ToBuf(String(b||'')), String(nm||''), kb); }
+      catch(e){
+        setScreen('scrHome');
+        vlModal('خواندن فایل ناموفق','محتوای فایل قابل تبدیل نبود: '+esc(e&&e.message||e),[{label:'باشه',primary:true}]);
+      }
+    },30);
+  }catch(e){ setScreen('scrHome'); toast('خواندن فایل ناموفق بود'); }
+  return true;
+};
+window.vlSetLast=function(j){ try{ localStorage.setItem('vl_last',String(j)); }catch(e){} };
+window.vlChunkStart=function(name,purpose){
+  window.__vlB64=''; window.__vlName=String(name||'audio'); window.__vlPurpose=(purpose||'report');
+  try{ setScreen('scrBusy'); setProg(0.04,'دریافت فایل…'); }catch(e){}
+  return true;
+};
+window.vlChunkAdd=function(part){
+  window.__vlB64+=String(part||'');
+  try{ setProg(0.05+0.05*Math.min(1,(window.__vlB64||'').length/2500000),'دریافت فایل…'); }catch(e){}
+  return true;
+};
+window.vlChunkEnd=function(){
+  try{
+    var b64=window.__vlB64||'', nm=window.__vlName||'audio';
+    window.__vlB64=''; window.__vlName='';
+    if(!b64){ setScreen('scrHome'); vlModal('فایل خالی بود','محتوایی برای تحلیل دریافت نشد؛ یک بار دیگر فایل را انتخاب کن.',[{label:'باشه',primary:true}]); return true; }
+    if(window.__vlPurpose){ try{ VL_PURPOSE=window.__vlPurpose; }catch(e){} }
+    window.vlLoadFile(b64,nm);
+  }catch(e){
+    try{ setScreen('scrHome'); vlModal('خطا در انتقال فایل',esc(e&&e.message||e),[{label:'باشه',primary:true}]); }catch(e2){}
+  }
+  return true;
+};
+function jsResample(x, srIn, srOut){
+  var n=Math.max(1,Math.floor(x.length*srOut/srIn)), out=new Float32Array(n), ratio=srIn/srOut;
+  for(var i=0;i<n;i++){
+    var p=i*ratio, i0=Math.floor(p), fr=p-i0;
+    var a=x[i0]||0, b=(i0+1<x.length)?x[i0+1]:a;
+    out[i]=a+(b-a)*fr;
+  }
+  return out;
+}
+function afterDecode(buf){
+  setProg(0.08,'آماده‌سازی صدا…');
+  var ch=buf.getChannelData(0);
+  var srIn=buf.sampleRate||VL_FS;
+  var purpose=VL_PURPOSE; VL_PURPOSE='report';
+  function dispatch(x16){
+    if(purpose==='breath'){ vlBAnalyze(x16); }
+    else if(purpose==='vowel'){ vlVMFromSamples(x16); }
+    else if(purpose==='onset'){ vlOnsetRun(x16); }
+    else{ runAnalysis(x16); }
+  }
+  if(typeof OfflineAudioContext==='undefined'){ dispatch(jsResample(ch, srIn, VL_FS)); return; }
+  try{
+    var len16=Math.max(1,Math.round(buf.duration*VL_FS));
+    var off=new OfflineAudioContext(1,len16,VL_FS);
+    var src=off.createBufferSource(); src.buffer=buf; src.connect(off.destination); src.start();
+    off.startRendering().then(function(rend){
+      dispatch(rend.getChannelData(0));
+    }).catch(function(){ dispatch(jsResample(ch, srIn, VL_FS)); });
+  }catch(e){ dispatch(jsResample(ch, srIn, VL_FS)); }
+}
+async function toMono16(data,rate){
+  var len16=Math.max(1,Math.round(data.length*VL_FS/rate));
+  var off=new OfflineAudioContext(1,len16,VL_FS);
+  var buf=off.createBuffer(1,data.length,rate);
+  buf.copyToChannel(data,0);
+  var src=off.createBufferSource(); src.buffer=buf; src.connect(off.destination); src.start();
+  var rend=await off.startRendering();
+  return rend.getChannelData(0);
+}
+
+/* ---------- busy ---------- */
+function setProg(p,label){
+  $('progBar').style.width=Math.round(p*100)+'%';
+  if(label) $('busyTxt').textContent=label;
+}
+
+/* ---------- run ---------- */
+function runAnalysis(s16){
+  setScreen('scrBusy'); setProg(0.03,'شروع تحلیل…');
+  var t0=Date.now();
+  vl_analyze(s16,{sex:SEX,onProgress:setProg}).then(function(res){
+    if(!res.ok){ vlModal('تحلیل ممکن نشد', esc(res.msg||'دلیل مشخص نیست'), [{label:'باشه',primary:true}]); setScreen('scrHome'); return; }
+    lastResult=res;
+    setScreen('scrRes');
+    renderResults(res);
+    if(Date.now()-t0<600) setTimeout(function(){ toast('تحلیل تمام شد ✓'); },100);
+  }).catch(function(e){ vlModal('خطای غیرمنتظره', 'در پردازش صدا خطایی رخ داد:<br><b>'+esc(e&&e.message||e)+'</b><br>اگر فایل خیلی کوتاه یا کاملاً بی‌صدا باشد چنین می‌شود.', [{label:'باشه',primary:true}]); setScreen('scrHome'); });
+}
+$('btnRec').onclick=startRec;
+if(vlNative()){ try{ $('btnRec').textContent='🎙 ضبط صدا — راهنمای آیفون'; }catch(e){} }
+$('btnStop').onclick=stopRec;
+$('btnAgain').onclick=function(){ setScreen('scrHome'); };
+
+/* ---------- canvas helpers ---------- */
+function setupCv(cv){
+  var dpr=window.devicePixelRatio||1;
+  var w=cv.clientWidth||300, h=cv.clientHeight||230;
+  if(cv.width!==Math.round(w*dpr)){ cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr); }
+  var ctx=cv.getContext('2d');
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  return ctx;
+}
+function faNum(n){ return String(n).replace(/[0-9]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'[+d];}); }
+
+/* ---------- charts ---------- */
+function drawSpec(r){
+  var cv=$('cvSpec'), ctx=setupCv(cv), W=cv.clientWidth, H=cv.clientHeight;
+  var padL=40,padR=12,padT=20,padB=30;
+  function X(f){ return padL+(Math.log(f/80)/Math.log(5500/80))*(W-padL-padR); }
+  function Y(db){ return padT+((db+60)/60)*(H-padT-padB); }
+  ctx.fillStyle='#101627'; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='rgba(124,92,255,0.09)';
+  ctx.fillRect(X(2400),padT,X(3400)-X(2400),H-padT-padB);
+  var gr=[100,200,300,500,1000,2000,3000,5000];
+  ctx.strokeStyle='#232d45'; ctx.fillStyle='#8b97b0'; ctx.font='10.5px -apple-system'; ctx.textAlign='center';
+  for(var g=0;g<gr.length;g++){
+    ctx.beginPath(); ctx.moveTo(X(gr[g]),padT); ctx.lineTo(X(gr[g]),H-padB); ctx.stroke();
+    ctx.fillText(gr[g]>=1000?(gr[g]/1000)+'k':''+gr[g],X(gr[g]),H-padB+13);
+  }
+  for(var d=-40;d<0;d+=20){
+    ctx.beginPath(); ctx.moveTo(padL,Y(d)); ctx.lineTo(W-padR,Y(d)); ctx.stroke();
+    ctx.textAlign='right'; ctx.fillStyle='#8b97b0'; ctx.fillText(d+'',padL-4,Y(d)+3); ctx.textAlign='center';
+  }
+  ctx.fillStyle='#a78bfa'; ctx.textAlign='center'; ctx.font='10px -apple-system';
+  ctx.fillText('فرمانت خواننده', (X(2400)+X(3400))/2, padT-6);
+  function curve(arr,color,width,alpha){
+    ctx.strokeStyle=color; ctx.globalAlpha=alpha; ctx.lineWidth=width; ctx.beginPath();
+    var started=false;
+    for(var b=Math.floor(80/r.chart.binHz); b<=Math.floor(5500/r.chart.binHz); b++){
+      var db=Math.max(-60,arr[b]);
+      var x=X(b*r.chart.binHz), y=Y(db);
+      if(!started){ ctx.moveTo(x,y); started=true; } else ctx.lineTo(x,y);
+    }
+    ctx.stroke(); ctx.globalAlpha=1;
+  }
+  curve(r.chart.fftDb,'#9aa7c4',1,0.35);
+  var gr2=ctx.createLinearGradient(0,padT,0,H-padB);
+  gr2.addColorStop(0,'rgba(124,92,255,0.28)'); gr2.addColorStop(1,'rgba(124,92,255,0.02)');
+  ctx.fillStyle=gr2; ctx.beginPath(); ctx.moveTo(X(80),Y(0));
+  for(var b2=Math.floor(80/r.chart.binHz); b2<=Math.floor(5500/r.chart.binHz); b2++){
+    ctx.lineTo(X(b2*r.chart.binHz),Y(Math.max(-60,r.chart.envDb[b2])));
+  }
+  ctx.lineTo(X(5500),Y(0)); ctx.closePath(); ctx.fill();
+  curve(r.chart.envDb,'#7c5cff',2.2,1);
+  var names=['F1','F2','F3','F4'], cols=['#34d399','#22d3ee','#fbbf24','#f87171'];
+  var lastX=-99;
+  for(var k=0;k<4;k++){
+    var f=r.formants[k]&&r.formants[k].f; if(!f) continue;
+    ctx.strokeStyle=cols[k]; ctx.setLineDash([5,4]); ctx.lineWidth=1.4;
+    ctx.beginPath(); ctx.moveTo(X(f),padT+14); ctx.lineTo(X(f),H-padB); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle=cols[k]; ctx.font='bold 11.5px -apple-system';
+    var lx=X(f);
+    ctx.textAlign=(lx>W-58)?'right':'center';
+    var ly=padT+8+((lx-lastX<34)?13:0);
+    ctx.fillText(names[k]+' '+f,lx,ly);
+    lastX=lx;
+  }
+  if(r.sf&&r.sf.pk>2000&&r.sf.pk<4200){
+    ctx.fillStyle='#f87171'; ctx.font='bold 11px -apple-system'; ctx.textAlign='center';
+    ctx.fillText('★ '+(r.sf.db>0?'+':'')+r.sf.db+' dB',X(r.sf.pk),H-padB-6);
+  }
+}
+function drawF0(r){
+  var cv=$('cvF0'), ctx=setupCv(cv), W=cv.clientWidth, H=cv.clientHeight;
+  var padL=36,padR=10,padT=18,padB=26;
+  var fin=[]; for(var q=0;q<r.chart.cents.length;q++) if(isFinite(r.chart.cents[q])) fin.push(r.chart.cents[q]);
+  var lo=vl_pctl(fin,0.05)-25, hi=vl_pctl(fin,0.95)+25;
+  if(hi-lo<60){ var mid=(hi+lo)/2; lo=mid-30; hi=mid+30; }
+  function X(t){ return padL+(t/r.dur)*(W-padL-padR); }
+  function Y(c){ return padT+((hi-c)/(hi-lo))*(H-padT-padB); }
+  ctx.fillStyle='#101627'; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='#232d45'; ctx.beginPath(); ctx.moveTo(padL,Y(0)); ctx.lineTo(W-padR,Y(0)); ctx.stroke();
+  ctx.strokeStyle='#7c5cff'; ctx.setLineDash([4,4]); ctx.globalAlpha=.6;
+  ctx.beginPath(); ctx.moveTo(padL,Y(0)); ctx.lineTo(W-padR,Y(0)); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha=1;
+  ctx.strokeStyle='#22d3ee'; ctx.lineWidth=2; ctx.beginPath();
+  var started=false;
+  for(var i=0;i<r.chart.cents.length;i++){
+    var c=r.chart.cents[i];
+    if(isFinite(c)){ var x=X(r.chart.times[i]), y=Y(c); if(!started){ctx.moveTo(x,y);started=true;} else ctx.lineTo(x,y); }
+    else started=false;
+  }
+  ctx.stroke();
+  ctx.fillStyle='#8b97b0'; ctx.font='10.5px -apple-system';
+  ctx.textAlign='center';
+  var step=Math.max(1,Math.round(r.dur/6));
+  for(var t2=0;t2<=r.dur;t2+=step) ctx.fillText(t2.toFixed(0)+'s',X(t2),H-padB+13);
+  ctx.textAlign='right';
+  ctx.fillText('+'+Math.round(hi)+'¢',padL-3,padT+8);
+  ctx.fillText(Math.round(lo)+'¢',padL-3,H-padB-2);
+  ctx.textAlign='left'; ctx.fillStyle='#cdd8ee'; ctx.font='bold 12px -apple-system';
+  var vt=r.vibrato.type==='good'?('ویبراتو '+faNum(r.vibrato.rate)+'Hz / '+faNum(r.vibrato.extent)+'¢'):(r.vibrato.type==='wobble'?'ویبراتو تند (wobble)':'نت صاف بدون ویبراتو');
+  ctx.fillText('نت: '+r.f0.note.fa+' ('+r.f0.med+'Hz) — '+vt,padL+4,padT-5);
+}
+function drawVowel(r){
+  var cv=$('cvVowel'), ctx=setupCv(cv), W=cv.clientWidth, H=cv.clientHeight;
+  var padL=38,padR=14,padT=18,padB=32;
+  var F2lo=600,F2hi=2700,F1lo=180,F1hi=1000;
+  function X(f2){ return padL+((f2-F2lo)/(F2hi-F2lo))*(W-padL-padR); }
+  function Y(f1){ return padT+((f1-F1lo)/(F1hi-F1lo))*(H-padT-padB); }
+  ctx.fillStyle='#101627'; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='#232d45';
+  var gl=[700,900,1100,1400,1700,2100,2500];
+  ctx.fillStyle='#8b97b0'; ctx.font='10px -apple-system'; ctx.textAlign='center';
+  for(var g=0;g<gl.length;g++){ ctx.beginPath(); ctx.moveTo(X(gl[g]),padT); ctx.lineTo(X(gl[g]),H-padB); ctx.stroke(); ctx.fillText(''+gl[g],X(gl[g]),H-padB+12); }
+  var gl2=[200,300,400,500,600,800];
+  ctx.textAlign='right';
+  for(var g2=0;g2<gl2.length;g2++){ ctx.beginPath(); ctx.moveTo(padL,Y(gl2[g2])); ctx.lineTo(W-padR,Y(gl2[g2])); ctx.stroke(); ctx.fillText(''+gl2[g2],padL-3,Y(gl2[g2])+3); }
+  ctx.fillStyle='#8b97b0'; ctx.font='10.5px -apple-system';
+  ctx.textAlign='center'; ctx.fillText('F2 (Hz) ← جلو',W/2,H-6);
+  ctx.save(); ctx.translate(10,(padT+H-padB)/2); ctx.rotate(-Math.PI/2); ctx.fillText('F1 (Hz) — باز شدن دهان',0,0); ctx.restore();
+  if(r.vowel){
+    var ts=r.vowel.targets;
+    for(var i=0;i<ts.length;i++){
+      var t=ts[i], near=(r.vowel.v.k===t.k);
+      ctx.beginPath();
+      ctx.arc(X(t.f2),Y(t.f1),near?13:9,near?0:0,Math.PI*2);
+      ctx.strokeStyle=near?'#fbbf24':'#3b4a6b'; ctx.lineWidth=near?2.2:1.4; ctx.stroke();
+      ctx.fillStyle=near?'#fbbf24':'#93a0b8'; ctx.font=(near?'bold ':'')+'12px -apple-system'; ctx.textAlign='center';
+      ctx.fillText(t.fa,X(t.f2),Y(t.f1)-16);
+    }
+    var u1=r.formants[0]&&r.formants[0].f, u2=r.formants[1]&&r.formants[1].f;
+    if(u1&&u2){
+      var tv=r.vowel.v;
+      ctx.setLineDash([4,4]); ctx.strokeStyle='#f87171'; ctx.lineWidth=1.6;
+      ctx.beginPath(); ctx.moveTo(X(u2),Y(u1)); ctx.lineTo(X(tv.f2),Y(tv.f1)); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle='#f87171'; ctx.font='20px sans-serif'; ctx.textAlign='center';
+      ctx.fillText('★',X(u2),Y(u1)+7);
+      ctx.font='bold 11px -apple-system';
+      ctx.fillText('شما',X(u2),Y(u1)+22);
+    }
+  }
+}
+
+/* ---------- status helpers ---------- */
+function tag(cls,txt){ return '<span class="tag '+cls+'">'+txt+'</span>'; }
+function status3(v,goodMidBad){ return tag(goodMidBad,goodMidBad==='ok'?'✓ خوب':(goodMidBad==='mid'?'△ مرزی':'✗ نیازمند کار')); }
+function fmt(n,d){ return isFinite(n)? (Math.round(n*Math.pow(10,d||0))/Math.pow(10,d||0)) : '—'; }
+
+/* ---------- recommendations ---------- */
+function buildRecs(r){
+  var out=[];
+  var jN=r.norms.jNorm, sN=r.norms.sNorm;
+  if(r.jitter>jN*1.35) out.push({s:3,i:'📉',t:'ناپایداری تناوب نت — Jitter = '+r.jitter+'٪ (نرمال زیر '+jN+'٪)',
+    b:'به پایداری ارتعاش تارهای صوتی مربوط است. آب کافی بنوش و قبل از خواندن گرم کن؛ روزی ۵ دقیقه «هوم‌هوم» با لب‌های بسته و آروم (صدای موتور ماشین) و سوت‌کردن از داخل نی یا نی نوشیدن (SOVT) خیلی مؤثر است. از سرفه‌کردن گلو و فشار دادن گلوت پرهیز کن. اگر مدام بالا است، پیش متخصص صدا برو.'});
+  else if(r.jitter>jN) out.push({s:2,i:'📉',t:'Jitter کمی بالاست ('+r.jitter+'٪ در برابر نرمال '+jN+'٪)',
+    b:'گرم‌کردن کافی و هیدراتاسیون را جدی بگیر؛ تمرین «هوم» نرم ۵ دقیقه قبل از هر جلسه تمرین.'});
+  if(r.shimmer>sN*1.3) out.push({s:3,i:'〰️',t:'نوسان دامنه — Shimmer = '+r.shimmer+'٪ (نرمال زیر '+sN+'٪)',
+    b:'معمولاً ترکیبی از نشتی هوا و پشتیبانی تنفسی ناکافی است. تمرین: «وّوو» با لب گرد و نفس پایدار، و شمرده‌خواندن با صدای باز روی نت‌های میانی. فاصله میکروفون ثابت نگه دار چون تغییر فاصله خودش shimmer را بالا می‌برد.'});
+  else if(r.shimmer>sN) out.push({s:2,i:'〰️',t:'Shimmer کمی بالاست ('+r.shimmer+'٪)',
+    b:'پشتیبانی تنفسی و بستن نرم تارها را با SOVT تقویت کن.'});
+  if(r.hnr<15) out.push({s:3,i:'💨',t:'نشتی هوای زیاد — HNR = '+r.hnr+' dB (مطلوب بالای ۲۰)',
+    b:'هوا از کنار تارهای بسته‌نشده بیرون می‌زند (صدای نفس‌دار). تمرین‌های بسته‌سازی نرم: «ایییی» آغازشده از اوج لب (buzz شروع)، «م-م-م» با حس لرزش روی لب، و خواندن آهنگ ساده با نی. لب‌ها را نبند محکم؛ هدف بستن «نرم» تارهاست.'});
+  else if(r.hnr<20) out.push({s:2,i:'💨',t:'HNR مرزی است ('+r.hnr+' dB)',
+    b:'کمی هوا در صداست؛ تمرین‌های SOVT روزانه ۵ دقیقه کمک می‌کند.'});
+  if(!r.sf.present) out.push({s:2,i:'🔔',t:'فرمانت خواننده در صدای تو دیده نمی‌شود (قله ۲.۴–۳.۴kHz)',
+    b:'همان «رزونانس» یا «پروجکشن» است که صدای خوانندگان حرفه‌ای را از ارکستر جلو می‌اندازد. تمرین‌ها: ۱) «نگ‌گ‌گ» با زبان پشت دندان‌ها و انتقالش به واکه (نگ→آ) ۲) صدای اردک/عروسک (twang) و ادامه‌دادنش روی نت ۳) دهانه حلق را مثل ابتدای خمیازه باز نگه دار و زبان را راحت نگه دار. هدف: F3 و F4 نزدیک هم در حدود ۲.۶–۳.۲ کیلوهرتز گرد شوند.'});
+  else if(r.sf.db<8) out.push({s:1,i:'🔔',t:'فرمانت خواننده هست ولی ضعیف (+'+r.sf.db+' dB)',
+    b:'در مسیر درستی! تمرین «نگ→آ» و twang قدرتش را بیشتر می‌کند. خوانندگان اپرا معمولاً ۱۰ دسی‌بل یا بیشتر بالای نوارهای کناری می‌روند.'});
+  else out.push({s:1,i:'🔔',t:'فرمانت خواننده‌ی خوبی داری (+'+r.sf.db+' dB در '+r.sf.pk+'Hz)',
+    b:'صدای تو «پروجکت» می‌کند؛ این ویژگی با حفظ فضای حلق باز و زبان جلو حفظ می‌شود.'});
+  if(r.vowel){
+    var v=r.vowel;
+    if(v.d>2.2) out.push({s:2,i:'🧭',t:'جایگاه واکه خارج از محدوده واکه‌های استاندارد فارسی است',
+      b:'شاید وسط دو واکه خوانده‌ای یا کیفیت واکه «شناور» است. واکه را خالص و ثابت نگه دار (مثلاً «آ» واقعی، نه بین «اَ» و «آ»).'});
+    else if(v.d>1.2) out.push({s:2,i:'🧭',t:'واکه «'+v.v.fa+'» شناسایی شد اما '+fmt(v.d,1)+' واحد از هدف فاصله دارد',
+      b:'هدف: F1='+v.v.f1+' و F2='+v.v.f2+'Hz. راهنمای حرکت: F1 با بازشدن فک/دهان بالا می‌رود؛ F2 با جلو رفتن زبان بالا می‌رود. جلوی آینه، واکه را کشیده (آaaa) تکرار کن و جای زبان را اصلاح کن تا به هدف نزدیک شوی.'});
+    else out.push({s:1,i:'🧭',t:'واکه «'+v.v.fa+'» دقیق و درست شکل گرفته است ✓',
+      b:'میانگین F1/F2 تو با هدف همخوان است؛ این یعنیوضعیت زبان و فک در واکه درست است.'});
+  }
+  var mptMin=r.norms.mptFull;
+  if(r.mpt<mptMin*0.45) out.push({s:3,i:'🫁',t:'زمان نگه‌داشتن نفس کوتاه است — MPT = '+r.mpt+' ثانیه (هدف: '+mptMin+'+)',
+    b:'برنامه تنفس: ۱) دم آهسته از بینی به پهلوها و پایین ریه (نه شانه‌ها) به مدت ۴ ثانیه، نگه‌داشتن ۴، بازدم سس‌س‌س یکنواخت ۱۲–۲۰ ثانیه با کرنومتر — روزی ۵ نوبت ۲) خواندن «زززز» روی نت پایین تا پایان نفس ۳) هنگام خواندن، دم را «زودتر و آرام» بگیر نه دیر و با صدای هیس.'});
+  else if(r.mpt<mptMin*0.8) out.push({s:2,i:'🫁',t:'MPT قابل بهبود است ('+r.mpt+' از '+mptMin+'+ ثانیه)',
+    b:'تمرین بازدم یکنواخت (سس‌س با کرنومتر) و تمرین با مترونوم؛ هفته‌ای ۳ بار پیشرفت را ببین.'});
+  else out.push({s:1,i:'🫁',t:'نگه‌داشتن نفس عالی است (MPT = '+r.mpt+' ثانیه) ✓',b:'پشتیبانی تنفسی خوبی داری؛ آن را با تمرین‌های مِسا دی ووچه ظریف کن.'});
+  if(r.driftCents<-60) out.push({s:2,i:'📉',t:'نت در طول جمله پایین می‌آید ('+(r.driftCents)+' سنت)',
+    b:'نشانه کلاسیک تمام‌شدن نفس/پشتیبانی: فشار هوای زیرگلوتالی کم می‌شود و نت sag می‌کند. تمرین: روی یک نت، دامنه را از نرم به بلند و برگشت به نرم ببر (messa di voce) با نفسِ کافی؛ نفس را ۲–۳ کلمه زودتر بگیر و بازدم را «مدیریت» کن.'});
+  else if(r.driftCents>60) out.push({s:2,i:'📈',t:'نت در طول جمله بالا می‌رود (+'+r.driftCents+' سنت)',
+    b:'معمولاً از فشار زیاد یا «هد دادن» به نت بالاست. دم را رها کن، گردن و فک آزاد، و نت را با «شروع از بالا» (onset نرم) امتحان کن.'});
+  if(r.decayDb<-6) out.push({s:2,i:'🔉',t:'بلندی صدا در طول جمله محسوس افت می‌کند ('+r.decayDb+' dB)',
+    b:'پشتیبانی (appoggio) را تقویت کن: هنگام بازدم، دیواره‌های پهلو را «هزیانه» نگه دار؛ تمرین «حمّه حمّه» (زبان آویزان، صدای نفس با هماهمه) حس عضلات تنفسی را می‌سازد.'});
+  if(r.tremor&&r.tremor.flag) out.push({s:2,i:'🌊',t:'لرزش فشار تنفسی شنیده می‌شود (~'+r.tremor.rate+'Hz، عمق '+r.tremor.depth+'dB)',
+    b:'نوسان ۳ تا ۸ هرتزی دامنه یعنی جریان هوا ثابت نیست. تمرین: بازدم «شف» یکنواخت روی شمع خیلی نزدیک (شعله نلرزد!) یا سس‌س با مترونوم؛ حس «ستون هوای ثابت» بساز.'});
+  if(r.breaks>0) out.push({s:1,i:'✂️',t:faNum(r.breaks)+' قطع/مکث در میان صدای تو',
+    b:'اگر نیت‌ت یک نت پیوسته بود، این یعنی نفس وسط نُت گرفته شده. برنامه‌ریزی نفس: دم را زودتر و بی‌صدا بگیر؛ اگر جمله بلند است، نقطه نفس منطقی انتخاب کن.'});
+  if(r.vibrato.type==='wobble') out.push({s:2,i:'🎯',t:'ویبراتو تند و پهن است ('+r.vibrato.rate+'Hz / '+r.vibrato.extent+'¢)',
+    b:'wobble معمولاً از فشار زیاد و خستگی می‌آید. آرامش، کاهش بلندی در تمرین، و خواندن با مترونوم روی نت صاف (straight) تا هفته‌ای چند دقیقه؛ ویبراتو سالم ۵–۷ هرتز و حدود ۵۰–۱۵۰ سنت است.'});
+  else if(r.vibrato.type==='straight') out.push({s:1,i:'🎯',t:'نت صاف است (بدون ویبراتو)',
+    b:'اگر سبکت پاپ است مشکلی نیست. برای سبک کلاسیک: تمرین «پالس» — روی نت میانی، موج‌های ۵.۵ در ثانیه با دست (مثل رانندن تاکسی) و تقلیدش با صدا؛ بعداً خودش طبیعی می‌شود.'});
+  out.sort(function(a,b){return b.s-a.s;});
+  return out;
+}
+
+/* ---------- formant advice ---------- */
+function formantAdvice(r){
+  var out=[];
+  if(!r.vowel||r.vowel.d>2.2) return out;
+  var v=r.vowel, front=(v.v.k==='i'||v.v.k==='e'||v.v.k==='ae');
+  if(v.dF1pct>15) out.push({n:'F1',txt:'F1 تو حدود '+v.dF1pct+'٪ بالاتر از هدف واکه «'+v.v.fa+'» است (هدف '+v.v.f1+'Hz). یعنی دهان/فک بازتر از لازم است یا واکه به سمت «آ» کشیده شده. فک را کمی جمع‌تر کن. (در نت‌های خیلی بالا، بالا رفتن F1 تا حدی طبیعی و راهبرد خوانندگان برای «تِیون‌کردن» F1 با هارمونیک‌هاست.)'});
+  if(v.dF1pct<-15) out.push({n:'F1',txt:'F1 حدود '+(-v.dF1pct)+'٪ پایین‌تر از هدف «'+v.v.fa+'» است (هدف '+v.v.f1+'Hz). دهان به‌اندازه کافی باز نیست یا زبان جمع/عقب است؛ با حس خمیازه‌ی آغازین فضای داخل دهان را بازتر کن و فک را رها کن.'});
+  if(front&&v.dF2pct<-12) out.push({n:'F2',txt:'برای واکه‌ی جلو («'+v.v.fa+'»)، F2 تو پایین‌تر از هدف است (هدف '+v.v.f2+'Hz). زبان به‌اندازه کافی جلو نیست: نوک زبان را نزدیک پشت دندان‌های پایین بگذار و بدنه زبان را جلو-بالا نگه دار.'});
+  if(!front&&v.dF2pct>12) out.push({n:'F2',txt:'برای واکه‌ی عقب/گرد («'+v.v.fa+'»)، F2 بالاتر از هدف است (هدف '+v.v.f2+'Hz). زبان بیش از حد جلوست؛ لب‌ها را گرد کن و بدنه زبان را کمی عقب ببر تا رنگ واکه تیره‌تر شود.'});
+  if(r.formants[2]&&r.formants[2].f<2300) out.push({n:'F3',txt:'F3 تو پایین است ('+r.formants[2].f+'Hz). F3 پایین یعنی فضای حلق تنگ یا زبان عقب‌جمع. برای صدای باز و رزونانس کلاسیک، حلق را مثل شروع خمیازه باز نگه دار — هدفِ خوانندگان آموزش‌دیده F3 در حدود ۲.۵–۲.۷ کیلوهرتز است تا با F4 خوشه «فرمانت خواننده» را بسازد.'});
+  if(r.formants[3]&&r.formants[3].n&&r.formants[3].n<r.formants[0].n*0.5) out.push({n:'F4',txt:'F4 در همه فریم‌ها پیدا نشد — ممکن است نشتی هوا (breathiness) پوش طیف را پخ‌کرده باشد. تمرین‌های بسته‌سازی نرم (SOVT) و بررسی HNR بالا.'});
+  return out;
+}
+
+/* ---------- render results ---------- */
+function renderResults(r){
+  var sc=r.scores;
+  var head='<div class="scorewrap"><div class="scorelbl">امتیاز کلی صدای تو در این ضبط</div><div class="scorebig" style="color:'+(sc.overall>=70?'#34d399':(sc.overall>=50?'#fbbf24':'#f87171'))+'">'+faNum(sc.overall)+'<span style="font-size:22px;color:#8b97b0">/۱۰۰</span></div><div class="chips">'+
+    '<span class="chip">پایداری <b>'+faNum(sc.stability)+'</b></span>'+
+    '<span class="chip">تنفس <b>'+faNum(sc.breath)+'</b></span>'+
+    '<span class="chip">رزونانس <b>'+faNum(sc.resonance)+'</b></span></div></div>';
+  head+='<div class="metainfo">میانگین '+faNum(r.nV)+' فریمِ صدادار از '+faNum(r.dur)+' ثانیه ضبط — تحلیل روی کل صدا (نه یک لحظه آن)</div>';
+  $('scoreHead').innerHTML=head;
+
+  var b='';
+  /* formants table */
+  b+='<div class="card"><div class="cardtitle">🎯 فرمانت‌های تو (میانگین کل ضبط) در مقایسه با واکه‌ی هدف</div>';
+  var v=r.vowel;
+  b+='<div class="tblwrap"><table class="tbl"><tr><th>فرمانت</th><th>تو</th><th>هدف واکه</th><th>اختلاف</th><th>وضعیت</th></tr>';
+  var tF=[v?v.v.f1:null,v?v.v.f2:null,null,null];
+  for(var k=0;k<4;k++){
+    var f=r.formants[k];
+    b+='<tr><td><b style="color:'+['#34d399','#22d3ee','#fbbf24','#f87171'][k]+'">F'+(k+1)+'</b></td>';
+    if(f){ b+='<td>'+f.f+'&nbsp;Hz</td><td>'+(tF[k]?tF[k]+'&nbsp;Hz':'—')+'</td><td>'+(k<2&&v?(v['dF'+(k+1)+'pct']>0?'+':'')+v['dF'+(k+1)+'pct']+'٪':'—')+'</td>';
+      var ok=!tF[k]||Math.abs((k<2?v['dF'+(k+1)+'pct']:0))<=15;
+      b+='<td>'+(k>=2?tag('info','اطلاعاتی'):status3(0,ok?'ok':(Math.abs((k<2?v['dF'+(k+1)+'pct']:0))<=28?'mid':'bad')))+'</td></tr>';
+    } else b+='<td colspan="4">'+tag('info','در میانگین پیدا نشد')+'</td></tr>';
+  }
+  b+='</table></div>';
+  b+='<div style="font-size:12.5px;color:#8b97b0">پهنای باند میانگین F1/F2: '+r.bw12+' Hz — هرچه کمتر، فرمانت تیزتر و واضح‌تر (بالای ~۴۰۰ معمولاً نشانه نشتی هوا).</div>';
+  var fa=formantAdvice(r);
+  if(fa.length){ b+='<div class="edu"><ul>'; for(var q=0;q<fa.length;q++) b+='<li><b>'+fa[q].n+':</b> '+fa[q].txt+'</li>'; b+='</ul></div>'; }
+  else b+='<div class="goodbox">✅ هیچ ضعف مشخصی در فرمانت‌های F1–F4 نسبت به واکه هدف پیدا نشد — جای زبان و فک در این واکه درست است.</div>';
+  b+='</div>';
+
+  /* metrics table */
+  b+='<div class="card"><div class="cardtitle">📊 شاخص‌های صداشناسی تو در برابر هنجار</div><div class="tblwrap"><table class="tbl">';
+  var rows=[];
+  rows.push(['نت خوانده‌شده', r.f0.note.fa+' ('+r.f0.med+'Hz)', tag('info',r.f0.note.en), '']);
+  rows.push(['محدوده نت (۱۰–۹۰٪)', r.f0.p10+'–'+r.f0.p90+' Hz ('+r.f0.spread+'¢)', r.f0.spread<60?tag('ok','پایدار'):tag(r.f0.spread<120?'mid':'bad',r.f0.spread<120?'کمی نوسان':'نوسان زیاد'), '']);
+  rows.push(['Jitter (لرزش تناوب)', r.jitter+'٪', r.jitter<=r.norms.jNorm?tag('ok','نرمال'):tag(r.jitter<=r.norms.jNorm*1.5?'mid':'bad',r.jitter<=r.norms.jNorm*1.5?'مرزی':'بالا'), 'نرمال < '+r.norms.jNorm+'٪']);
+  rows.push(['Shimmer (لرزش دامنه)', r.shimmer+'٪', r.shimmer<=r.norms.sNorm?tag('ok','نرمال'):tag(r.shimmer<=r.norms.sNorm*1.5?'mid':'bad',r.shimmer<=r.norms.sNorm*1.5?'مرزی':'بالا'), 'نرمال < '+r.norms.sNorm+'٪']);
+  rows.push(['HNR (نسبت هارمونیک به نویز)', r.hnr+' dB', r.hnr>=20?tag('ok','صاف و هوامحکم'):tag(r.hnr>=15?'mid':'bad',r.hnr>=15?'کمی نفس‌دار':'نفس‌دار'), 'مطلوب ≥ ۲۰']);
+  rows.push(['MPT (نگه‌داشتن نت)', r.mpt+' ثانیه', r.mpt>=r.norms.mptFull?tag('ok','خوب'):tag(r.mpt>=r.norms.mptFull*0.6?'mid':'bad',r.mpt>=r.norms.mptFull*0.6?'قابل بهبود':'کوتاه'), 'هدف ≥ '+r.norms.mptFull+'s']);
+  rows.push(['فرمانت خواننده (Singer\u2019s Formant)', (r.sf.db>0?'+':'')+r.sf.db+' dB @ '+r.sf.pk+'Hz', r.sf.present?tag(r.sf.db>=8?'ok':'mid',r.sf.db>=8?'قوی':'ضعیف'):tag('bad','حاضر نیست'), 'خوانندگان آموزش‌دیده: ۲.۸–۳.۲kHz']);
+  rows.push(['رویّه طیفی (tilt)', r.tilt+' dB', tag('info','اطلاعاتی'), 'بالاتر = صدای روشن‌تر']);
+  if(r.rec) rows.push(['کیفیت ضبط (پیک / کف نویز)', r.rec.peakDb+' / '+r.rec.noiseDb+' dBFS', (r.rec.clipPct>0.05?tag('bad','کلیپ!'):(r.rec.peakDb>-3?tag('mid','خیلی بلند/نزدیک'):(r.rec.noiseDb>-45?tag('mid','نویز اتاق'):(r.rec.peakDb<-26?tag('mid','ضعیف/دور'):tag('ok','خوب'))))), 'هدف: پیک −۱۸ تا −۶']);
+  b+='<tr><th>شاخص</th><th>مقدار تو</th><th>وضعیت</th><th>مرجع</th></tr>';
+  for(var w=0;w<rows.length;w++) b+='<tr><td>'+rows[w][0]+'</td><td>'+rows[w][1]+'</td><td>'+rows[w][2]+'</td><td style="font-size:12px;color:#8b97b0">'+rows[w][3]+'</td></tr>';
+  b+='</table></div>';
+  b+='<div style="font-size:12px;color:#8b97b0">⚠️ Jitter/Shimmer/HNR به کیفیت ضبط (فاصله، نویز، AGC) حساس‌اند؛ فقط ضبط‌های هم‌شرایط را با هم مقایسه کن.</div></div>';
+
+  /* breathing */
+  b+='<div class="card"><div class="cardtitle">🫁 تنفس تو — و ردپای آن در نمودارها</div><div class="edu">';
+  b+='<ul>';
+  b+='<li><b>درازای نت (MPT):</b> <span class="kv">'+r.mpt+' ثانیه</span> — بیشینه زمانی که با یک نفس نت را نگه داشتی.</li>';
+  b+='<li><b>روند نت (Drift):</b> <span class="kv">'+(r.driftCents>0?'+':'')+r.driftCents+' سنت</span> '+(r.driftCents<-60?'— نت در پایان نفس پایین می‌آید؛ پشتیبانی کافی نیست.':(r.driftCents>60?'— نت بالای می‌رود؛ احتمال فشار/هد‌دادن.':'— نت پایدار مانده ✓'))+'</li>';
+  b+='<li><b>روند بلندی (Decay):</b> <span class="kv">'+r.decayDb+' dB</span> '+(r.decayDb<-6?'— افت محسوس دامنه یعنی فشار هوا در طول جمله کم می‌شود.':'— افت قابل توجهی نیست ✓')+'</li>';
+  b+='<li><b>لرزش فشار تنفسی:</b> <span class="kv">'+(r.tremor.flag?('بله — ~'+r.tremor.rate+'Hz با عمق '+r.tremor.depth+'dB'):'خودآزار ثبت نشد')+'</span></li>';
+  b+='<li><b>مکث میان نت:</b> <span class="kv">'+faNum(r.breaks)+' بار</span>'+(r.breaks>0?' — صدای تو قطع شده (نفس وسط نت).':' ✓')+'</li>';
+  b+='</ul>';
+  b+='<div class="note">💡 <b>تنفس چطور دیده می‌شود؟</b> تنفسِ بد مستقیماً فرکانس فرمانت‌ها را عوض نمی‌کند (فرمانت‌ها رزونانس مسیر دهان/حلق‌اند) اما این ردپاها را می‌گذارد: افت تدریجی نت و بلندی در انتهای جمله، لرزش دامنه ۳–۸ هرتز، MPT کوتاه، و در صدای نفس‌دار، پهن‌شدن پهنای باند فرمانت‌ها و پایین‌آمدن HNR. این برنامه همه اینها را همین‌جا نشان می‌دهد.</div>';
+  b+='</div></div>';
+
+  /* subglottal & glottal opinion */
+  if(r.sub){ b+='<div class="card" id="subCard">'+vlSubCardInner(r)+'</div>'; }
+
+  /* recs */
+  var recs=buildRecs(r);
+  b+='<div class="card"><div class="cardtitle">🏃 برنامه تمرین پیشنهادی (به‌ترتیب اولویت)</div>';
+  for(var e=0;e<recs.length;e++){
+    b+='<div class="rec s'+recs[e].s+'"><div class="rt">'+recs[e].i+' '+recs[e].t+'</div><div class="rb">'+recs[e].b+'</div></div>';
+  }
+  if(!recs.length) b+='<div class="goodbox">🏆 همه شاخص‌ها در محدوده خوب هستند! تمرین‌های حفظ‌کننده ادامه بده.</div>';
+  b+='</div>';
+
+  /* compare */
+  var prev=null;
+  try{ prev=JSON.parse(localStorage.getItem('vl_last')||'null'); }catch(e){}
+  if(prev){
+    function delta(cur,base,unit,higherBetter){
+      if(!(isFinite(cur)&&isFinite(base))) return '';
+      var d=cur-base;
+      var good=higherBetter? d>0 : d<0;
+      var cls=(Math.abs(d)<Math.abs(base)*0.05)?'info':(good?'ok':'bad');
+      var arr=(d>0?'▲':(d<0?'▼':''));
+      return '<span class="tag '+cls+'">'+arr+' '+(Math.abs(d)<100?fmt(Math.abs(d),Math.abs(d)<10?2:0):Math.round(Math.abs(d)))+' '+unit+'</span>';
+    }
+    b+='<div class="card"><div class="cardtitle">📈 مقایسه با مرجع ذخیره‌شده ('+(prev.date||'—')+')</div><div class="tblwrap"><table class="tbl"><tr><th>شاخص</th><th>قبلی</th><th>الان</th><th>تغییر</th></tr>';
+    b+='<tr><td>F0</td><td>'+prev.f0+'</td><td>'+r.f0.med+'</td><td>'+delta(r.f0.med,prev.f0,'Hz',false)+'</td></tr>';
+    b+='<tr><td>Jitter</td><td>'+prev.jitter+'</td><td>'+r.jitter+'</td><td>'+delta(r.jitter,prev.jitter,'٪',false)+'</td></tr>';
+    b+='<tr><td>Shimmer</td><td>'+prev.shimmer+'</td><td>'+r.shimmer+'</td><td>'+delta(r.shimmer,prev.shimmer,'٪',false)+'</td></tr>';
+    b+='<tr><td>HNR</td><td>'+prev.hnr+'</td><td>'+r.hnr+'</td><td>'+delta(r.hnr,prev.hnr,'dB',true)+'</td></tr>';
+    b+='<tr><td>MPT</td><td>'+prev.mpt+'</td><td>'+r.mpt+'</td><td>'+delta(r.mpt,prev.mpt,'s',true)+'</td></tr>';
+    b+='<tr><td>فرمانت خواننده</td><td>'+(prev.sf>0?'+':'')+prev.sf+'dB</td><td>'+(r.sf.db>0?'+':'')+r.sf.db+'dB</td><td>'+delta(r.sf.db,prev.sf,'dB',true)+'</td></tr>';
+    b+='</table></div><div style="font-size:12px;color:#8b97b0">اگر عمداً ضبط نکردی، «ذخیره مرجع» نتایج این ضبط را برای مقایسه‌ی بعدی نگه می‌دارد.</div></div>';
+  }
+  b+='<div class="disc">تحلیل با LPC (مرتبه ۱۲) روی فریم‌های ۴۰ms، تشخیص F0 با خودهمبستگی + تصحیح اکتاو، Jitter/Shimmer در سطح سیکل. هنجارها تقریبی‌اند. این ابزار آموزشی است و تشخیص پزشکی نیست.</div>';
+  $('resBody').innerHTML=b;
+
+  drawSpec(r);
+  drawF0(r);
+  drawVowel(r);
+}
+
+function vlSubCardInner(r){
+  var s=r.sub;
+  function rt(name,val,unit,ref){ return '<tr><td>'+name+'</td><td><b>'+faNum(val)+'</b> '+unit+'</td><td style="font-size:12px;color:#8b97b0">'+ref+'</td></tr>'; }
+  var h='<div class="cardtitle">🔬 نظر من: فشار ساب‌گلوتال و رفتار گلوتال</div>';
+  h+='<div class="edu"><div class="vstat" style="font-size:13.5px;color:#93a0b8;line-height:2">ساب‌گلوتال = هوای زیر تارهای صوتی (موتورِ فشار، از دیافراگم می‌آید)؛ گلوتال = خود چینگاه تارها (شیرِ تنظیم جریان). کیفیت و دوام صدای تو حاصل توازن همین دو است.</div>';
+  h+=vlSubValsInner(r);
+  h+='<div style="margin-top:8px;font-size:13px;color:#c3cee6">🎚 اگر صدای واقعی‌ات در لحظهٔ ضبط بلندتر/آرام‌تر از حدس برنامه بود این را جابه‌جا کن (خوانندگی نزدیک میکروفون معمولاً ~۸۵–۹۵ dB):</div>';
+  h+='<div style="margin:8px 0 4px"><input type="range" min="90" max="125" step="1" value="'+s.splCal+'" style="width:100%" oninput="window.vlSPLcal(this.value)"><div style="font-size:12px;color:#8b97b0">فرض بلندی: <span id="splCalV">'+faNum(s.splCal)+'</span> dB</div></div>';
+  h+='</div>';
+  return h;
+}
+function vlSubValsInner(r){
+  var s=r.sub;
+  function rt(name,val,unit,ref){ return '<tr><td>'+name+'</td><td><b>'+faNum(val)+'</b> '+unit+'</td><td style="font-size:12px;color:#8b97b0">'+ref+'</td></tr>'; }
+  var h='<div id="subVals"><div class="tblwrap"><table class="tbl"><tr><th>تخمین</th><th>مقدار</th><th>مرجع</th></tr>';
+  h+=rt('بلندی تقریبی (SPL)', s.spl, 'dB', 'فرض فعلی '+faNum(s.splCal)+' — با اسلایدر پایین تنظیم کن');
+  h+=rt('فشار ساب‌گلوتال (Psub)', s.psub, 'cmH₂O', 'آرام ~۴–۸ | بلند ~۱۰–۲۰');
+  h+=rt('آستانهٔ آواسازی این نت (PTP)', s.ptp, 'cmH₂O', 'Titze — با بالا رفتن نت زیاد می‌شود');
+  h+=rt('حاشیهٔ فشار (Psub−PTP)', s.margin, 'cmH₂O', 'بازهٔ راحت ~۳–۱۰');
+  h+=rt('مقاومت گلوتال تقریبی', s.rg, 'cmH₂O/L/s', 'طبیعی ~۱۵۰ | نفس‌دار ~۴۳');
+  h+='</table></div>';
+  var op=[];
+  if(r.hnr<15) op.push('ترکیب HNR پایین ('+r.hnr+' dB) با این اعداد یعنی بخشی از هوای ساب‌گلوتال بدون تبدیل به صدا از کنار گلوت رد می‌شود — <b>نشتی گلوتال</b>. تارها کامل بسته نمی‌شوند؛ با SOVT (لب‌ترم/نی) و «اُ» بسته‌تر، عادت بستن را برمی‌گردان.');
+  else if(r.hnr>=20) op.push('HNR خوب ('+r.hnr+' dB) نشان می‌دهد گلوت در برابر این فشار، مقاومت مناسبی دارد و هوا واقعاً به صدا تبدیل می‌شود ✓.');
+  else op.push('HNR متوسط ('+r.hnr+' dB) — بستن گلوت کامل نیست ولی بحرانی هم نیست؛ با تمرین‌های بسته‌سازی (بخش «صدای هوا‌دار») بهتر می‌شود.');
+  if(s.margin>10) op.push('حاشیهٔ فشارت بزرگ است ('+faNum(s.margin)+' cmH₂O بالاتر از آستانه). اگر هم‌زمان صدایت نفس‌دار است، یعنی هوای بیش از نیازِ این نت به تارها می‌رسد و اضافه‌اش نشت می‌کند — همان «هوای زیاد و اشتباه» که به تارها نباید بدهی. دم کوتاه‌تر، بازدمِ مدیریت‌شده با «سس»، و فکر کردن به «نت فقط به‌اندازهٔ نیازش هوا می‌کشد».');
+  else if(s.margin<2) op.push('خیلی نزدیک به آستانهٔ آواسازی هستی ('+faNum(s.margin)+' cmH₂O). در این حالت خواننده معمولاً با فشار تارها جبران می‌کند (اتک سخت، له‌شدگی، خستگی سریع). پشتیبانی تنفسی را تقویت کن و نت را با شروع نرم (بخش «شروع نت») امتحان کن.');
+  else op.push('حاشیهٔ فشارت ('+faNum(s.margin)+' cmH₂O) در بازهٔ سالم کار است — نه هدررفت هوا، نه فشار بر آستانه ✓.');
+  if(r.tremor&&r.tremor.flag) op.push('لرزش ۳–۸ هرتزی دامنه در این ضبط یعنی فشار ساب‌گلوتال خودش نوسان دارد؛ معمولاً ریشه‌اش قفل‌کردن عضلات دم/بازدم است، نه حنجره.');
+  h+='<div class="edu"><ul>';
+  for(var i=0;i<op.length;i++) h+='<li>'+op[i]+'</li>';
+  h+='</ul></div>';
+  h+='<div class="note">⚖️ <b>چطور محاسبه می‌شود؟</b> Psub از رابطهٔ بلندی–فشار (هر دوبرابر شدن Psub ≈ ۸.۵ dB بلندی — Björklund &amp; Sundberg 2016)، PTP از مدل Titze با نت میانی تو، و مقاومت گلوتال از ترکیب HNR با هنجارهای بالینی (نفس‌دار ≈ ۴۳ و طبیعی ≈ ۱۵۰ cmH₂O/L/s). اینها «تخمین» هستند نه اندازه‌گیری مستقیم — عدد مطلقشان را جدی نگیر، روندشان را بین ضبط‌های هم‌شرایط دنبال کن.</div>';
+  h+='</div>';
+  return h;
+}
+window.vlSPLcal=function(v){
+  v=parseInt(v,10); if(!isFinite(v)) return;
+  try{ localStorage.setItem('vl_splcal',String(v)); }catch(e){}
+  var el=$('splCalV'); if(el) el.textContent=faNum(v);
+  if(lastResult&&lastResult.sub&&isFinite(lastResult.sub.dbfs)){
+    lastResult.sub=vlSubCalc(lastResult.sub.dbfs,lastResult.f0.med,lastResult.sex,lastResult.hnr);
+    var c=$('subVals'); if(c) c.outerHTML=vlSubValsInner(lastResult);
+  }
+};
+
+/* ---------- save reference ---------- */
+$('btnSave').onclick=function(){
+  if(!lastResult){ toast('اول یک تحلیل انجام بده'); return; }
+  var r=lastResult, d=new Date();
+  var obj={date:d.getFullYear()+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+('0'+d.getDate()).slice(-2),
+    f0:r.f0.med,jitter:r.jitter,shimmer:r.shimmer,hnr:r.hnr,mpt:r.mpt,sf:r.sf.db,overall:r.scores.overall};
+  var js=JSON.stringify(obj);
+  try{ localStorage.setItem('vl_last',js); }catch(e){}
+  if(vlNative()) vlPost({type:'saveRef',json:js});
+  toast('به‌عنوان مرجع ذخیره شد ✓');
+};
+
+/* ---------- report ---------- */
+function reportText(r){
+  var L=[];
+  L.push('🎼 گزارش تحلیل صدای آواز — آوازلب');
+  L.push('تاریخ: '+new Date().toLocaleString('fa-IR'));
+  L.push('مدت ضبط: '+r.dur+'s | فریم‌های صدادار: '+r.nV+' | جنسیت مرجع: '+(r.sex==='m'?'مرد':'زن'));
+  L.push('');
+  L.push('— نت: '+r.f0.note.fa+' ('+r.f0.note.en+') '+r.f0.med+'Hz');
+  if(r.formants[0]) L.push('— فرمانت‌ها: F1='+r.formants[0].f+' F2='+(r.formants[1]?r.formants[1].f:'—')+' F3='+(r.formants[2]?r.formants[2].f:'—')+' F4='+(r.formants[3]?r.formants[3].f:'—')+' Hz');
+  if(r.vowel) L.push('— واکه تشخیصی: '+r.vowel.v.fa+' (هدف F1='+r.vowel.v.f1+', F2='+r.vowel.v.f2+')');
+  L.push('— Jitter: '+r.jitter+'٪ (نرمال <'+r.norms.jNorm+') | Shimmer: '+r.shimmer+'٪ (نرمال <'+r.norms.sNorm+')');
+  L.push('— HNR: '+r.hnr+'dB | MPT: '+r.mpt+'s | Drift: '+r.driftCents+'¢ | Decay: '+r.decayDb+'dB');
+  L.push('— فرمانت خواننده: '+(r.sf.present?('+'+r.sf.db+'dB @'+r.sf.pk+'Hz'):'غیرحاضر')+' | ویبراتو: '+r.vibrato.rate+'Hz/'+r.vibrato.extent+'¢ ('+r.vibrato.type+')');
+  if(r.sub) L.push('— تخمین ساب‌گلوتال/گلوتال: SPL≈'+r.sub.spl+'dB، Psub≈'+r.sub.psub+'، PTP≈'+r.sub.ptp+'، حاشیه '+r.sub.margin+'، مقاومت گلوتال≈'+r.sub.rg+' cmH2O');
+  if(r.rec) L.push('— کیفیت ضبط: پیک '+r.rec.peakDb+'dBFS، کف نویز '+r.rec.noiseDb+'dBFS، کلیپ '+r.rec.clipPct+'٪');
+  L.push('— امتیازها: کلی '+r.scores.overall+'/۱۰۰ (پایداری '+r.scores.stability+'، تنفس '+r.scores.breath+'، رزونانس '+r.scores.resonance+')');
+  var recs=buildRecs(r);
+  if(recs.length){
+    L.push('');
+    L.push('اولویت‌های تمرین:');
+    for(var i=0;i<Math.min(5,recs.length);i++) L.push((i+1)+'. '+recs[i].t);
+  }
+  L.push('');
+  L.push('(خودارزیابی تمرینی — جایگزین متخصص نیست)');
+  return L.join('\n');
+}
+$('btnShareR').onclick=function(){
+  if(!lastResult){ toast('اول یک تحلیل انجام بده'); return; }
+  var txt=reportText(lastResult);
+  var sent=false;
+  try{
+    if(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.scriptable){
+      window.webkit.messageHandlers.scriptable.postMessage({type:'share',text:txt});
+      sent=true;
+    }
+  }catch(e){}
+  if(!sent){
+    try{
+      var ta=document.createElement('textarea');
+      ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); ta.remove();
+      toast('گزارش در کلیپ‌بورد کپی شد ✓');
+    }catch(e2){ toast('کپی ممکن نشد'); }
+  }
+};
+
+/* ===== تحلیل آنلاین واکه (زنده/فایل) + صدای هوا‌دار ===== */
+var VM={live:false,actx:null,stream:null,proc:null,raf:0,buf:[],lastUpd:0,trail:[],cur:null,stableK:null,stable:0,lastTip:0,pbTimer:null,pbI:0,seen:{},style:'cl',set:'fa',targetK:null,ring:[],miss:0,prevShown:null,adapt:{},lastCls:null};
+function vlVMStopAll(){
+  if(VM.live){
+    VM.live=false; VM.buf=[];
+    try{ if(VM.stream) VM.stream.getTracks().forEach(function(t){t.stop();}); }catch(e){}
+    try{ if(VM.proc) VM.proc.disconnect(); }catch(e){}
+    try{ if(VM.actx) VM.actx.close(); }catch(e){}
+    VM.stream=null; VM.proc=null; VM.actx=null;
+    try{ $('btnVLive').textContent='🎙 شروع مانیتور زنده'; }catch(e){}
+  }
+  if(VM.pbTimer){ clearInterval(VM.pbTimer); VM.pbTimer=null; }
+}
+function vStatusSet(txt){ try{ $('vStatus').innerHTML=txt; }catch(e){} }
+function vlVSet(){ return vl_vowelSet(VM.set,SEX); }
+function vlVTarget(){
+  var s=vlVSet();
+  if(!VM.targetK) VM.targetK=(VM.set==='en')?'A':'a';
+  for(var i=0;i<s.length;i++) if(s[i].k===VM.targetK) return s[i];
+  return s[0];
+}
+function vlVBuildChips(){
+  var s=vlVSet(), h='';
+  for(var i=0;i<s.length;i++) h+='<button class="vchip'+(s[i].k===VM.targetK?' on':'')+'" data-k="'+s[i].k+'">'+s[i].s+'</button>';
+  $('vChips').innerHTML=h;
+  var bs=$('vChips').querySelectorAll('.vchip');
+  for(var b=0;b<bs.length;b++) bs[b].onclick=function(){ VM.targetK=this.getAttribute('data-k'); vlVBuildChips(); vlVDraw(); };
+  $('vModNote').innerHTML=(VM.set==='en')?
+    'مرجع: میانگین فرکانس‌های واکه‌های انگلیسی آمریکایی از پایگاه Hillenbrand و همکاران (۱۹۹۵). با انتخاب سبک، هدف‌ها در نت‌های بالا بر پایهٔ CVT (تکنیک آوازی کامل) و پژوهش‌های Sundberg اصلاح می‌شوند: کلاسیک = خنثی‌سازی ملایم واکه، میکس = خنثی‌سازی بیشتر، بلت = برابرسازی واکه‌ها و تیون‌کردن F1 با نت. برنامه بعد از چند واکه، خودش را با ساختار صوتی تو تنظیم می‌کند (تشخیص تطبیقی).' :
+    'مرجع: مطالعات آکوستیک گویشوران فارسی. طبق علم Vowel Modification، در نت‌های بالا هدف به‌سمت فضای خنثی «اَ/آ» اصلاح می‌شود تا فشار روی حنجره کم بماند. برنامه بعد از چند واکه، خودش را با ساختار صوتی تو تنظیم می‌کند (تشخیص تطبیقی).';
+  vlVTable();
+}
+function vlVTable(){
+  var s=vlVSet(), h='<tr><th>واکه</th><th>F1 هدف</th><th>F2 هدف</th><th>تو (آخرین‌بار)</th><th>اختلاف</th><th>وضعیت</th></tr>';
+  for(var i=0;i<s.length;i++){
+    var t=s[i], seen=VM.seen[t.k], isT=(t.k===VM.targetK);
+    h+='<tr'+(isT?' style="background:rgba(124,92,255,.10)"':'')+'><td>'+(isT?'<b>':'')+t.s+' — '+t.fa+(isT?'</b>':'')+'</td><td>'+t.f1+'</td><td>'+t.f2+'</td>';
+    if(seen){
+      var d1=Math.round(100*(seen.f1-t.f1)/t.f1), d2=Math.round(100*(seen.f2-t.f2)/t.f2);
+      h+='<td>'+seen.f1+' / '+seen.f2+'</td><td>'+(d1>0?'+':'')+d1+'٪ / '+(d2>0?'+':'')+d2+'٪</td>';
+      var ok=(Math.abs(d1)<=15&&Math.abs(d2)<=15), mid=(Math.abs(d1)<=30&&Math.abs(d2)<=30);
+      h+='<td>'+(ok?tag('ok','درست'):(mid?tag('mid','نزدیک'):tag('bad','دور')))+'</td>';
+    } else h+='<td>—</td><td>—</td><td>'+tag('info','خوانده نشده')+'</td>';
+    h+='</tr>';
+  }
+  $('vTbl').innerHTML=h;
+}
+function vlVDraw(){
+  var cv=$('cvVL'); if(!cv) return;
+  var ctx=setupCv(cv), W=cv.clientWidth, H=cv.clientHeight;
+  var padL=38,padR=14,padT=18,padB=30;
+  var F2lo=600,F2hi=2700,F1lo=180,F1hi=1000;
+  function X(f2){ return padL+((f2-F2lo)/(F2hi-F2lo))*(W-padL-padR); }
+  function Y(f1){ return padT+((f1-F1lo)/(F1hi-F1lo))*(H-padT-padB); }
+  ctx.fillStyle='#101627'; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='#232d45'; ctx.fillStyle='#8b97b0'; ctx.font='10px -apple-system'; ctx.textAlign='center';
+  var gl=[700,900,1100,1400,1700,2100,2500];
+  for(var g=0;g<gl.length;g++){ ctx.beginPath(); ctx.moveTo(X(gl[g]),padT); ctx.lineTo(X(gl[g]),H-padB); ctx.stroke(); ctx.fillText(''+gl[g],X(gl[g]),H-padB+12); }
+  var gl2=[200,300,400,500,600,800];
+  ctx.textAlign='right';
+  for(var g2=0;g2<gl2.length;g2++){ ctx.beginPath(); ctx.moveTo(padL,Y(gl2[g2])); ctx.lineTo(W-padR,Y(gl2[g2])); ctx.stroke(); ctx.fillText(''+gl2[g2],padL-3,Y(gl2[g2])+3); }
+  ctx.fillStyle='#8b97b0'; ctx.font='10.5px -apple-system'; ctx.textAlign='center';
+  ctx.fillText('F2 (Hz) ← جلو',W/2,H-6);
+  ctx.save(); ctx.translate(10,(padT+H-padB)/2); ctx.rotate(-Math.PI/2); ctx.fillText('F1 (Hz) — باز شدن دهان',0,0); ctx.restore();
+  var s=vlVSet(), tgt=vlVTarget();
+  for(var i=0;i<s.length;i++){
+    var t=s[i], isT=(t.k===VM.targetK);
+    ctx.beginPath(); ctx.arc(X(t.f2),Y(t.f1),isT?13:9,0,Math.PI*2);
+    ctx.strokeStyle=isT?'#7c5cff':'#3b4a6b'; ctx.lineWidth=isT?2.2:1.4; ctx.stroke();
+    ctx.fillStyle=isT?'#c4b5fd':'#93a0b8'; ctx.font=(isT?'bold ':'')+'11px -apple-system'; ctx.textAlign='center';
+    ctx.fillText(t.s,X(t.f2),Y(t.f1)-16);
+  }
+  if(VM.cur){
+    for(var p=0;p<VM.trail.length;p++){
+      var q=VM.trail[p], al=0.10+0.45*p/VM.trail.length;
+      ctx.fillStyle='rgba(34,211,234,'+al.toFixed(2)+')';
+      ctx.beginPath(); ctx.arc(X(q.f2),Y(q.f1),2.2,0,Math.PI*2); ctx.fill();
+    }
+    var mod=vl_modTarget(tgt,(VM.cur.f0||0),SEX,(VM.set==='en')?VM.style:'cl');
+    var ux=X(VM.cur.f2), uy=Y(VM.cur.f1);
+    if(mod.mod){
+      ctx.setLineDash([4,4]); ctx.strokeStyle='#34d399'; ctx.lineWidth=1.6;
+      ctx.beginPath(); ctx.moveTo(ux,uy); ctx.lineTo(X(mod.f2),Y(mod.f1)); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle='#34d399'; ctx.font='18px sans-serif'; ctx.textAlign='center';
+      ctx.fillText('★',X(mod.f2),Y(mod.f1)+6);
+      ctx.font='bold 10px -apple-system'; ctx.fillText('هدف این نت',X(mod.f2),Y(mod.f1)+20);
+    } else {
+      ctx.setLineDash([4,4]); ctx.strokeStyle='#f87171'; ctx.lineWidth=1.6;
+      ctx.beginPath(); ctx.moveTo(ux,uy); ctx.lineTo(X(tgt.f2),Y(tgt.f1)); ctx.stroke(); ctx.setLineDash([]);
+    }
+    ctx.fillStyle='#fbbf24'; ctx.font='20px sans-serif'; ctx.textAlign='center';
+    ctx.fillText('★',ux,uy+7);
+    ctx.fillStyle='#fde68a'; ctx.font='bold 11px -apple-system';
+    ctx.fillText('شما',ux,uy+22);
+  }
+}
+function vlVCoach(t,mod){
+  var tips=[];
+  var M={
+    'a':'برای «آ»: انگار یک لقمهٔ بزرگ در دهان داری — فک رها و باز، زبان پشت و پایین، حلق با حس شروع خمیازه باز. «آ» فارسی نباید به «اَ» بیفتد.',
+    'o':'برای «اُ»: لب‌ها را گرد و جلو بده (مثل بوسهٔ کوچک)، داخل دهان همان فضای «آ» را نگه دار — فقط لب عوض می‌شود، نه حلق.',
+    'u':'برای «او»: لب گرد کوچک‌تر از «اُ»، زبان عقب و پست؛ حس بده صدا از مسیر گرد و کوتاه بیرون می‌آید.',
+    'i':'برای «ای»: لب‌ها پهن و آرام، نوک زبان پایین-جلو، بدنهٔ زبان بالا-جلو؛ حس «صدا از پشت لب‌ها» بدون فشار.',
+    'e':'برای «اِ»: بین «ای» و «اَ» — فک متوسط باز، زبان جلو ولی کمی پایین‌تر از «ای».',
+    'ae':'برای «اَ»: فک را بیشتر باز کن (مثل دندانپزشکی!)، زبان جلو و پست؛ صدای روشن آمریکایی.',
+    'A':'برای «آ»ی انگلیسی (hod): مثل «آ» فارسی ولی زبان کمی عقب‌تر.',
+    'O':'برای «اُ»ی باز (hawed): فک باز مثل «آ» + لب گرد؛ ترکیب باز و گرد.',
+    'I':'برای «ای» کوتاه (hid): مثل «ای» ولی شل‌تر و کوتاه‌تر، زبان کمی پایین‌تر.',
+    'U':'برای «او» کوتاه (hood): مثل «او» ولی شل‌تر، لب گردِ کم‌تر.',
+    'E':'برای «اِ» انگلیسی (head): مثل «اِ» فارسی، فک کمی بازتر.',
+    'V':'برای «اَ»ی عقب (hud): زبان عقب و پست، فک متوسط — واکهٔ خنثیِ آماده.',
+    'er':'برای «اِر» (heard): زبان عقب و کمی بالا، لب‌ها خنثی؛ رنگ «ر» رنگی ندارد.'
+  };
+  tips.push(M[t.k]||'واکه را خالص و ثابت نگه دار؛ به واکهٔ بعدی نخز.');
+  if(mod&&mod.mod) tips.push('روی این نت به‌جای شکل کامل واکه، به شکل «اصلاح‌شده» نزدیک شو — گوش شنونده خودش واکهٔ اصلی را کامل می‌شنود؛ این ترفند همهٔ خوانندگان حرفه‌ای در نت‌های بالا است.');
+  if(VM.set==='en'){
+    if(VM.style==='belt') tips.push('بلت: فک را راحت باز نگه دار و تیون F1 با نت را حس کن — اگر گلو تنگ شد یعنی فک بسته مانده؛ بازتر کن و twang اضافه کن.');
+    else if(VM.style==='mix') tips.push('میکس: حس نالهٔ ملایم + رزونانس جلو؛ با بالا رفتن نت، واکه را فقط ذره‌ای به «اَ» نزدیک کن، نه کاملاً.');
+    else tips.push('کلاسیک: در ارتفاع، خنثی‌سازی ملایم + کمی twang برای رد شدن از passaggio؛ هرگز گردن را قفل نکن.');
+  } else {
+    tips.push('پیشنهاد من: کنار آینه، واکهٔ هدف را با دست همزمان باز و بسته کن (دست = فک) تا حس عضلاری حرکت در بدنت بنشیند؛ بعد بدون دست تکرار کن.');
+  }
+  return tips.join(' ');
+}
+function vlVMakeTip(cur, cls){
+  var t=vlVTarget(), set=vlVSet();
+  if(!cls) cls=vl_classifyVowelSet(cur.f1,cur.f2,set,cur.f3,VM.adapt);
+  var mod=vl_modTarget(t,(cur.f0||0),SEX,(VM.set==='en')?VM.style:'cl');
+  var d1p=Math.round(100*(cur.f1-t.f1)/t.f1), d2p=Math.round(100*(cur.f2-t.f2)/t.f2);
+  var confP=Math.round(100*cls.conf);
+  var h='<div class="vt1">🎤 شنیده‌شده: <b>'+cls.v.s+' ('+cls.v.fa+')</b>'+(cls.v.k===t.k?' — همان واکهٔ هدف ✓':'')+' — F1='+cur.f1+' / F2='+cur.f2+(cur.f3?' / F3='+cur.f3:'')+' — اطمینان: '+faNum(confP)+'٪'+(cur.f0?' — نت: '+vl_note(cur.f0).fa:'')+'</div>';
+  if(cls.conf<0.55&&cls.second) h+='<div class="vstat" style="color:#fbbf24">⚠ صدای تو دقیقاً روی مرز دو واکه است: '+cls.v.s+' و '+cls.second.s+' — اگر عمداً بین دو واکه گذر می‌کنی ادامه بده؛ اگر نه، شکل دهان/زبان را ثابت‌تر نگه دار تا عدد اطمینان بالا برود.</div>';
+  h+='<div class="vstat">';
+  if(d1p>15) h+='👄 دهان/فک را حدود <b>'+Math.min(35,d1p)+'٪ بسته‌تر</b> کن (F1 از '+cur.f1+' باید به '+t.f1+' برسد).<br>';
+  else if(d1p<-15) h+='👄 فک را حدود <b>'+Math.min(35,-d1p)+'٪ بازتر</b> کن (F1 از '+cur.f1+' باید به '+t.f1+' برسد).<br>';
+  else h+='👄 بازشدن دهان/فک درست است ✓<br>';
+  var front=(t.k==='i'||t.k==='I'||t.k==='e'||t.k==='E'||t.k==='er');
+  if(front&&d2p<-12) h+='👅 زبان را <b>جلوتر</b> ببر — نوک زبان نزدیک پشت دندان‌های پایین (F2 از '+cur.f2+' باید به '+t.f2+' برود).<br>';
+  else if(!front&&d2p>12) h+='👅 زبان را <b>عقب‌تر و پست‌تر</b> بگذار و لب‌ها را گرد کن (F2 از '+cur.f2+' باید به '+t.f2+' بیاید).<br>';
+  else if(front&&d2p>12) h+='👅 زبان بیش از حد جلو و منقبض است؛ بدنهٔ زبان را کمی پایین‌تر و آزاد کن.<br>';
+  else h+='👅 جای افقی زبان درست است ✓<br>';
+  h+='</div>';
+  if(mod.mod){
+    h+='<div class="vmod">🎯 <b>هدف اصلاح‌شده برای این نت:</b> F1≈'+mod.f1+' / F2≈'+mod.f2+' (به‌جای '+t.f1+'/'+t.f2+')';
+    for(var w=0;w<mod.why.length;w++) h+=' — '+mod.why[w];
+    h+='</div>';
+  }
+  h+='<div class="vcoach">💡 '+vlVCoach(t,mod)+'</div>';
+  return h;
+}
+function vlVProcess(frame16){
+  var r=vl_frameF0(frame16,0);
+  if(!(r.r>0.42&&r.f0>60&&r.f0<600)){
+    VM.cur=null; VM.miss=(VM.miss||0)+1;
+    if(VM.miss>14){ VM.ring=[]; VM.stableK=null; VM.stable=0; }
+    vStatusSet(VM.live?'🟢 مانیتور فعال — منتظر صدای پیوسته… (اگر ساکت است بلندتر بخوان)':'…');
+    vlVDraw(); return;
+  }
+  VM.miss=0;
+  var fr=vl_formantsRobust(frame16,0,r.f0,true);
+  if(!(fr&&fr.formants.length>=2)){ return; }
+  var F1=fr.formants[0].f, F2=fr.formants[1].f, F3=fr.formants.length>2?fr.formants[2].f:0;
+  if(!(F1>=170&&F1<=1200&&F2>=500&&F2<=3100)) return;
+  VM.ring.push({f1:F1,f2:F2,f3:F3}); if(VM.ring.length>7) VM.ring.shift();
+  var f1s=[],f2s=[],f3s=[],u;
+  for(u=0;u<VM.ring.length;u++){ f1s.push(VM.ring[u].f1); f2s.push(VM.ring[u].f2); f3s.push(VM.ring[u].f3); }
+  var M1=Math.round(vl_median(f1s)), M2=Math.round(vl_median(f2s)), M3=Math.round(vl_median(f3s));
+  VM.cur={f1:M1,f2:M2,f3:M3,f0:Math.round(r.f0)};
+  VM.trail.push({f1:M1,f2:M2}); if(VM.trail.length>50) VM.trail.shift();
+  var set=vlVSet();
+  var cls=vl_classifyVowelSet(M1,M2,set,M3,VM.adapt);
+  if(cls.v.k===VM.stableK) VM.stable++; else { VM.stableK=cls.v.k; VM.stable=1; }
+  var shown=cls;
+  if(VM.stable>=3&&cls.d<1.5){
+    var ad=VM.adapt[cls.v.k]||(VM.adapt[cls.v.k]={n:0,f1:0,f2:0});
+    ad.n++; ad.f1+=((M1-ad.f1)/ad.n); ad.f2+=((M2-ad.f2)/ad.n);
+    VM.seen[cls.v.k]={f1:M1,f2:M2};
+  } else if(VM.prevShown){ shown=VM.prevShown; }
+  VM.prevShown=shown; VM.lastCls=shown;
+  var confP=Math.round(100*cls.conf);
+  var confTxt=(confP>=75?'بالا':(confP>=50?'متوسط':'کم'));
+  var extra=(cls.conf<0.55&&cls.second)?' — مرز دو واکه: '+cls.v.s+' / '+cls.second.s:'';
+  vStatusSet((VM.live?'🟢 مانیتور فعال — ':'')+'شنیده‌شده: <b>'+shown.v.s+'</b> ('+shown.v.fa+') — F1='+M1+' / F2='+M2+(M3?' / F3='+M3:'')+' — اطمینان: '+faNum(confP)+'٪ ('+confTxt+')'+extra+(r.f0?' — نت: '+vl_note(r.f0).fa:''));
+  vlVDraw();
+  if(Date.now()-VM.lastTip>1100){
+    VM.lastTip=Date.now();
+    $('vTip').innerHTML=vlVMakeTip(VM.cur,shown);
+    vlVTable();
+  }
+}
+function vlVLiveToggle(){
+  if(VM.live){ vlVMStopAll(); vStatusSet('مانیتور متوقف شد — دوباره شروع کن.'); vlVDraw(); return; }
+  if(vlNative()){ micGuide('vowel'); return; }
+  if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)){ micGuide('vowel'); return; }
+  try{ VM.actx=new (window.AudioContext||window.webkitAudioContext)(); VM.actx.resume&&VM.actx.resume(); }catch(e){ micGuide('vowel'); return; }
+  var to=setTimeout(function(){ if(!VM.stream){ vlVMStopAll(); micGuide('vowel'); } },5000);
+  navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}}).then(function(s){
+    clearTimeout(to); VM.stream=s;
+    var src=VM.actx.createMediaStreamSource(s);
+    VM.proc=VM.actx.createScriptProcessor(2048,1,1);
+    var mg=VM.actx.createGain(); mg.gain.value=0;
+    VM.proc.onaudioprocess=function(ev){
+      if(!VM.live) return;
+      VM.buf.push(new Float32Array(ev.inputBuffer.getChannelData(0)));
+      var rate=VM.actx?VM.actx.sampleRate:48000;
+      var need=Math.ceil(0.6*rate/2048);
+      while(VM.buf.length>need) VM.buf.shift();
+      if(Date.now()-VM.lastUpd<160) return;
+      VM.lastUpd=Date.now();
+      var tot=0,i; for(i=0;i<VM.buf.length;i++) tot+=VM.buf[i].length;
+      var d=new Float32Array(tot),o=0;
+      for(var j=0;j<VM.buf.length;j++){ d.set(VM.buf[j],o); o+=VM.buf[j].length; }
+      var x16=jsResample(d,rate,VL_FS);
+      if(x16.length>=VL_FRAME+64) vlVProcess(x16.subarray(x16.length-VL_FRAME));
+    };
+    src.connect(VM.proc); VM.proc.connect(mg); mg.connect(VM.actx.destination);
+    VM.live=true; VM.trail=[]; VM.seen={}; VM.stableK=null; VM.stable=0; VM.ring=[]; VM.miss=0; VM.prevShown=null;
+    $('btnVLive').textContent='⏹ توقف مانیتور';
+    vStatusSet('🟢 مانیتور فعال — واکه‌هایت را کشیده بخوان و عوض کن…');
+  }).catch(function(){ clearTimeout(to); vlVMStopAll(); micGuide('vowel'); });
+}
+function vlVMFromSamples(x16){
+  setScreen('scrVowel'); vlVBuildChips();
+  vStatusSet('در حال استخراج مسیر واکه از فایل…');
+  setTimeout(function(){
+    var tr;
+    try{ tr=vl_formantTrack(x16,{step:3,multi:true}); }catch(e){ tr=[]; }
+    if(!tr.length||tr.length<4){
+      vlModal('واکه‌ای پیدا نشد','در این فایل فریم صدادار قابل تحلیل نبود. واکه‌ها را کشیده‌تر و بلندتر بخوان و دوباره امتحان کن.',[{label:'باشه',primary:true}]);
+      vStatusSet('تحلیل ناموفق بود'); return;
+    }
+    VM.trail=[]; VM.seen={}; VM.pbI=0; VM.lastTip=0; VM.ring=[];
+    var total=tr[tr.length-1].t;
+    VM.pbTimer=setInterval(function(){
+      var i=VM.pbI%tr.length, fr=tr[i];
+      VM.cur={f1:fr.f1,f2:fr.f2,f3:fr.f3,f0:fr.f0};
+      VM.trail.push({f1:fr.f1,f2:fr.f2}); if(VM.trail.length>50) VM.trail.shift();
+      var set=vlVSet(), cls=vl_classifyVowelSet(fr.f1,fr.f2,set,fr.f3,VM.adapt);
+      if(cls.d<1.5){
+        var ad=VM.adapt[cls.v.k]||(VM.adapt[cls.v.k]={n:0,f1:0,f2:0});
+        ad.n++; ad.f1+=((fr.f1-ad.f1)/ad.n); ad.f2+=((fr.f2-ad.f2)/ad.n);
+        VM.seen[cls.v.k]={f1:fr.f1,f2:fr.f2};
+      }
+      vlVDraw();
+      vStatusSet('▶ پخش مسیر واکه — '+fr.t.toFixed(1)+' از '+total.toFixed(1)+' ثانیه — شنیده‌شده: <b>'+cls.v.s+'</b> ('+cls.v.fa+') — اطمینان: '+faNum(Math.round(100*cls.conf))+'٪');
+      if(Date.now()-VM.lastTip>900){ VM.lastTip=Date.now(); $('vTip').innerHTML=vlVMakeTip(VM.cur,cls); vlVTable(); }
+      VM.pbI++;
+      if(VM.pbI>=tr.length){ VM.pbI=0; VM.trail=[]; }
+    },90);
+  },60);
+}
+
+/* ===== بخش صدای هوا‌دار ===== */
+var VL_BRH=[];
+try{ VL_BRH=JSON.parse(localStorage.getItem('vl_brhist')||'[]')||[]; }catch(e){}
+window.vlSetBrHist=function(j){ try{ var a=JSON.parse(String(j)); if(Array.isArray(a)) VL_BRH=a; }catch(e){} };
+function vlBAnalyze(x16){
+  setScreen('scrBusy'); setProg(0.03,'شروع تحلیل هوا‌داری…');
+  vl_breathMetrics(x16,{sex:SEX,onProgress:setProg}).then(function(res){
+    if(!res.ok){ vlModal('تحلیل ممکن نشد',esc(res.msg||'دلیل مشخص نیست'),[{label:'باشه',primary:true}]); setScreen('scrBreath'); vlBIdle(); return; }
+    renderBreath(res);
+  }).catch(function(e){
+    vlModal('خطای غیرمنتظره','در پردازش صدا خطایی رخ داد:<br><b>'+esc(e&&e.message||e)+'</b>',[{label:'باشه',primary:true}]);
+    setScreen('scrBreath');
+  });
+}
+function brTag(v){ if(v===null||v===undefined||!isFinite(v)) return tag('info','—'); return v<0.34?tag('ok','خوب'):(v<0.6?tag('mid','مرزی'):tag('bad','هوادار')); }
+function vlBDrawHist(){
+  var cv=$('cvBr'); if(!cv||!VL_BRH.length) return;
+  var ctx=setupCv(cv), W=cv.clientWidth, H=cv.clientHeight;
+  var padL=34,padR=12,padT=16,padB=26;
+  ctx.fillStyle='#101627'; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='#232d45'; ctx.fillStyle='#8b97b0'; ctx.font='10px -apple-system'; ctx.textAlign='right';
+  for(var v=0;v<=100;v+=25){ var y=padT+((100-v)/100)*(H-padT-padB); ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(W-padR,y); ctx.stroke(); ctx.fillText(''+v,padL-4,y+3); }
+  var n=VL_BRH.length;
+  function xp(i){ return padL+(n===1?0.5:(i/(n-1)))*(W-padL-padR); }
+  function yp(bi){ return padT+((100-vl_clamp(bi,0,100))/100)*(H-padT-padB); }
+  ctx.strokeStyle='#f87171'; ctx.lineWidth=2; ctx.beginPath();
+  for(var i=0;i<n;i++){ var x=xp(i), y=yp(VL_BRH[i].bi); if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); }
+  ctx.stroke();
+  for(var i2=0;i2<n;i2++){
+    var bi=VL_BRH[i2].bi;
+    ctx.fillStyle=(bi>=55?'#f87171':(bi>=30?'#fbbf24':'#34d399'));
+    ctx.beginPath(); ctx.arc(xp(i2),yp(bi),4,0,Math.PI*2); ctx.fill();
+  }
+  if(n>=1){
+    ctx.fillStyle='#c3cee6'; ctx.font='10px -apple-system'; ctx.textAlign='center';
+    ctx.fillText('۱',xp(0),H-8);
+    if(n>1) ctx.fillText(faNum(n),xp(n-1),H-8);
+    if(n>4){ var mid=Math.floor(n/2); ctx.fillText(faNum(mid+1),xp(mid),H-8); }
+  }
+  ctx.textAlign='left'; ctx.fillStyle='#8b97b0'; ctx.fillText('٪ هواداری — جلسه‌ها به‌ترتیب',padL+2,padT+2);
+}
+function vlBTips(r){
+  var out=[], c=r.comp||{};
+  if(r.bi<30) out.push({s:1,i:'✅',t:'صدایت کم‌هوادار است ('+faNum(r.bi)+'٪)',b:'وضعیت خوبی است؛ همین تمرین‌های حفظ‌کننده را ادامه بده و شرایط ضبط را ثابت نگه دار تا روند قابل مقایسه بماند.'});
+  if(c.cpp!==null&&c.cpp>0.5) out.push({s:3,i:'📉',t:'CPP پایین ('+faNum(r.cpp)+' dB) — تارهای صوتی کامل بسته نمی‌شوند',
+    b:'یعنی بخشی از هوا بدون تبدیل به صدا از کنار گلوت خارج می‌شود. تمرین‌ها: ۱) SOVT با نی یا لب‌ترم ۵ دقیقه در روز (صدای موتور در لب‌ها باید حس شود) ۲) آغاز نرم: «اوه-اوه-اوه» ۱۰ بار با شروع بی‌سروصدا ۳) هرگز زمزمه نکن — زمزمه خودش عادت هوادار می‌سازد ۴) آب کافی؛ تارهای خشک سخت‌تر می‌بندند.'});
+  if(c.ihnr!==null&&c.ihnr>0.5) out.push({s:3,i:'🌪',t:'نویز بین‌هارمونیکی بالاست ('+faNum(r.ihnr)+' dB) — نشتی مستقیم هوا در باند ۱.۵–۵kHz',
+    b:'این دقیقاً همان باندی است که هوای نشتی (aspiration) در آن نویز می‌سازد (Klatt & Klatt 1990) — نشانه‌ای مستقیم‌تر از CPP برای عبور هوا از گلوت. اگر این عدد کم است در حالی که CPP هنوز بد نیست، نشتی تو در فرکانس‌های بالاست: با twang (صدای اردک) و صدای جلوتر (mask) هارمونیک‌های بالا را برگردان؛ SOVT با نی باریک هم مستقیماً همین باند را تمیز می‌کند.'});
+  if(c.hnr!==null&&c.hnr>0.5) out.push({s:3,i:'💨',t:'HNR پایین ('+faNum(r.hnr)+' dB) — نسبت نویز تنفسی بالاست',
+    b:'همراه CPP پایین، نشانهٔ نشتی گلوتال است. کنار تمرین‌های بسته‌سازی، فاصلهٔ میکروفون را در همهٔ ضبط‌ها ثابت نگه دار (مثلاً ۱۵ سانتی‌متر) چون نزدیک‌شدن، نویز نفس را بزرگ‌تر نشان می‌دهد و مقایسه را خراب می‌کند.'});
+  if(c.h1h2!==null&&c.h1h2>0.55) out.push({s:2,i:'🔔',t:'H1−H2 بالاست ('+faNum(r.h1h2)+' dB) — رنگ صدای «باز و نفس‌دار»',
+    b:'این الگو در صدای خیلی نرم یا فاقد رزونانس دیده می‌شود. تمرین twang (صدای اردک/عروسک) و «نگ→آ» انرژی هارمونیک‌های بالاتر را می‌آورد؛ موقتاً بلندی را کمی بیشتر کن و شروع نت را از اوج نرم (soft onset) تمرین بده.'});
+  if(c.tilt!==null&&c.tilt>0.55) out.push({s:2,i:'📐',t:'شیب طیف تند است ('+faNum(r.tilt)+' dB/oct) — هارمونیک‌های بالا ضعیف‌اند',
+    b:'انرژی طیف سریع افت می‌کند؛ معمولاً ترکیب پشتیبانی کم و رزونانس جلو ناکافی. تمرین: بازدم «سس‌س» شمرده با مترونوم برای دیافراگم + twang برای روشنی + اطمینان از اینکه زبان عقب‌جمع نشده و حلق باز است.'});
+  out.push({s:1,i:'🧩',t:'چک‌لیست جای زبان، فک و دیافراگم',
+    b:'زبان: نوک زبان جلو-پایین، بدنهٔ زبان نه جمع نه عقب‌رفته (حس «زبان خالی»). فک: رها و باز (~۲ انگشت)، نه قفل‌شده. حلق: حس شروع خمیازه. دیافراگم: دم ۴ثانیه‌ای به پهلوها و پایین ریه، بازدمِ مدیریت‌شده؛ نفس را زودتر و بی‌صدا بگیر.'});
+  out.push({s:1,i:'💡',t:'پیشنهاد من — ترفند «مقایسهٔ لب‌ترم»',
+    b:'همان جمله را دو بار بخوان: یک بار با لب‌ترم (بوبوبوبو) و یک بار با واکهٔ باز. هر دو را در همین صفحه تحلیل کن و دو عدد را کنار هم بگذار — تفاوتشان نشان می‌دهد چقدر از هوا‌داری‌ات «هماهنگی عضلات» است و چقدر عادت. هر هفته فقط ۳ تمرین اول این لیست را روزی ۵ دقیقه انجام بده و دوباره اینجا نمره بگیر.'});
+  out.sort(function(a,b){return b.s-a.s;});
+  var h='';
+  for(var i=0;i<out.length;i++) h+='<div class="rec s'+out[i].s+'"><div class="rt">'+out[i].i+' '+out[i].t+'</div><div class="rb">'+out[i].b+'</div></div>';
+  return h;
+}
+function vlSingersCard(bi){
+  var rows=[
+    ['خوانندهٔ اپرا/کلاسیک آموزش‌دیده','≈ ۵–۱۲٪','گلوت تقریباً کامل می‌بندد؛ HNR ≈ ۲۴–۳۰ dB و CPP بالا (Sundberg)'],
+    ['بلت / پاپ قدرتی','≈ ۸–۱۸٪','بسته‌سازی قوی + twang؛ نویز نفس کم'],
+    ['پاپ و راک معمولی','≈ ۱۲–۲۵٪','تعادل روشنی و حس نزدیکی'],
+    ['سبک‌های نفس‌دار (جاز آرام، بالاد ملایم)','≈ ۲۵–۴۵٪','نفس‌داری عامدانه به‌عنوان رنگ هنری — انتخاب است، نه ضعف'],
+    ['گفتار عادی','≈ ۱۵–۳۰٪','مرجع روزمره'],
+    ['زمزمه (whisper)','≈ ۹۰–۱۰۰٪','تقریباً بدون هارمونیک']
+  ];
+  var h='<div class="card"><div class="cardtitle">🎭 خواننده‌های حرفه‌ای چقدر هوا در صدا دارند؟</div>';
+  h+='<div class="vstat" style="font-size:13px;color:#93a0b8">جای تو در این نقشه: <b style="color:'+(bi>=55?'#f87171':(bi>=30?'#fbbf24':'#34d399'))+'">'+faNum(bi)+'٪</b></div>';
+  h+='<div class="tblwrap"><table class="tbl"><tr><th>سبک / خواننده</th><th>هواداری معمول</th><th>چرا</th></tr>';
+  for(var i=0;i<rows.length;i++) h+='<tr><td>'+rows[i][0]+'</td><td>'+rows[i][1]+'</td><td style="font-size:12px;color:#8b97b0">'+rows[i][2]+'</td></tr>';
+  h+='</table></div>';
+  h+='<div class="note">📚 این بازه‌ها از مطالعات صداشناسی خلاصه شده‌اند (HNR و CPP خوانندگان آموزش‌دیده در برابر آموزش‌ندیده — Sundberg؛ Klatt &amp; Klatt 1990 برای نویز aspiration) — نه اندازه‌گیری مستقیم هر خوانندهٔ مشخص. نکتهٔ مهم: خواننده‌های سبک نفس‌دار این کار را «عمداً» می‌کنند و کنترلش خودش مهارت است؛ هدف تمرینی این است که بتوانی هر دو را انتخاب کنی. پیشنهاد من برای تو: زیر ~۱۵٪ برای رپرتوار کلاسیک، ~۱۰–۲۵٪ برای پاپ بسته به رنگ مطلوب.</div></div>';
+  return h;
+}
+function renderBreath(r){
+  setScreen('scrBreath');
+  VL_BRH.push({d:new Date().toLocaleDateString('fa-IR'), bi:r.bi, cpp:r.cpp, hnr:r.hnr, h1h2:r.h1h2, tilt:r.tilt, ihnr:r.ihnr, dur:r.dur});
+  if(VL_BRH.length>40) VL_BRH.shift();
+  try{ localStorage.setItem('vl_brhist',JSON.stringify(VL_BRH)); }catch(e){}
+  if(vlNative()) vlPost({type:'saveBrHist',json:JSON.stringify(VL_BRH)});
+  var col=(r.bi>=55)?'#f87171':(r.bi>=30?'#fbbf24':'#34d399');
+  var c=r.comp||{};
+  var h='<div class="card"><div class="cardtitle">💨 نتیجهٔ تحلیل هوا‌داری — میانگین '+faNum(r.dur)+' ثانیه صدای تو</div>';
+  h+='<div class="scorewrap"><div class="scorelbl">سهم هوای اضافه در صدای خروجی</div><div class="scorebig" style="color:'+col+'">'+faNum(r.bi)+'<span style="font-size:22px;color:#8b97b0">٪</span></div>';
+  h+='<div class="chips"><span class="chip">صدای هوامحکم <b>'+faNum(r.score)+'</b>/۱۰۰</span><span class="chip">تخمین سهم نویز در انرژی <b>'+faNum(r.noisePct)+'</b>٪</span><span class="chip">فریم‌های تحلیل‌شده <b>'+faNum(r.frames)+'</b></span>'+(r.clipPct>0.05?'<span class="chip" style="color:#f87171">کلیپ ضبط '+faNum(r.clipPct)+'٪</span>':'')+(isFinite(r.noiseDb)&&r.noiseDb>-45?'<span class="chip" style="color:#fbbf24">نویز اتاق بالا</span>':'')+'</div></div>';
+  h+='<div class="tblwrap"><table class="tbl"><tr><th>شاخص</th><th>مقدار تو</th><th>وضعیت</th><th>یعنی چه؟</th></tr>';
+  h+='<tr><td>CPP (پاکیزگی هارمونیک)</td><td>'+(isFinite(r.cpp)?faNum(r.cpp)+' dB':'—')+'</td><td>'+brTag(c.cpp)+'</td><td style="font-size:12px;color:#8b97b0">قلهٔ همبستگی تناوب؛ هرچه بالاتر، تارها کامل‌تر می‌بندند</td></tr>';
+  h+='<tr><td>HNR (هارمونیک به نویز)</td><td>'+(isFinite(r.hnr)?faNum(r.hnr)+' dB':'—')+'</td><td>'+brTag(c.hnr)+'</td><td style="font-size:12px;color:#8b97b0">سهم صدای دوره‌ای در برابر نویز نفس</td></tr>';
+  h+='<tr><td>نویز بین‌هارمونیکی (بالای ۱.۵kHz)</td><td>'+(isFinite(r.ihnr)?faNum(r.ihnr)+' dB':'—')+'</td><td>'+brTag(c.ihnr)+'</td><td style="font-size:12px;color:#8b97b0">فاصلهٔ هارمونیک‌ها از نویزِ بین آن‌ها — نشت مستقیم هوای aspiration (Klatt 1990)</td></tr>';
+  h+='<tr><td>H1−H2 (بازشدن گلوتال)</td><td>'+(isFinite(r.h1h2)?faNum(r.h1h2)+' dB':'—')+'</td><td>'+brTag(c.h1h2)+'</td><td style="font-size:12px;color:#8b97b0">اختلاف هارمونیک اول و دوم؛ بالا = صدای باز/نفس‌دار</td></tr>';
+  h+='<tr><td>H1−A3 (سرشانهٔ باز)</td><td>'+(isFinite(r.h1a3)?faNum(r.h1a3)+' dB':'—')+'</td><td>'+brTag(c.h1a3)+'</td><td style="font-size:12px;color:#8b97b0">اختلاف هارمونیک اول با ناحیهٔ فرمانت ۳ — بالای ~۲۴ یعنی سرشانه باز</td></tr>';
+  h+='<tr><td>شیب طیف</td><td>'+(isFinite(r.tilt)?faNum(r.tilt)+' dB/oct':'—')+'</td><td>'+brTag(c.tilt)+'</td><td style="font-size:12px;color:#8b97b0">افت انرژی با فرکانس؛ تند = انرژی هارمونیک‌های بالا کم</td></tr>';
+  h+='</table></div>';
+  h+='<div class="note">⚠️ این اعداد به فاصلهٔ میکروفون و نویز اتاق حساس‌اند — همیشه با شرایط یکسان مقایسه کن. «سهم هوای اضافه» ترکیب وزن‌دارِ شش شاخص صداشناسی است (CPP، HNR، نویز بین‌هارمونیکی، H1−H2، H1−A3، شیب طیف)؛ قبل از محاسبه، کف نویز میکروفون از طیف کم می‌شود تا نویز اتاق به نشتی تو اضافه نشود.</div></div>';
+  h+=vlSingersCard(r.bi);
+  if(VL_BRH.length>1) h+='<div class="charttl">📈 روند پیشرفت تو ('+faNum(VL_BRH.length)+' جلسه — هر نقطه یک ضبط)</div><canvas id="cvBr" class="cv"></canvas>';
+  h+='<div class="card"><div class="cardtitle">🏃 برنامهٔ کاهش هوا‌داری — به‌ترتیب اولویت</div>'+vlBTips(r)+'</div>';
+  h+='<div class="btnrow"><button class="big" id="btnBAgain">🎙 دوباره ضبط و مقایسه</button><button class="big ghost" id="btnBFile2">📁 تحلیل فایل دیگر</button></div>';
+  $('brBody').innerHTML=h;
+  if($('btnBAgain')) $('btnBAgain').onclick=function(){ startRec('breath'); };
+  if($('btnBFile2')) $('btnBFile2').onclick=function(){ vlPickAudio('breath'); };
+  vlBDrawHist();
+}
+function vlBIdle(){
+  var h='';
+  if(VL_BRH.length){
+    var last=VL_BRH[VL_BRH.length-1];
+    h+='<div class="card"><div class="cardtitle">📑 آخرین نتیجه ('+last.d+')</div><div class="vstat">هواداری: <b style="color:'+(last.bi>=55?'#f87171':(last.bi>=30?'#fbbf24':'#34d399'))+'">'+faNum(last.bi)+'٪</b> — CPP: '+(isFinite(last.cpp)?faNum(last.cpp):'—')+' — HNR: '+(isFinite(last.hnr)?faNum(last.hnr):'—')+' dB — نویز بین‌هارمونیکی: '+(isFinite(last.ihnr)?faNum(last.ihnr):'—')+' dB</div></div>';
+    h+=vlSingersCard(last.bi);
+    h+='<div class="charttl">📈 روند پیشرفت ('+faNum(VL_BRH.length)+' جلسه)</div><canvas id="cvBr" class="cv"></canvas>';
+  } else {
+    h+='<div class="card mini"><div class="vstat">هنوز تحلیلی ثبت نشده — اولین ضبطت را انجام بده تا نمره و روند پیشرفت شکل بگیرد!</div></div>';
+  }
+  if(VL_BT_LAST) h=VL_BT_LAST+h;
+  $('brBody').innerHTML=h;
+  vlBDrawHist();
+}
+
+/* ===== تمرین بازدم زنده — سنجش نویز هوای تنفس ===== */
+var BT={live:false,actx:null,stream:null,proc:null,buf:[],lastUpd:0,env:[],segs:[],cur:null,t0:0,hist:[],voiced:0,frames:0,timer:null,sm:[0,0,0]};
+var VL_BT_LAST='';
+function vlBTStop(){
+  if(BT.timer){ clearInterval(BT.timer); BT.timer=null; }
+  if(BT.live){
+    BT.live=false; BT.buf=[];
+    try{ if(BT.stream) BT.stream.getTracks().forEach(function(t){t.stop();}); }catch(e){}
+    try{ if(BT.proc) BT.proc.disconnect(); }catch(e){}
+    try{ if(BT.actx) BT.actx.close(); }catch(e){}
+    BT.stream=null;BT.proc=null;BT.actx=null;
+    try{ $('btnBTrainer').textContent='🌬 شروع تمرین بازدم'; }catch(e){}
+  }
+}
+function vlBTClassify(x16){
+  var N=VL_FRAME, e=0, i;
+  for(i=0;i<N;i++){ var v=x16[i]*VL_WIN[i]; e+=v*v; }
+  var rms=Math.sqrt(e/N);
+  var r=vl_frameF0(x16,0);
+  var spec=vl_specDb(x16,0);
+  var binHz=VL_FS/1024;
+  function bandE(lo,hi){ var s=0,c=0; for(var b=Math.floor(lo/binHz);b<=Math.min(511,Math.ceil(hi/binHz));b++){ s+=Math.pow(10,spec[b]/10); c++; } return c? s/c : 0; }
+  var bLow=bandE(150,1000), bMid=bandE(1000,2200), bHi=bandE(2200,5500);
+  var lg=0,lm=0,c2=0;
+  for(var b2=Math.floor(150/binHz);b2<=Math.floor(5500/binHz);b2++){ var p=Math.pow(10,spec[b2]/10); lg+=Math.log(p+1e-20); lm+=p; c2++; }
+  var flat=10*(lg/c2-Math.log(lm/c2+1e-20))/Math.LN10; // ~0: تُن‌دار | خیلی منفی: نویز
+  var hiRatio=bHi/(bHi+bLow+bMid+1e-20);
+  var gate=BT.hist.length>20? vl_pctl(BT.hist.slice(),0.12)*2.2 : 0.004;
+  var kind='silence';
+  if(rms>gate){
+    if(r.r>0.45&&r.f0>60&&r.f0<600) kind='voiced';
+    else if(hiRatio>0.40&&flat>-16) kind='breath';
+    else if(rms>gate*3) kind='noise';
+  }
+  return {rms:rms, r:r.r, kind:kind, hiRatio:hiRatio, flat:flat, bands:[bLow,bMid,bHi]};
+}
+function vlBTDraw(){
+  var cv=$('cvBT'); if(!cv) return;
+  var ctx=setupCv(cv), W=cv.clientWidth, H=cv.clientHeight;
+  ctx.fillStyle='#101627'; ctx.fillRect(0,0,W,H);
+  var padL=8,padR=8,padT=8,padB=8;
+  var eh=H*0.46, bh=H*0.44;
+  var n=BT.env.length;
+  if(!n){ ctx.fillStyle='#3b4a6b'; ctx.font='12px -apple-system'; ctx.textAlign='center'; ctx.fillText('پوش صدا و باندهای نویز — بعد از شروع این‌جا زنده می‌شود',W/2,H/2); return; }
+  var st=Math.max(1,Math.ceil(n/150));
+  var mxR=1e-6; for(var i=0;i<n;i++) mxR=Math.max(mxR,BT.env[i].rms);
+  ctx.strokeStyle='#22d3ee'; ctx.lineWidth=1.6; ctx.beginPath();
+  var started=false;
+  for(var j=0;j<n;j+=st){
+    var x=padL+(j/Math.max(1,n-1))*(W-padL-padR);
+    var y=(padT+eh)-vl_clamp(BT.env[j].rms/mxR,0,1)*(eh-6);
+    if(!started){ ctx.moveTo(x,y); started=true; } else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+  for(var j2=0;j2<n;j2+=st){
+    var x2=padL+(j2/Math.max(1,n-1))*(W-padL-padR);
+    var y2=(padT+eh)-vl_clamp(BT.env[j2].rms/mxR,0,1)*(eh-6);
+    ctx.fillStyle=(BT.env[j2].kind==='breath')?'#34d399':(BT.env[j2].kind==='voiced'?'#f87171':'#3b4a6b');
+    ctx.beginPath(); ctx.arc(x2,y2,2.2,0,Math.PI*2); ctx.fill();
+  }
+  var names=['پایین ۰.۱۵–۱k','میان ۱–۲.۲k','بالا ۲.۲–۵.۵k'];
+  var cols=['#7c5cff','#fbbf24','#34d399'];
+  for(var k=0;k<3;k++){
+    var y0=H-padB-(3-k)*(bh/3)-4, hh=bh/3-6;
+    var frac=vl_clamp(BT.sm[k],0,1);
+    ctx.fillStyle='#1a2338'; ctx.fillRect(padL,y0,W-padL-padR,hh);
+    ctx.fillStyle=cols[k]; ctx.fillRect(padL,y0,(W-padL-padR)*frac,hh);
+    ctx.fillStyle='#8b97b0'; ctx.font='10px -apple-system'; ctx.textAlign='left';
+    ctx.fillText(names[k]+' — '+Math.round(frac*100)+'٪',padL+4,y0+hh-3);
+  }
+}
+function vlBTToggle(){
+  if(BT.live){ vlBTStop(); vlBTFinish(); return; }
+  if(vlNative()||!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)){ toast('تمرین بازدمِ زنده فقط در نسخهٔ وب (Safari) کار می‌کند — از راهنمای میکروفون استفاده کن'); micGuide('breath'); return; }
+  try{ BT.actx=new (window.AudioContext||window.webkitAudioContext)(); BT.actx.resume&&BT.actx.resume(); }catch(e){ toast('میکروفون باز نشد'); return; }
+  var to=setTimeout(function(){ if(!BT.stream){ vlBTStop(); toast('دسترسی میکروفون گرفته نشد'); } },5000);
+  navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false,channelCount:1}}).then(function(s){
+    clearTimeout(to); BT.stream=s;
+    var src=BT.actx.createMediaStreamSource(s);
+    BT.proc=BT.actx.createScriptProcessor(2048,1,1);
+    var mg=BT.actx.createGain(); mg.gain.value=0;
+    BT.proc.onaudioprocess=function(ev){
+      if(!BT.live) return;
+      BT.buf.push(new Float32Array(ev.inputBuffer.getChannelData(0)));
+      var rate=BT.actx?BT.actx.sampleRate:48000;
+      var need=Math.ceil(0.5*rate/2048);
+      while(BT.buf.length>need) BT.buf.shift();
+    };
+    src.connect(BT.proc); BT.proc.connect(mg); mg.connect(BT.actx.destination);
+    BT.live=true; BT.env=[]; BT.segs=[]; BT.cur=null; BT.t0=Date.now(); BT.hist=[]; BT.voiced=0; BT.frames=0; BT.sm=[0,0,0];
+    $('btnBTrainer').textContent='⏹ پایان تمرین و نمایش نتیجه';
+    var rate=BT.actx?BT.actx.sampleRate:48000;
+    BT.timer=setInterval(function(){
+      if(!BT.live) return;
+      var tot=0,i; for(i=0;i<BT.buf.length;i++) tot+=BT.buf[i].length;
+      if(tot<VL_FRAME+64) return;
+      var d=new Float32Array(tot),o=0;
+      for(var j=0;j<BT.buf.length;j++){ d.set(BT.buf[j],o); o+=BT.buf[j].length; }
+      var x16=jsResample(d,rate,VL_FS);
+      var fr=vlBTClassify(x16.subarray(x16.length-VL_FRAME));
+      BT.frames++;
+      BT.hist.push(fr.rms); if(BT.hist.length>120) BT.hist.shift();
+      if(fr.kind==='voiced') BT.voiced++;
+      var t=(Date.now()-BT.t0)/1000;
+      BT.env.push({t:t,rms:fr.rms,kind:fr.kind,hiRatio:fr.hiRatio});
+      if(fr.kind==='breath'){
+        if(!BT.cur) BT.cur={t0:t,frames:[]};
+        BT.cur.frames.push(fr);
+      } else {
+        if(BT.cur){ if(t-BT.cur.t0>=0.6) BT.segs.push(BT.cur); BT.cur=null; }
+      }
+      var totE=fr.bands[0]+fr.bands[1]+fr.bands[2]+1e-20;
+      for(var k=0;k<3;k++){ var fk=fr.bands[k]/totE; BT.sm[k]=0.85*BT.sm[k]+0.15*fk; }
+      vlBTDraw();
+      var txt='', col='#c3cee6';
+      if(fr.kind==='breath'&&BT.cur){
+        var dt=Math.round((t-BT.cur.t0)*10)/10;
+        var cv2='—';
+        if(BT.cur.frames.length>4){
+          var rs=[]; for(var u=0;u<BT.cur.frames.length;u++) rs.push(BT.cur.frames[u].rms);
+          var mu=vl_mean(rs), sd=0; for(var u2=0;u2<rs.length;u2++) sd+=(rs[u2]-mu)*(rs[u2]-mu);
+          sd=Math.sqrt(sd/rs.length);
+          cv2=Math.round(100*vl_clamp(1-(sd/(mu||1e-9))/0.30,0,100));
+        }
+        txt='🌬 هوای خالص شنیده می‌شود ✓ — مدت: '+faNum(dt)+' ثانیه — یکنواختی: '+faNum(cv2)+'٪';
+        col='#34d399';
+      } else if(fr.kind==='voiced'){ txt='🎤 دارد صدا می‌شود! فقط هوای بی‌صدا («سس‌س») نگه دار'; col='#f87171'; }
+      else if(fr.kind==='noise'){ txt='🌫 نویز نامشخص (حرکت دست/اصطکاک؟) — گوشی را ثابت نگه دار'; col='#fbbf24'; }
+      else { txt='… منتظر بازدم — دم بگیر و «سسسس…» را یکنواخت ادامه بده'; col='#8b97b0'; }
+      var el=$('btStatus'); if(el){ el.textContent=txt; el.style.color=col; }
+    },250);
+  }).catch(function(){ clearTimeout(to); vlBTStop(); toast('دسترسی میکروفون گرفته نشد'); });
+}
+function vlBTFinish(){
+  if(BT.cur){ var t=(Date.now()-BT.t0)/1000; if(t-BT.cur.t0>=0.6) BT.segs.push(BT.cur); BT.cur=null; }
+  var se=BT.segs.filter(function(s2){return s2.frames.length>=3;});
+  var html='';
+  if(!se.length){
+    html='<div class="card mini"><div class="vstat">هیچ بازدمِ بی‌صدایی ثبت نشد. دکمهٔ شروع را بزن، دم بگیر و با «سس‌س» (فقط هوا، بدون صدا) بازدم کن — تا وقتی نوار سبز «هوای خالص» روشن است ادامه بده.</div></div>';
+  } else {
+    var best=null, totDur=0, scores=[];
+    for(var i=0;i<se.length;i++){
+      var rs=[]; for(var j=0;j<se[i].frames.length;j++) rs.push(se[i].frames[j].rms);
+      var mu=vl_mean(rs), sd=0;
+      for(var j2=0;j2<rs.length;j2++) sd+=(rs[j2]-mu)*(rs[j2]-mu);
+      sd=Math.sqrt(rs.length>1?sd/(rs.length-1):0);
+      var cv=sd/(mu||1e-9);
+      var dur=se[i].frames.length*0.25;
+      var st2=Math.round(100*vl_clamp(1-cv/0.30,0,100));
+      se[i].dur=Math.round(dur*10)/10; se[i].score=st2; se[i].cv=Math.round(cv*100)/100;
+      scores.push(st2); totDur+=dur;
+      if(!best||dur>best.dur) best=se[i];
+    }
+    var meanS=Math.round(vl_mean(scores));
+    var voicedPct=Math.round(100*BT.voiced/Math.max(1,BT.frames));
+    var col=(meanS>=70)?'#34d399':(meanS>=45?'#fbbf24':'#f87171');
+    html+='<div class="card"><div class="cardtitle">🌬 نتیجهٔ تمرین بازدم</div>';
+    html+='<div class="scorewrap"><div class="scorelbl">یکنواختی جریان هوا</div><div class="scorebig" style="color:'+col+'">'+faNum(meanS)+'<span style="font-size:22px;color:#8b97b0">/۱۰۰</span></div>';
+    html+='<div class="chips"><span class="chip">بازدم‌های ثبت‌شده <b>'+faNum(se.length)+'</b></span><span class="chip">طولانی‌ترین <b>'+faNum(best.dur)+'s</b></span><span class="chip">مجموع <b>'+faNum(Math.round(totDur*10)/10)+'s</b></span>'+(voicedPct>10?'<span class="chip" style="color:#f87171">صدادار <b>'+faNum(voicedPct)+'٪</b></span>':'')+'</div></div>';
+    html+='<div class="tblwrap"><table class="tbl"><tr><th>بازدم</th><th>مدت</th><th>یکنواختی (CV)</th><th>نمره</th></tr>';
+    for(var k=0;k<se.length;k++) html+='<tr><td>'+faNum(k+1)+'</td><td>'+faNum(se[k].dur)+'s</td><td>'+faNum(se[k].cv)+'</td><td><b>'+faNum(se[k].score)+'</b></td></tr>';
+    html+='</table></div>';
+    var tips=[];
+    if(voicedPct>10) tips.push({s:3,i:'🎤',t:faNum(voicedPct)+'٪ زمان تمرینت صدا داشت',b:'«سس» باید کاملاً بی‌صدا باشد — فقط هوا از بین دندان‌ها. اگر صدای خش‌خشِ تُن‌دار می‌آید، فشار تارها را بردار و فقط عضلات تنفس کار کنند.'});
+    if(meanS<70) tips.push({s:2,i:'🫁',t:'جریان بازدم نوسان دارد',b:'دیافراگم باید «ترمز» بدهد نه اینکه رها کند: دم ۴ ثانیه‌ای به پهلوها، بعد «سس» با مترونوم ۶۰ (هر تیک یک «س» کوچک) تا ۱۵–۲۰ تیک پایدار. هدف: نمرهٔ یکنواختی بالای ۷۰.'});
+    if(best.dur<10) tips.push({s:2,i:'⏱',t:'طولانی‌ترین بازدم '+faNum(best.dur)+' ثانیه است',b:'ظرفیت و کنترل بازدمت کم است. ستون فقرات تمرین: بازدم شمرده «سس‌س» روزی ۵ نوبت + خواندن «ززز» روی نت پایین تا پایان نفس. هدف: ۱۵–۲۰ ثانیه یکنواخت.'});
+    var hiOK=true;
+    for(var m=0;m<se.length;m++){ var lastF=se[m].frames[se[m].frames.length-1]; if(lastF.hiRatio<0.35) hiOK=false; }
+    if(!hiOK) tips.push({s:1,i:'📡',t:'انرژی نویزت در باند پایین متمرکز است',b:'برای سنجش دقیق، «سس» واقعی بده (هوا از بین زبان و دندان‌ها — نویز در ۲.۲–۵.۵kHz) نه «هـِـ» باز (که نویزش زیر ۱kHz است). این کار حس جای درست خروج هوا را هم می‌سازد.'});
+    tips.push({s:1,i:'💡',t:'پیشنهاد من — پلهٔ بعدی',b:'وقتی ۳ جلسهٔ پشت‌سرهم نمرهٔ یکنواختی بالای ۷۰ گرفتی، همان بازدم را با شروع نت ترکیب کن: «سس…آ» — هوا اول جریان پیدا می‌کند و صدا روی جریانِ ازپیش‌آماده می‌نشیند. این دقیقاً مکانیزم شروع نتِ بی‌اتک است (بخش «🎬 شروع نت» را ببین).'});
+    tips.sort(function(a,b){return b.s-a.s;});
+    for(var w2=0;w2<tips.length;w2++) html+='<div class="rec s'+tips[w2].s+'"><div class="rt">'+tips[w2].i+' '+tips[w2].t+'</div><div class="rb">'+tips[w2].b+'</div></div>';
+    html+='<div class="note">🔬 چه چیزی سنجیده شد؟ هوای بازدم هنگام عبور از باریکهٔ بین زبان و دندان، نویز پهن‌باند (turbulence) می‌سازد که انرژی‌اش عمدتاً بالای ~۱.۵ کیلوهرتز متمرکز است (Klatt &amp; Klatt 1990). برنامه هر ۲۵۰ میلی‌ثانیه طیف را می‌سنجد: اگر هارمونیک (نت) نبود ولی باند بالا پرانرژی بود = هوای خالص؛ یکنواختی هم از پایداری دامنهٔ همین نویز محاسبه می‌شود.</div></div>';
+  }
+  VL_BT_LAST=html;
+  vlBIdle();
+}
+
+/* ===== تحلیل شروع نت (بدون اتک) — UI ===== */
+var VL_ONSL=null;
+try{ VL_ONSL=JSON.parse(localStorage.getItem('vl_onslast')||'null'); }catch(e){}
+function onsTypeTag(o){
+  if(o.type==='hard') return tag('bad','اتک سخت');
+  if(o.type==='breathy') return tag('mid','نفس‌دار');
+  if(o.type==='slow') return tag('mid','خیلی محتاط');
+  return tag('ok','نرم و همزمان');
+}
+function vlOnsTips(r){
+  var cnt={hard:0,breathy:0,slow:0,smooth:0};
+  for(var i=0;i<r.onsets.length;i++) cnt[r.onsets[i].type]=(cnt[r.onsets[i].type]||0)+1;
+  var out=[];
+  if(cnt.hard) out.push({s:3,i:'💥',t:faNum(cnt.hard)+' نت با اتک سخت شروع شد',b:'اتک سخت یعنی تارها قبل از رسیدن هوا بسته و ناگهان باز می‌شوند — صدای «تُپِ» اول نت و فشار روی حنجره. درمان: ۱) از سکوت، «آ» را مثل تعجبِ نرم شروع کن (حس بوی گل برداشتن) ۲) تمرین «ها–آ»: اول با h واضح، بعد h را ذره‌ذره کم کن تا هوا و صدا همزمان شوند ۳) قبل از هر نت یک لحظه «آماده‌باشِ بی‌صدا»: نفس گرفته، حنجره در حالت آواز، بعد رها.'});
+  if(cnt.breathy) out.push({s:3,i:'💨',t:faNum(cnt.breathy)+' نت با هوا شروع شد (نفس‌دار)',b:'هوا قبل از صدا بیرون می‌آید (h پنهان اول نت). این همان نشتی است که انرژی نفس را هدر می‌دهد و نت را دیر «بالا می‌آورد». درمان: «اوه-اوه-اوه» استاکاتو با مترونوم ۶۰ — هر «اوه» باید مثل قطرهٔ دقیق باشد، نه «هوه». اگر سخت بود اول «مِم-مِم-مِم» (با m بسته) بزن بعد به واکهٔ باز بیا.'});
+  if(cnt.slow) out.push({s:2,i:'🐢',t:faNum(cnt.slow)+' نت با تردید/خیلی نرم شروع شد',b:'شروعِ خیلی کند (بالای ۳۳۰ms) هم مشکل است: نت دیر می‌نشیند و در آهنگ دیر می‌آیی. علت معمولاً «انتظار برای اطمینان» است. تمرین: شروع‌ها را شمرده و محکم‌تر بزن (مترونوم + اعلان ذهنی «یک… برو!») تا نردبان به بازهٔ ۴۰–۲۵۰ms بیاید.'});
+  out.push({s:1,i:'🎯',t:'هدف نهایی: شروع همزمان (balanced onset)',b:'در شروع ایده‌آل، فشار هوا و بستن تارها همزمان بالانس می‌شوند: نه کلیک (اتک)، نه هیس (هوا اول). نمودار باید نردبان ۴۰–۲۵۰ میلی‌ثانیه با اورشوت زیر ~۳۰٪ نشان بدهد. تمرین مرجع: «مِسا دی ووچه» — از p شروع کن، تا f برو و برگرد، همه روی یک نت و بدون شروع دوباره.'});
+  out.push({s:1,i:'🧪',t:'چطور خودت را بیازمایی',b:'این صفحه را باز نگه دار و هر هفته همان ۴–۶ جملهٔ تمرینی را ضبط کن؛ فقط روند «٪ شروع نرم» و میانگین نمره مهم است. وقتی ٪ نرم بالای ۸۰ شد، سرعت و دشواری را بالا ببر (نت‌های بالاتر، جمله‌های واقعی آهنگ).'});
+  out.sort(function(a,b){return b.s-a.s;});
+  return out;
+}
+function vlOnsetRun(x16){
+  setScreen('scrBusy'); setProg(0.03,'شروع تحلیل شروع نت‌ها…');
+  vl_onsetAnalyze(x16,{onProgress:setProg}).then(function(res){
+    if(!res.ok){ vlModal('تحلیل ممکن نشد',esc(res.msg||''),[{label:'باشه',primary:true}]); setScreen('scrOnset'); vlOnsIdle(); return; }
+    renderOnset(res);
+  }).catch(function(e){
+    vlModal('خطای غیرمنتظره','در پردازش صدا خطایی رخ داد:<br><b>'+esc(e&&e.message||e)+'</b>',[{label:'باشه',primary:true}]);
+    setScreen('scrOnset'); vlOnsIdle();
+  });
+}
+function renderOnset(r){
+  setScreen('scrOnset');
+  VL_ONSL={score:r.score,n:r.n,smoothPct:r.smoothPct,d:new Date().toLocaleDateString('fa-IR')};
+  try{ localStorage.setItem('vl_onslast',JSON.stringify(VL_ONSL)); }catch(e){}
+  var col=(r.score>=75)?'#34d399':(r.score>=50?'#fbbf24':'#f87171');
+  var h='<div class="scorewrap"><div class="scorelbl">نمرهٔ شروع نت‌های تو (بدون اتک)</div><div class="scorebig" style="color:'+col+'">'+faNum(r.score)+'<span style="font-size:22px;color:#8b97b0">/۱۰۰</span></div>';
+  h+='<div class="chips"><span class="chip">نت‌ها <b>'+faNum(r.n)+'</b></span><span class="chip">شروع نرم <b>'+faNum(r.smoothPct)+'٪</b></span>'+(r.clipPct>0.05?'<span class="chip" style="color:#f87171">کلیپ ضبط '+faNum(r.clipPct)+'٪</span>':'')+'</div></div>';
+  h+='<div class="charttl">📈 پوش بلندی صدا — خطوط عمودی: لحظهٔ شروع هر نت (رنگ = نوع شروع)</div><canvas id="cvOnsEnv" class="cv tall"></canvas>';
+  h+='<div class="charttl">🎚 سرعت برآمدن هر نت (ms) — ناحیهٔ سبز: هدف ۴۰–۲۵۰ — نقطه‌های فیروزه‌ای: هوای پیش از صدا</div><canvas id="cvOnsRise" class="cv"></canvas>';
+  h+='<div class="card"><div class="cardtitle">📋 جزئیات هر شروع نت</div><div class="tblwrap"><table class="tbl"><tr><th>#</th><th>زمان</th><th>نوع</th><th>برآمدگی</th><th>اورشوت</th><th>هوای قبل</th><th>نمره</th></tr>';
+  for(var i=0;i<r.onsets.length;i++){
+    var o=r.onsets[i];
+    h+='<tr><td>'+faNum(i+1)+'</td><td>'+faNum(o.t)+'s</td><td>'+onsTypeTag(o)+'</td><td>'+faNum(o.rise)+' ms</td><td>'+faNum(o.over)+'٪</td><td>'+faNum(o.asp)+' ms</td><td><b>'+faNum(o.score)+'</b></td></tr>';
+  }
+  h+='</table></div></div>';
+  var tips=vlOnsTips(r);
+  h+='<div class="card"><div class="cardtitle">🏃 برنامهٔ رسیدن به شروع بی‌اتک</div>';
+  for(var e=0;e<tips.length;e++) h+='<div class="rec s'+tips[e].s+'"><div class="rt">'+tips[e].i+' '+tips[e].t+'</div><div class="rb">'+tips[e].b+'</div></div>';
+  h+='</div>';
+  h+='<div class="btnrow"><button class="big" id="btnOAgain">🎙 دوباره ضبط و مقایسه</button><button class="big ghost" id="btnOFile2">📁 فایل دیگر</button></div>';
+  $('onsBody').innerHTML=h;
+  if($('btnOAgain')) $('btnOAgain').onclick=function(){ startRec('onset'); };
+  if($('btnOFile2')) $('btnOFile2').onclick=function(){ vlPickAudio('onset'); };
+  drawOnsEnv(r); drawOnsRise(r);
+}
+function drawOnsEnv(r){
+  var cv=$('cvOnsEnv'); if(!cv) return;
+  var ctx=setupCv(cv), W=cv.clientWidth, H=cv.clientHeight;
+  var padL=34,padR=10,padT=14,padB=24;
+  var n=r.env.nF, dur=n*0.01;
+  var arr=r.env.rmsDb;
+  var lo=-70, hi=-20;
+  for(var i=0;i<n;i++){ if(isFinite(arr[i])){ if(arr[i]<lo) lo=arr[i]; if(arr[i]>hi) hi=arr[i]; } }
+  lo=Math.max(-80,lo-2); hi=hi+2;
+  function X(t){ return padL+(t/dur)*(W-padL-padR); }
+  function Y(db){ return padT+((hi-db)/(hi-lo))*(H-padT-padB); }
+  ctx.fillStyle='#101627'; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='#232d45'; ctx.fillStyle='#8b97b0'; ctx.font='10px -apple-system'; ctx.textAlign='right';
+  for(var d=Math.ceil(lo/10)*10; d<=hi; d+=10){ ctx.beginPath(); ctx.moveTo(padL,Y(d)); ctx.lineTo(W-padR,Y(d)); ctx.stroke(); ctx.fillText(d+'',padL-3,Y(d)+3); }
+  ctx.textAlign='center';
+  var stp=Math.max(1,Math.ceil(dur/(W/46)));
+  for(var t=Math.ceil(dur/stp)*stp; t<dur; t+=stp){ ctx.beginPath(); ctx.moveTo(X(t),padT); ctx.lineTo(X(t),H-padB); ctx.stroke(); ctx.fillText(t+'s',X(t),H-padB+12); }
+  ctx.strokeStyle='#475069'; ctx.setLineDash([4,4]); ctx.beginPath(); ctx.moveTo(padL,Y(r.env.gateDb)); ctx.lineTo(W-padR,Y(r.env.gateDb)); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle='#475069'; ctx.textAlign='left'; ctx.font='10px -apple-system'; ctx.fillText('آستانه',padL+3,Y(r.env.gateDb)-3);
+  ctx.strokeStyle='#22d3ee'; ctx.lineWidth=1.3; ctx.beginPath();
+  var started=false;
+  for(var i2=0;i2<n;i2++){
+    var db=arr[i2]; if(!isFinite(db)) continue;
+    var x=X(i2*0.01), y=Y(vl_clamp(db,lo,hi));
+    if(!started){ ctx.moveTo(x,y); started=true; } else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+  var cols={hard:'#f87171',breathy:'#60a5fa',slow:'#fbbf24',smooth:'#34d399'};
+  var names={hard:'اتک سخت',breathy:'نفس‌دار',slow:'محتاط',smooth:'نرم'};
+  for(var k=0;k<r.onsets.length;k++){
+    var o=r.onsets[k];
+    ctx.strokeStyle=cols[o.type]; ctx.lineWidth=1.8;
+    ctx.beginPath(); ctx.moveTo(X(o.t),padT); ctx.lineTo(X(o.t),H-padB); ctx.stroke();
+    ctx.fillStyle=cols[o.type];
+    ctx.beginPath(); ctx.arc(X(o.t),padT+7,4,0,Math.PI*2); ctx.fill();
+    ctx.font='bold 10px -apple-system'; ctx.textAlign='center';
+    ctx.fillText(names[o.type],X(o.t),padT+22+(k%2)*12);
+  }
+}
+function drawOnsRise(r){
+  var cv=$('cvOnsRise'); if(!cv) return;
+  var ctx=setupCv(cv), W=cv.clientWidth, H=cv.clientHeight;
+  var padL=36,padR=10,padT=18,padB=26;
+  var n=r.onsets.length;
+  var yMax=400;
+  function X(i){ return padL+((i+0.5)/n)*(W-padL-padR); }
+  function Y(ms){ return padT+((yMax-vl_clamp(ms,0,yMax))/yMax)*(H-padT-padB); }
+  ctx.fillStyle='#101627'; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='rgba(52,211,153,0.13)';
+  ctx.fillRect(padL,Y(250),W-padL-padR,Y(40)-Y(250));
+  ctx.fillStyle='rgba(248,113,113,0.12)';
+  ctx.fillRect(padL,Y(32),W-padL-padR,Y(0)-Y(32));
+  ctx.strokeStyle='#232d45'; ctx.fillStyle='#8b97b0'; ctx.font='10px -apple-system'; ctx.textAlign='right';
+  var gl=[0,50,100,150,200,250,300,350,400];
+  for(var g=0;g<gl.length;g++){ ctx.beginPath(); ctx.moveTo(padL,Y(gl[g])); ctx.lineTo(W-padR,Y(gl[g])); ctx.stroke(); ctx.fillText(gl[g]+'',padL-3,Y(gl[g])+3); }
+  var bw=Math.max(6,(W-padL-padR)/n*0.55);
+  var cols={hard:'#f87171',breathy:'#60a5fa',slow:'#fbbf24',smooth:'#34d399'};
+  for(var i=0;i<n;i++){
+    var o=r.onsets[i];
+    var x=X(i);
+    ctx.fillStyle=cols[o.type];
+    ctx.fillRect(x-bw/2,Y(o.rise),bw,Y(0)-Y(o.rise));
+    if(o.asp>0){
+      ctx.fillStyle='#22d3ee';
+      ctx.beginPath(); ctx.arc(x,Y(o.asp),3,0,Math.PI*2); ctx.fill();
+    }
+    ctx.fillStyle='#8b97b0'; ctx.font='9.5px -apple-system'; ctx.textAlign='center';
+    ctx.fillText(faNum(i+1),x,H-padB+12);
+  }
+  ctx.fillStyle='#34d399'; ctx.font='10px -apple-system'; ctx.textAlign='left';
+  ctx.fillText('هدف: ۴۰–۲۵۰ms',padL+4,Y(250)-4);
+  ctx.fillStyle='#f87171';
+  ctx.fillText('اتک: <۳۲ms',padL+4,Y(0)-4);
+  ctx.fillStyle='#22d3ee'; ctx.textAlign='right';
+  ctx.fillText('● هوای پیش از صدا',W-padR-4,padT+2);
+}
+function vlOnsIdle(){
+  var h='';
+  if(VL_ONSL){
+    h+='<div class="card mini"><div class="vstat">آخرین نتیجه ('+VL_ONSL.d+'): نمره <b>'+faNum(VL_ONSL.score)+'</b>/۱۰۰ — '+faNum(VL_ONSL.n)+' نت — شروع نرم: <b>'+faNum(VL_ONSL.smoothPct)+'٪</b></div></div>';
+  } else {
+    h+='<div class="card mini"><div class="vstat">هنوز تحلیلی ثبت نشده — چند جملهٔ کوتاه ضبط کن تا نمرهٔ «شروع بدون اتک» بگیری.</div></div>';
+  }
+  $('onsBody').innerHTML=h;
+}
+
+/* ---------- new screens wiring ---------- */
+$('btnVowel').onclick=function(){ setScreen('scrVowel'); vlVBuildChips(); vlVDraw(); vStatusSet('آماده — یک واکهٔ هدف انتخاب کن و مانیتور زنده را شروع کن، یا فایل بیاور.'); $('vTip').innerHTML='<div class="vstat">پیشنهادها همین‌که بخوانی این‌جا نمایش داده می‌شود…</div>'; };
+$('btnBreath').onclick=function(){ setScreen('scrBreath'); vlBIdle(); };
+$('btnVBack').onclick=function(){ setScreen('scrHome'); };
+$('btnBBack').onclick=function(){ setScreen('scrHome'); };
+$('btnOBack').onclick=function(){ setScreen('scrHome'); };
+$('btnOnset').onclick=function(){ setScreen('scrOnset'); vlOnsIdle(); };
+$('btnOLive').onclick=function(){ startRec('onset'); };
+$('btnOFile').onclick=function(){ vlPickAudio('onset'); };
+$('btnBTrainer').onclick=vlBTToggle;
+$('btnVLive').onclick=vlVLiveToggle;
+$('btnVFile').onclick=function(){ vlPickAudio('vowel'); };
+$('btnBFile').onclick=function(){ vlPickAudio('breath'); };
+$('btnBLive').onclick=function(){ startRec('breath'); };
+$('vsetFa').onclick=function(){ VM.set='fa'; VM.targetK=null; VM.adapt={}; $('vsetFa').classList.add('on'); $('vsetEn').classList.remove('on'); $('vStyleRow').classList.add('hidden'); vlVBuildChips(); vlVDraw(); };
+$('vsetEn').onclick=function(){ VM.set='en'; VM.targetK=null; VM.adapt={}; $('vsetEn').classList.add('on'); $('vsetFa').classList.remove('on'); $('vStyleRow').classList.remove('hidden'); vlVBuildChips(); vlVDraw(); };
+$('vstCl').onclick=function(){ VM.style='cl'; $('vstCl').classList.add('on'); $('vstMix').classList.remove('on'); $('vstBelt').classList.remove('on'); vlVDraw(); };
+$('vstMix').onclick=function(){ VM.style='mix'; $('vstMix').classList.add('on'); $('vstCl').classList.remove('on'); $('vstBelt').classList.remove('on'); vlVDraw(); };
+$('vstBelt').onclick=function(){ VM.style='belt'; $('vstBelt').classList.add('on'); $('vstCl').classList.remove('on'); $('vstMix').classList.remove('on'); vlVDraw(); };
+
+
+if(location.hash==='#test'){
+  (function(){
+    var x=vl_synth({dur:3.2,f0:140,vibHz:5.5,vibCents:50,jitter:0.004});
+    vl_analyze(x,{sex:'m'}).then(function(res){
+      window.__vlTest=res;
+      if(res.ok){ lastResult=res; setScreen('scrRes'); renderResults(res); }
+      else{ document.body.insertAdjacentHTML('afterbegin','<div class="warnbox">SELF-TEST FAILED: '+res.msg+'</div>'); }
+      // --- vowel classification test (i / a / u) ---
+      var cases=[{k:'i',F:[[280,70],[2250,90],[2900,120],[3500,150]]},{k:'a',F:[[700,80],[1100,90],[2600,120],[3300,150]]},{k:'u',F:[[330,70],[870,90],[2500,120],[3300,150]]}];
+      var vOK=true, vres=[];
+      var faSet=vl_vowelSet('fa','m');
+      for(var ci=0;ci<cases.length;ci++){
+        var vx=vl_synth({dur:1.5,f0:140,formants:cases[ci].F});
+        var tr=vl_formantTrack(vx,{step:4});
+        if(tr.length){
+          var f1s=[],f2s=[];
+          for(var ti=0;ti<tr.length;ti++){ f1s.push(tr[ti].f1); f2s.push(tr[ti].f2); }
+          var F1=Math.round(vl_median(f1s)), F2=Math.round(vl_median(f2s));
+          var cls=vl_classifyVowelSet(F1,F2,faSet);
+          var acc={i:['i'],a:['a'],u:['u','o']}; // u/o در LPC هم‌مرزند — پذیرفتنی
+          vres.push({want:cases[ci].k,got:cls.v.k,F1:F1,F2:F2});
+          if(acc[cases[ci].k].indexOf(cls.v.k)<0) vOK=false;
+        } else { vOK=false; vres.push({want:cases[ci].k,got:'none'}); }
+      }
+      window.__vlTest.vowOK=vOK; window.__vlTest.vowCases=vres;
+      // --- vowel modification test: high pitch on 'i' should shift target ---
+      var iv=null; for(var vi=0;vi<faSet.length;vi++) if(faSet[vi].k==='i') iv=faSet[vi];
+      var modLow=vl_modTarget(iv,130,'m','cl'), modHigh=vl_modTarget(iv,440,'m','cl');
+      window.__vlTest.modOK=(modLow.f1===iv.f1&&modLow.f2===iv.f2&&modHigh.mod===true);
+      window.__vlTest.modHigh=modHigh;
+      // --- breathiness test: noisy vs clean synth ---
+      var clean=vl_synth({dur:3.0,f0:150,noise:0.004});
+      var noisy=vl_synth({dur:3.0,f0:150,noise:0.30});
+      vl_breathMetrics(clean,{sex:'m'}).then(function(rc){
+        vl_breathMetrics(noisy,{sex:'m'}).then(function(rn){
+          window.__vlTest.brOK=(rn.bi>rc.bi+15);
+          window.__vlTest.biClean=rc.ok?rc.bi:null;
+          window.__vlTest.biNoisy=rn.ok?rn.bi:null;
+          window.__vlTest.brClean=rc; window.__vlTest.brNoisy=rn;
+          // --- robust vowel test: 'i' with vibrato + noise ---
+          var ivx=vl_synth({dur:1.6,f0:230,vibHz:6,vibCents:60,noise:0.02,formants:[[300,70],[2200,90],[2900,120],[3500,150]]});
+          var trx=vl_formantTrack(ivx,{step:4,multi:true});
+          if(trx.length){
+            var f1x=[],f2x=[],f3x=[];
+            for(var tx=0;tx<trx.length;tx++){ f1x.push(trx[tx].f1); f2x.push(trx[tx].f2); if(trx[tx].f3) f3x.push(trx[tx].f3); }
+            var md=function(a){ var b=a.slice().sort(function(p,q){return p-q;}); return b[b.length>>1]; };
+            var clx=vl_classifyVowelSet(md(f1x),md(f2x),faSet,f3x.length?md(f3x):undefined,null);
+            window.__vlTest.robVow=(clx.v.k==='i');
+            window.__vlTest.robVowCls={k:clx.v.k,f1:md(f1x),f2:md(f2x),f3:f3x.length?md(f3x):0,conf:Math.round(clx.conf*100)/100};
+          }
+          // --- onset test: hard / breathy / smooth ---
+          function tone(f0,att,dur){ var x=vl_synth({dur:dur,f0:f0,noise:0.004}); for(var i2=0;i2<x.length;i2++){ var t2=i2/VL_FS; var a2=1; if(t2*1000<att) a2=Math.min(1,Math.pow(t2*1000/att,1.4)); var rem=(dur-t2)*1000; if(rem<150) a2*=Math.max(0.05,rem/150); x[i2]*=a2; } return x; }
+          function sil(dur){ return new Float32Array(Math.round(dur*VL_FS)); }
+          function noiz(dur,amp){ var nn=Math.round(dur*VL_FS), z=new Float32Array(nn); for(var i3=0;i3<nn;i3++) z[i3]=amp*(Math.random()*2-1); return z; }
+          var pA=[sil(0.35),tone(220,15,1.0),sil(0.35),noiz(0.18,0.10),tone(220,70,0.9),sil(0.35),tone(220,130,1.0),sil(0.3)];
+          var tot2=0; for(var pi=0;pi<pA.length;pi++) tot2+=pA[pi].length;
+          var ox=new Float32Array(tot2),oo=0;
+          for(pi=0;pi<pA.length;pi++){ ox.set(pA[pi],oo); oo+=pA[pi].length; }
+          vl_onsetAnalyze(ox,{}).then(function(ro){
+            window.__vlTest.onsOK=(ro.ok&&ro.n===3);
+            window.__vlTest.ons=ro.ok?{n:ro.n,score:ro.score,types:ro.onsets.map(function(o){return o.type;}),rise:ro.onsets.map(function(o){return o.rise;}),asp:ro.onsets.map(function(o){return o.asp;})}:null;
+          });
+        });
+      });
+    });
+  })();
+}
+
+</script>
+</body>
+</html>
